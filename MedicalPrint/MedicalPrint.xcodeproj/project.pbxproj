@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D1CD0EA1C9E83D4000D7995 /* FindPassworkController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1CD0E91C9E83D4000D7995 /* FindPassworkController.m */; };
+		7D1CD0ED1C9E84DA000D7995 /* UserInfoRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1CD0EC1C9E84DA000D7995 /* UserInfoRequest.m */; };
+		7D1CD0F01C9E85D6000D7995 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1CD0EF1C9E85D6000D7995 /* User.m */; };
+		7D1CD0F71C9E9999000D7995 /* AccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1CD0F61C9E9999000D7995 /* AccountManager.m */; };
+		7D1CD0FA1C9EF8C3000D7995 /* ShippingAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1CD0F91C9EF8C3000D7995 /* ShippingAddress.m */; };
+		7D1CD0FD1C9EFCBB000D7995 /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1CD0FC1C9EFCBB000D7995 /* Order.m */; };
 		7D2CB2981C980E5F0055C7F4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D2CB2971C980E5F0055C7F4 /* main.m */; };
 		7D2CB29B1C980E5F0055C7F4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D2CB29A1C980E5F0055C7F4 /* AppDelegate.m */; };
 		7D2CB29E1C980E5F0055C7F4 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D2CB29D1C980E5F0055C7F4 /* FirstViewController.m */; };
@@ -80,6 +86,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7D1CD0E81C9E83D4000D7995 /* FindPassworkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindPassworkController.h; sourceTree = "<group>"; };
+		7D1CD0E91C9E83D4000D7995 /* FindPassworkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindPassworkController.m; sourceTree = "<group>"; };
+		7D1CD0EB1C9E84DA000D7995 /* UserInfoRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoRequest.h; sourceTree = "<group>"; };
+		7D1CD0EC1C9E84DA000D7995 /* UserInfoRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoRequest.m; sourceTree = "<group>"; };
+		7D1CD0EE1C9E85D6000D7995 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		7D1CD0EF1C9E85D6000D7995 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		7D1CD0F51C9E9999000D7995 /* AccountManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountManager.h; sourceTree = "<group>"; };
+		7D1CD0F61C9E9999000D7995 /* AccountManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountManager.m; sourceTree = "<group>"; };
+		7D1CD0F81C9EF8C3000D7995 /* ShippingAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShippingAddress.h; sourceTree = "<group>"; };
+		7D1CD0F91C9EF8C3000D7995 /* ShippingAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShippingAddress.m; sourceTree = "<group>"; };
+		7D1CD0FB1C9EFCBB000D7995 /* Order.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Order.h; sourceTree = "<group>"; };
+		7D1CD0FC1C9EFCBB000D7995 /* Order.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Order.m; sourceTree = "<group>"; };
 		7D2CB2931C980E5F0055C7F4 /* MedicalPrint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MedicalPrint.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D2CB2971C980E5F0055C7F4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7D2CB2991C980E5F0055C7F4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -314,6 +332,8 @@
 		7D2CB2D11C980EA40055C7F4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				7D1CD0E81C9E83D4000D7995 /* FindPassworkController.h */,
+				7D1CD0E91C9E83D4000D7995 /* FindPassworkController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -454,6 +474,16 @@
 			children = (
 				7D2CB3341C980EA40055C7F4 /* NetworkManager.h */,
 				7D2CB3351C980EA40055C7F4 /* NetworkManager.m */,
+				7D1CD0EB1C9E84DA000D7995 /* UserInfoRequest.h */,
+				7D1CD0EC1C9E84DA000D7995 /* UserInfoRequest.m */,
+				7D1CD0F51C9E9999000D7995 /* AccountManager.h */,
+				7D1CD0F61C9E9999000D7995 /* AccountManager.m */,
+				7D1CD0EE1C9E85D6000D7995 /* User.h */,
+				7D1CD0EF1C9E85D6000D7995 /* User.m */,
+				7D1CD0F81C9EF8C3000D7995 /* ShippingAddress.h */,
+				7D1CD0F91C9EF8C3000D7995 /* ShippingAddress.m */,
+				7D1CD0FB1C9EFCBB000D7995 /* Order.h */,
+				7D1CD0FC1C9EFCBB000D7995 /* Order.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -605,6 +635,7 @@
 				7D2CB3591C980EA40055C7F4 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				7D2CB3361C980EA40055C7F4 /* BaseViewController.m in Sources */,
 				7D2CB29B1C980E5F0055C7F4 /* AppDelegate.m in Sources */,
+				7D1CD0FA1C9EF8C3000D7995 /* ShippingAddress.m in Sources */,
 				7D2CB33D1C980EA40055C7F4 /* MASCompositeConstraint.m in Sources */,
 				7D2CB33C1C980EA40055C7F4 /* AFURLSessionManager.m in Sources */,
 				7D2CB34A1C980EA40055C7F4 /* SDWebImageCompat.m in Sources */,
@@ -614,11 +645,13 @@
 				7D2CB3511C980EA40055C7F4 /* UIImage+GIF.m in Sources */,
 				7D2CB34C1C980EA40055C7F4 /* SDWebImageDownloader.m in Sources */,
 				7D2CB35F1C980EA40055C7F4 /* UIWebView+AFNetworking.m in Sources */,
+				7D1CD0FD1C9EFCBB000D7995 /* Order.m in Sources */,
 				7D2CB3421C980EA40055C7F4 /* MASViewConstraint.m in Sources */,
 				7D2CB3551C980EA40055C7F4 /* UIImageView+WebCache.m in Sources */,
 				7D2CB3501C980EA40055C7F4 /* UIButton+WebCache.m in Sources */,
 				7D2CB33B1C980EA40055C7F4 /* AFURLResponseSerialization.m in Sources */,
 				7D2CB3451C980EA40055C7F4 /* View+MASAdditions.m in Sources */,
+				7D1CD0EA1C9E83D4000D7995 /* FindPassworkController.m in Sources */,
 				7D2CB3441C980EA40055C7F4 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				7D2CB3401C980EA40055C7F4 /* MASLayoutConstraint.m in Sources */,
 				7D2CB35C1C980EA40055C7F4 /* UIImageView+AFNetworking.m in Sources */,
@@ -628,16 +661,19 @@
 				7D2CB34D1C980EA40055C7F4 /* SDWebImageDownloaderOperation.m in Sources */,
 				7D2CB3381C980EA40055C7F4 /* AFNetworkReachabilityManager.m in Sources */,
 				7D2CB3391C980EA40055C7F4 /* AFSecurityPolicy.m in Sources */,
+				7D1CD0F71C9E9999000D7995 /* AccountManager.m in Sources */,
 				7D996A991C994A890046566F /* MBProgressHUD.m in Sources */,
 				7D2CB34F1C980EA40055C7F4 /* SDWebImagePrefetcher.m in Sources */,
 				7D2CB3601C980EA40055C7F4 /* NetworkManager.m in Sources */,
 				7D2CB3531C980EA40055C7F4 /* UIImage+WebP.m in Sources */,
 				7D2CB35E1C980EA40055C7F4 /* UIRefreshControl+AFNetworking.m in Sources */,
 				7D2CB34E1C980EA40055C7F4 /* SDWebImageManager.m in Sources */,
+				7D1CD0F01C9E85D6000D7995 /* User.m in Sources */,
 				7D2CB3581C980EA40055C7F4 /* AFImageDownloader.m in Sources */,
 				7D2CB3481C980EA40055C7F4 /* NSData+ImageContentType.m in Sources */,
 				7D2CB3371C980EA40055C7F4 /* AFHTTPSessionManager.m in Sources */,
 				7D2CB29E1C980E5F0055C7F4 /* FirstViewController.m in Sources */,
+				7D1CD0ED1C9E84DA000D7995 /* UserInfoRequest.m in Sources */,
 				7D2CB3431C980EA40055C7F4 /* NSArray+MASAdditions.m in Sources */,
 				7D2CB3411C980EA40055C7F4 /* MASViewAttribute.m in Sources */,
 				7D2CB2981C980E5F0055C7F4 /* main.m in Sources */,
@@ -784,7 +820,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/MedicalPrintPrefixHeader.pch";
+				GCC_PREFIX_HEADER = MedicalPrint/MedicalPrintPrefixHeader.pch;
 				INFOPLIST_FILE = MedicalPrint/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Medical.MedicalPrint;
@@ -797,7 +833,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/MedicalPrintPrefixHeader.pch";
+				GCC_PREFIX_HEADER = MedicalPrint/MedicalPrintPrefixHeader.pch;
 				INFOPLIST_FILE = MedicalPrint/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Medical.MedicalPrint;
