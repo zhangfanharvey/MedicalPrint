@@ -7,6 +7,10 @@
 //
 
 #import "AppDelegate.h"
+#import "AccountManager.h"
+#import "RegisterAndLoginController.h"
+#import "YouniNavigationController.h"
+#import "Theme.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +21,18 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [self globalSetting];
+    
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.backgroundColor = [UIColor whiteColor];
+
+    if ([[AccountManager sharedManager] isUserLogin]) {
+        ;
+    } else {
+        [self showRegisterView];
+    }
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
@@ -40,6 +56,20 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+#pragma mark - private
+
+- (void)showRegisterView {
+    RegisterAndLoginController *registerLoginVC = [[RegisterAndLoginController alloc] init];
+    YouniNavigationController *nav =[[YouniNavigationController alloc] initWithRootViewController:registerLoginVC];
+    self.window.rootViewController = nav;
+    
+    
+}
+
+- (void)globalSetting {
+    [Theme configureNavigationbarStyle];
 }
 
 @end

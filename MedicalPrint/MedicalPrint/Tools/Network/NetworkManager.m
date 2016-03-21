@@ -7,6 +7,7 @@
 //
 
 #import "NetworkManager.h"
+#import "AFNetworking.h"
 
 @implementation NetworkManager
 

@@ -10,4 +10,9 @@
 
 @interface BaseViewController : UIViewController
 
+#pragma mark - loading
+- (void)showLoadingWithText:(NSString *)text;
+- (void)showLoadingWithText:(NSString *)text toView:(UIView *)view;
+- (void)hideLoadingView;
+
 @end
