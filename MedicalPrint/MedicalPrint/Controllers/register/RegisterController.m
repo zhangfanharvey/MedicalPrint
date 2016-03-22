@@ -77,7 +77,7 @@
     [self.containerView addSubview:self.codeView];
     
     self.resendCodeButton = [[UIButton alloc] init];
-    [self.resendCodeButton setTitle:@"登录" forState:UIControlStateNormal];
+    [self.resendCodeButton setTitle:@"重新发送" forState:UIControlStateNormal];
     [self.resendCodeButton addTarget:self action:@selector(resendCodeButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [self.resendCodeButton setBackgroundImage:[[UIImage imageNamed:@"通用长按钮底_常态"] generalResizableImageWithCenter] forState:UIControlStateNormal];
     [self.resendCodeButton setBackgroundImage:[[UIImage imageNamed:@"通用长按钮底_按下"] generalResizableImageWithCenter] forState:UIControlStateHighlighted];
@@ -95,7 +95,7 @@
         make.edges.equalTo(superView);
     }];
     
-    CGFloat gap = 20;
+    CGFloat gap = 30;
     [self.containerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(superView.mas_top).offset(0);
         self.keyboardConstraint = make.height.equalTo(superView);
@@ -133,20 +133,20 @@
     [self.codeView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(superView.mas_left).offset(gap);
         make.top.equalTo(self.phoneNumberView.mas_bottom).offset(15);
-        make.right.equalTo(self.resendCodeButton.mas_left).offset(-gap);
         make.height.equalTo(@kRegisterInputViewHeight);
     }];
     
     [self.resendCodeButton mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.equalTo(self.codeView.mas_right).offset(gap);
-        make.top.equalTo(self.phoneNumberView.mas_bottom).offset(gap);
+        make.left.equalTo(self.codeView.mas_right).offset(15);
+        make.top.equalTo(self.phoneNumberView.mas_bottom).offset(15);
         make.right.equalTo(superView.mas_right).offset(-gap);
-        make.height.equalTo(@kRegisterInputViewHeight);
+        make.height.equalTo(@(kRegisterInputViewHeight - 4));
+        make.width.equalTo(@100);
     }];
     
     [self.loginButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.containerView.mas_left).offset(gap);
-        make.right.equalTo(self.containerView.mas_right).offset(-gap);
+        make.left.equalTo(superView.mas_left).offset(gap);
+        make.right.equalTo(superView.mas_right).offset(-gap);
         make.height.equalTo(@kRegisterInputViewHeight);
         make.top.equalTo(self.codeView.mas_bottom).offset(30);
     }];
@@ -154,6 +154,11 @@
     [self registerKeyboardNotification];
     [self addTapGesture];
     
+    [self setupNavgation];
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -177,7 +182,15 @@
     
 }
 
+- (IBAction)cancelButtonClicked:(id)sender {
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+}
+
 #pragma mark - private
+
+- (void)setupNavgation {
+    [self initNavBarButtonItemWithTitle:@"取消" action:@selector(cancelButtonClicked:) isLeft:YES];
+}
 
 - (void)registerKeyboardNotification
 {

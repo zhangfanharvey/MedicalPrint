@@ -35,4 +35,9 @@
 }
 
 
+- (BOOL)isUserLogin {
+    BOOL isLogin = NO;
+    return isLogin;
+}
+
 @end

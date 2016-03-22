@@ -11,6 +11,7 @@
 
 @class User;
 @class ShippingAddress;
+@class Order;
 
 @interface UserInfoRequest : NSObject
 

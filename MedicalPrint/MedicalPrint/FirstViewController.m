@@ -23,8 +23,8 @@
     
     // Do any additional setup after loading the view, typically from a nib.
     [UserInfoRequest sendCodeWithBlock:^(NSString *code) {
-        [UserInfoRequest registerWithAccount:@"fdsasadf" password:@"123456" phone:@"13828222838" code:@"888888" withSuccess:^(User *user, BOOL status) {
-            [UserInfoRequest loginWithAccount:@"fdsasadf" passwork:@"123456" withSuccess:^(User *user, BOOL loginStatus) {
+        [UserInfoRequest registerWithAccount:@"fdsasadfa" password:@"123456" phone:@"13828222838" code:@"888888" withSuccess:^(User *user, BOOL status) {
+            [UserInfoRequest loginWithAccount:@"fdsasadfa" passwork:@"123456" withSuccess:^(User *user, BOOL loginStatus) {
                 ;
             } failure:^(NSString *msg) {
                 ;

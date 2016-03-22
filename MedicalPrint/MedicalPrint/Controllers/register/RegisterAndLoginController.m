@@ -35,10 +35,12 @@
     self.label = [[UILabel alloc] init];
     self.label.textAlignment = NSTextAlignmentCenter;
     self.label.text = @"医用打印";
+    self.label.backgroundColor = [UIColor greenColor];
     self.label.textColor = [UIColor whiteColor];
     self.label.font = [UIFont boldSystemFontOfSize:48.0f];
     [self.view addSubview:self.label];
     self.detailLabel = [[UILabel alloc] init];
+    self.label.backgroundColor = [UIColor greenColor];
     self.detailLabel.text = @"test";
     self.detailLabel.textColor = [UIColor whiteColor];
     self.label.font = [UIFont boldSystemFontOfSize:40.0f];
@@ -48,7 +50,7 @@
     
     self.registerButton = [[UIButton alloc] init];
 //    [self.registerButton setTitle:@"注册" forState:UIControlStateNormal];
-    [self.registerButton addTarget:self action:@selector(registerButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [self.registerButton addTarget:self action:@selector(loginButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
 //    [self.registerButton setBackgroundImage:[[UIImage imageNamed:@"登录按钮_常态"] generalResizableImageWithCenter] forState:UIControlStateNormal];
 //    [self.registerButton setBackgroundImage:[[UIImage imageNamed:@"登录按钮_按下"] generalResizableImageWithCenter] forState:UIControlStateHighlighted];
     [self.registerButton setBackgroundImage:[UIImage imageNamed:@"登录按钮_常态"] forState:UIControlStateNormal];
@@ -56,8 +58,8 @@
     [self.view addSubview:self.registerButton];
     
     self.loginButton = [[UIButton alloc] init];
-    [self.loginButton setTitle:@"登录" forState:UIControlStateNormal];
-    [self.loginButton addTarget:self action:@selector(loginButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [self.loginButton setTitle:@"注册" forState:UIControlStateNormal];
+    [self.loginButton addTarget:self action:@selector(registerButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [self.loginButton setBackgroundImage:[[UIImage imageNamed:@"通用长按钮底_常态"] generalResizableImageWithCenter] forState:UIControlStateNormal];
     [self.loginButton setBackgroundImage:[[UIImage imageNamed:@"通用长按钮底_按下"] generalResizableImageWithCenter] forState:UIControlStateHighlighted];
     [self.view addSubview:self.loginButton];
@@ -71,13 +73,13 @@
     [self.label mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(superView.mas_top).offset(80);
         make.left.equalTo(superView.mas_left).offset(gap);
-        make.right.equalTo(superView.mas_right).offset(gap);
+        make.right.equalTo(superView.mas_right).offset(-gap);
     }];
     
     [self.detailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.label.mas_bottom).offset(15);
         make.left.equalTo(superView.mas_left).offset(gap);
-        make.right.equalTo(superView.mas_right).offset(gap);
+        make.right.equalTo(superView.mas_right).offset(-gap);
     }];
     
     [self.registerButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -93,8 +95,6 @@
         make.height.equalTo(@45);
         make.bottom.equalTo(superView.mas_bottom).offset(-15);
     }];
-
-
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -115,13 +115,16 @@
 #pragma mark - UIAction
 
 - (IBAction)registerButtonClicked:(id)sender {
-    LoginViewController *loginVC = [[LoginViewController alloc] init];
-    [self.navigationController pushViewController:loginVC animated:YES];
+    RegisterController *registerVC = [[RegisterController alloc] init];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:registerVC];
+    [self.navigationController presentViewController:nav animated:YES completion:nil];
 }
 
 - (IBAction)loginButtonClicked:(id)sender {
-    RegisterController *registerVC = [[RegisterController alloc] init];
-    [self.navigationController pushViewController:registerVC animated:YES];
+    LoginViewController *loginVC = [[LoginViewController alloc] init];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:loginVC];
+    [self.navigationController presentViewController:nav animated:YES completion:nil];
+    //    [self.navigationController pushViewController:loginVC animated:YES];
 }
 
 

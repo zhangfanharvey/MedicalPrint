@@ -13,6 +13,7 @@
 #import "AFURLResponseSerialization.h"
 #import "ShippingAddress.h"
 #import "Order.h"
+#import "APIConfigure.h"
 
 @implementation UserInfoRequest
 
@@ -79,20 +80,36 @@
 }
 
 + (void)loginWithAccount:(NSString *)account passwork:(NSString *)password withSuccess:(void(^)(User *user, BOOL loginStatus))block failure:(NetworkFailureBlock)failure {
-//    AccountManager *accountManager = [AccountManager sharedManager];
+    AccountManager *accountManager = [AccountManager sharedManager];
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     [dic setObject:account forKey:@"userName"];
     [dic setObject:password forKey:@"password"];
     
     NSString *url = [NSString stringWithFormat:@"%@%@", kMPBaseUrl, kMPLoginUrl];
     
-   __weak NSURLSessionDataTask *task = [[NetworkManager sharedManager] POST:url parameters:dic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+   [[NetworkManager sharedManager] POST:url parameters:dic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         QYLog(@"loginWithAccount success%@", responseObject);
         if ([NetworkManager isResponseSuccess:responseObject]) {
             NSDictionary *responseDic = (NSDictionary *)responseObject;
             NSDictionary *bodyDic = responseDic[@"body"];
 //            NSString *cookie = [NetworkManager sharedManager].responseSerializer;
             QYLog(@"header: %@", ((NSHTTPURLResponse *)task.response).allHeaderFields);
+            NSArray *cookies =[[NSArray alloc]init];
+            cookies = [NSHTTPCookie
+                       cookiesWithResponseHeaderFields:[((NSHTTPURLResponse *)task.response) allHeaderFields]
+                       forURL:[NSURL URLWithString:@""]]; // send to URL, return NSArray
+            QYLog(@"%@", cookies);
+            for (NSHTTPCookie *cookie in [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies])
+            {
+                NSString *cookieName = [cookie name];
+                if ([cookieName isEqualToString:@"JSESSIONID"]) {
+                    accountManager.cookie = [cookie value];
+                }
+                QYLog(@"name: '%@'\n",   [cookie name]);
+                QYLog(@"value: '%@'\n",  [cookie value]);
+                QYLog(@"domain: '%@'\n", [cookie domain]);
+                QYLog(@"path: '%@'\n",   [cookie path]);
+            }
             User *user = [[User alloc] init];
             [user configureWithDic:bodyDic];
             if (block) {
@@ -251,7 +268,6 @@
 }
 
 + (void)fetchAddressList:(NSInteger)start length:(NSInteger)length success:(void(^)(BOOL status, NSArray *addressArray))block failure:(NetworkFailureBlock)failure {
-    AccountManager *accountManager = [AccountManager sharedManager];
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     [dic setObject:@(start) forKey:@"start"];
     [dic setObject:@(length) forKey:@"length"];

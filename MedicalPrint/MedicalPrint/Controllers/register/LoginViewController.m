@@ -10,6 +10,7 @@
 #import "Masonry.h"
 #import "UIImage+Resize.h"
 #import "EdgeInputTextField.h"
+#import "FindPasswordController.h"
 
 @interface LoginViewController ()
 
@@ -19,6 +20,7 @@
 @property (nonatomic, strong) EdgeInputTextField *passwordTextField;
 @property (nonatomic, strong) UIView *containerView;
 @property (nonatomic, strong) MASConstraint *keyboardConstraint;
+@property (nonatomic, strong) UIButton *findPasswordButton;
 
 
 @end
@@ -59,6 +61,12 @@
     [self.loginButton setBackgroundImage:[[UIImage imageNamed:@"通用长按钮底_按下"] generalResizableImageWithCenter] forState:UIControlStateHighlighted];
     [self.containerView addSubview:self.loginButton];
     
+    self.findPasswordButton = [[UIButton alloc] init];
+    [self.findPasswordButton setTitle:@"找回密码" forState:UIControlStateNormal];
+    [self.findPasswordButton addTarget:self action:@selector(findPasswordButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [self.containerView addSubview:self.findPasswordButton];
+
+    
     UIView *superView = self.view;
     [self.backgroundImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(superView);
@@ -91,9 +99,22 @@
         make.top.equalTo(self.passwordTextField.mas_bottom).offset(30);
     }];
     
+    [self.findPasswordButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(superView.mas_centerX);
+        make.height.equalTo(@(45));
+        make.width.equalTo(@150);
+        make.bottom.equalTo(superView.mas_bottom).offset(-30);
+    }];
+    
     [self registerKeyboardNotification];
     [self addTapGesture];
+    
+    [self setupNavgation];
 
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -113,7 +134,21 @@
     
 }
 
+- (IBAction)findPasswordButtonClicked:(id)sender {
+    FindPasswordController *findPasswordVC = [[FindPasswordController alloc] init];
+    [self.navigationController pushViewController:findPasswordVC animated:YES];
+
+}
+
+- (IBAction)cancelButtonClicked:(id)sender {
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+}
+
 #pragma mark - private
+
+- (void)setupNavgation {
+    [self initNavBarButtonItemWithTitle:@"取消" action:@selector(cancelButtonClicked:) isLeft:YES];
+}
 
 - (void)registerKeyboardNotification
 {
