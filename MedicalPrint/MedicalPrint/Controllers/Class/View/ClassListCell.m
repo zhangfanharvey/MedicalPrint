@@ -1,16 +1,15 @@
 //
-//  OrderListCell.m
+//  ClassListCell.m
 //  MedicalPrint
 //
-//  Created by zhangfan on 16/3/22.
+//  Created by zhangfan on 16/3/23.
 //  Copyright © 2016年 Medical. All rights reserved.
 //
 
-#import "OrderListCell.h"
+#import "ClassListCell.h"
 #import "Masonry.h"
-#import "Order.h"
 
-@implementation OrderListCell
+@implementation ClassListCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -61,14 +60,6 @@
     
     
     
-}
-
-- (void)configureWithOrder:(Order *)order {
-    if (order) {
-        self.nameLabel.text = order.name;
-        self.createTimeLabel.text = order.createTimeStr;
-        self.orderIDLabel.text = [NSString stringWithFormat:@"%@", order.p_ID];
-    }
 }
 
 
