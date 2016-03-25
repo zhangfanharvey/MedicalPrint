@@ -65,11 +65,38 @@
     }];
     
     [self.cityLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.titleLabel.mas_bottom).offset(10);
-        make.left.equalTo(superView.mas_left).offset(15);
-        make.bottom.equalTo(superView.mas_bottom).offset(-10);
+        make.top.equalTo(self.phoneLabel.mas_bottom).offset(10);
+        make.left.equalTo(self.nickNameLabel);
+//        make.bottom.equalTo(superView.mas_bottom).offset(-10);
+        make.right.equalTo(self.zipCodeLabel.mas_left).offset(-15);
+    }];
+    
+    [self.zipCodeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.cityLabel.mas_top);
         make.right.equalTo(superView.mas_right).offset(-15);
     }];
+    [self.locationLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.nickNameLabel.mas_left);
+        make.top.equalTo(self.zipCodeLabel.mas_bottom).offset(5);
+        make.right.equalTo(superView.mas_right).offset(-85);
+    }];
+    
+    [self.editButton mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(superView.mas_top).offset(20).multipliedBy(1.0);
+        make.centerY.equalTo(superView.mas_centerY).offset(-60);
+        make.right.equalTo(superView.mas_right).offset(-15);
+        make.width.and.height.equalTo(@40);
+    }];
+    
+    [self.editButton mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(superView.mas_top).offset(20);
+        make.centerY.equalTo(superView.mas_centerY).offset(-60);
+        make.right.equalTo(superView.mas_right).offset(-15);
+        make.width.and.height.equalTo(@40);
+    }];
+
+    
+    
 }
 
 @end

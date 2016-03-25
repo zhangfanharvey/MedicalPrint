@@ -11,6 +11,7 @@
 #import "UIImage+Resize.h"
 #import "EdgeInputTextField.h"
 #import "FindPasswordController.h"
+#import "UserInfoRequest.h"
 
 @interface LoginViewController ()
 
@@ -119,7 +120,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:NO animated:NO];
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
     //    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 }
 
@@ -131,7 +132,14 @@
 #pragma mark - IBAction
 
 - (IBAction)loginButtonClicked:(id)sender {
-    
+    if (self.phoneNumberTextField.text.length > 0 && self.passwordTextField.text.length > 0) {
+        [self showLoadingWithText:@""];
+        [UserInfoRequest loginWithAccount:self.phoneNumberTextField.text passwork:self.passwordTextField.text withSuccess:^(User *user, BOOL loginStatus) {
+            [self hideLoadingView];
+        } failure:^(NSString *msg) {
+            [self hideLoadingView];
+        }];
+    }
 }
 
 - (IBAction)findPasswordButtonClicked:(id)sender {
@@ -147,7 +155,7 @@
 #pragma mark - private
 
 - (void)setupNavgation {
-    [self initNavBarButtonItemWithTitle:@"取消" action:@selector(cancelButtonClicked:) isLeft:YES];
+//    [self initNavBarButtonItemWithTitle:@"取消" action:@selector(cancelButtonClicked:) isLeft:YES];
 }
 
 - (void)registerKeyboardNotification

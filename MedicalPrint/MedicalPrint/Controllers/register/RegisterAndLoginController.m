@@ -35,12 +35,10 @@
     self.label = [[UILabel alloc] init];
     self.label.textAlignment = NSTextAlignmentCenter;
     self.label.text = @"医用打印";
-    self.label.backgroundColor = [UIColor greenColor];
     self.label.textColor = [UIColor whiteColor];
     self.label.font = [UIFont boldSystemFontOfSize:48.0f];
     [self.view addSubview:self.label];
     self.detailLabel = [[UILabel alloc] init];
-    self.label.backgroundColor = [UIColor greenColor];
     self.detailLabel.text = @"test";
     self.detailLabel.textColor = [UIColor whiteColor];
     self.label.font = [UIFont boldSystemFontOfSize:40.0f];
@@ -99,9 +97,15 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES animated:NO];
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
 //    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 }
+
+//- (void)viewDidAppear:(BOOL)animated {
+//    [super viewDidAppear:animated];
+//    [self.navigationController setNavigationBarHidden:YES animated:NO];
+//
+//}
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
@@ -116,15 +120,16 @@
 
 - (IBAction)registerButtonClicked:(id)sender {
     RegisterController *registerVC = [[RegisterController alloc] init];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:registerVC];
-    [self.navigationController presentViewController:nav animated:YES completion:nil];
+    [self.navigationController pushViewController:registerVC animated:YES];
+//    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:registerVC];
+//    [self.navigationController presentViewController:nav animated:YES completion:nil];
 }
 
 - (IBAction)loginButtonClicked:(id)sender {
     LoginViewController *loginVC = [[LoginViewController alloc] init];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:loginVC];
-    [self.navigationController presentViewController:nav animated:YES completion:nil];
-    //    [self.navigationController pushViewController:loginVC animated:YES];
+//    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:loginVC];
+//    [self.navigationController presentViewController:nav animated:YES completion:nil];
+        [self.navigationController pushViewController:loginVC animated:YES];
 }
 
 

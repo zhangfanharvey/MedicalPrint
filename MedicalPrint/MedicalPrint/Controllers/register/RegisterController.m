@@ -11,6 +11,7 @@
 #import "UIImage+Resize.h"
 #import "EdgeInputTextField.h"
 #import "TagInputView.h"
+#import "UserInfoRequest.h"
 
 #define kRegisterInputViewHeight    45
 
@@ -24,7 +25,7 @@
 @property (nonatomic, strong) UIButton *resendCodeButton;
 
 @property (nonatomic, strong) UIImageView *backgroundImageView;
-@property (nonatomic, strong) UIButton *loginButton;
+@property (nonatomic, strong) UIButton *registerButton;
 @property (nonatomic, strong) UIScrollView *containerView;
 @property (nonatomic, strong) MASConstraint *keyboardConstraint;
 
@@ -83,12 +84,12 @@
     [self.resendCodeButton setBackgroundImage:[[UIImage imageNamed:@"通用长按钮底_按下"] generalResizableImageWithCenter] forState:UIControlStateHighlighted];
     [self.containerView addSubview:self.resendCodeButton];
 
-    self.loginButton = [[UIButton alloc] init];
-    [self.loginButton setTitle:@"登录" forState:UIControlStateNormal];
-    [self.loginButton addTarget:self action:@selector(loginButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-    [self.loginButton setBackgroundImage:[[UIImage imageNamed:@"通用长按钮底_常态"] generalResizableImageWithCenter] forState:UIControlStateNormal];
-    [self.loginButton setBackgroundImage:[[UIImage imageNamed:@"通用长按钮底_按下"] generalResizableImageWithCenter] forState:UIControlStateHighlighted];
-    [self.containerView addSubview:self.loginButton];
+    self.registerButton = [[UIButton alloc] init];
+    [self.registerButton setTitle:@"登录" forState:UIControlStateNormal];
+    [self.registerButton addTarget:self action:@selector(registerButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [self.registerButton setBackgroundImage:[[UIImage imageNamed:@"通用长按钮底_常态"] generalResizableImageWithCenter] forState:UIControlStateNormal];
+    [self.registerButton setBackgroundImage:[[UIImage imageNamed:@"通用长按钮底_按下"] generalResizableImageWithCenter] forState:UIControlStateHighlighted];
+    [self.containerView addSubview:self.registerButton];
     
     UIView *superView = self.view;
     [self.backgroundImageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -144,7 +145,7 @@
         make.width.equalTo(@100);
     }];
     
-    [self.loginButton mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.registerButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(superView.mas_left).offset(gap);
         make.right.equalTo(superView.mas_right).offset(-gap);
         make.height.equalTo(@kRegisterInputViewHeight);
@@ -163,7 +164,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:NO animated:NO];
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
     //    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 }
 
@@ -174,8 +175,14 @@
 
 #pragma mark - IBAction
 
-- (IBAction)loginButtonClicked:(id)sender {
-    
+- (IBAction)registerButtonClicked:(id)sender {
+    if (self.accountView.inputTextField.text.length > 0 && self.passwordView.inputTextField.text.length > 0 && self.phoneNumberView.inputTextField.text.length > 0 && self.codeView.inputTextField.text.length > 0) {
+        [UserInfoRequest registerWithAccount:self.accountView.inputTextField.text password:self.passwordView.inputTextField.text phone:self.phoneNumberView.inputTextField.text code:self.codeView.inputTextField.text withSuccess:^(User *user, BOOL status) {
+            ;
+        } failure:^(NSString *msg) {
+            ;
+        }];
+    }
 }
 
 - (IBAction)resendCodeButtonClicked:(id)sender {
@@ -189,7 +196,7 @@
 #pragma mark - private
 
 - (void)setupNavgation {
-    [self initNavBarButtonItemWithTitle:@"取消" action:@selector(cancelButtonClicked:) isLeft:YES];
+//    [self initNavBarButtonItemWithTitle:@"取消" action:@selector(cancelButtonClicked:) isLeft:YES];
 }
 
 - (void)registerKeyboardNotification
