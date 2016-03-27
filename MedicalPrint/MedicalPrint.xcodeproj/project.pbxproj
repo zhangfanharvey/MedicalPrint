@@ -101,6 +101,8 @@
 		7D6146621CA7ECB4002872B1 /* NSArray+JsonHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D61465D1CA7ECB4002872B1 /* NSArray+JsonHelper.m */; };
 		7D6146631CA7ECB4002872B1 /* NSDictionary+JsonHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D61465F1CA7ECB4002872B1 /* NSDictionary+JsonHelper.m */; };
 		7D6146641CA7ECB4002872B1 /* NSString+JsonHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D6146611CA7ECB4002872B1 /* NSString+JsonHelper.m */; };
+		7D6146671CA8350D002872B1 /* HomeTopHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D6146661CA8350D002872B1 /* HomeTopHeadView.m */; };
+		7D61466A1CA83573002872B1 /* HomeTopCatogeryItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D6146691CA83573002872B1 /* HomeTopCatogeryItemView.m */; };
 		7D996A991C994A890046566F /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D996A981C994A890046566F /* MBProgressHUD.m */; };
 		7DA868851CA23F8000C3EA50 /* MyClassListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DA868841CA23F8000C3EA50 /* MyClassListController.m */; };
 		7DA868881CA2445C00C3EA50 /* ClassListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DA868871CA2445C00C3EA50 /* ClassListCell.m */; };
@@ -344,6 +346,10 @@
 		7D61465F1CA7ECB4002872B1 /* NSDictionary+JsonHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+JsonHelper.m"; sourceTree = "<group>"; };
 		7D6146601CA7ECB4002872B1 /* NSString+JsonHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+JsonHelper.h"; sourceTree = "<group>"; };
 		7D6146611CA7ECB4002872B1 /* NSString+JsonHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+JsonHelper.m"; sourceTree = "<group>"; };
+		7D6146651CA8350D002872B1 /* HomeTopHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTopHeadView.h; sourceTree = "<group>"; };
+		7D6146661CA8350D002872B1 /* HomeTopHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTopHeadView.m; sourceTree = "<group>"; };
+		7D6146681CA83573002872B1 /* HomeTopCatogeryItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTopCatogeryItemView.h; sourceTree = "<group>"; };
+		7D6146691CA83573002872B1 /* HomeTopCatogeryItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTopCatogeryItemView.m; sourceTree = "<group>"; };
 		7D996A971C994A890046566F /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		7D996A981C994A890046566F /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		7DA868831CA23F8000C3EA50 /* MyClassListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyClassListController.h; sourceTree = "<group>"; };
@@ -697,6 +703,10 @@
 			children = (
 				7DE4677C1CA2336E00101660 /* MessageCenterCell.h */,
 				7DE4677D1CA2336E00101660 /* MessageCenterCell.m */,
+				7D6146651CA8350D002872B1 /* HomeTopHeadView.h */,
+				7D6146661CA8350D002872B1 /* HomeTopHeadView.m */,
+				7D6146681CA83573002872B1 /* HomeTopCatogeryItemView.h */,
+				7D6146691CA83573002872B1 /* HomeTopCatogeryItemView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1220,6 +1230,7 @@
 				7DA868881CA2445C00C3EA50 /* ClassListCell.m in Sources */,
 				7DE467841CA2391700101660 /* FeedbackViewController.m in Sources */,
 				7D222EEA1CA3E567002092D2 /* TraintClassNewsCell.m in Sources */,
+				7D6146671CA8350D002872B1 /* HomeTopHeadView.m in Sources */,
 				7DA8688B1CA244F800C3EA50 /* ContactUsController.m in Sources */,
 				7D2CB3491C980EA40055C7F4 /* SDImageCache.m in Sources */,
 				7D2CB3521C980EA40055C7F4 /* UIImage+MultiFormat.m in Sources */,
@@ -1281,6 +1292,7 @@
 				7D2CB3371C980EA40055C7F4 /* AFHTTPSessionManager.m in Sources */,
 				7D2CB29E1C980E5F0055C7F4 /* FirstViewController.m in Sources */,
 				7D55195C1C9F82B30084A13A /* AccountManager.m in Sources */,
+				7D61466A1CA83573002872B1 /* HomeTopCatogeryItemView.m in Sources */,
 				7D222EED1CA3EF08002092D2 /* AddressManagerController.m in Sources */,
 				7D2CB3431C980EA40055C7F4 /* NSArray+MASAdditions.m in Sources */,
 				7D2CB3411C980EA40055C7F4 /* MASViewAttribute.m in Sources */,

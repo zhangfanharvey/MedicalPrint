@@ -27,6 +27,7 @@
         self.title = @"我的";
         UITabBarItem *tabBarItem = [[UITabBarItem alloc] initWithTitle:@"" image:[[UIImage imageNamed:@"我的_常态"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"我的_按下"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
         tabBarItem.imageInsets = UIEdgeInsetsMake(4.5, 0, -7, 0);
+        tabBarItem.titlePositionAdjustment = UIOffsetMake(0, 50);
         self.tabBarItem = tabBarItem;
     }
     return self;
