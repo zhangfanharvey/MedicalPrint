@@ -20,5 +20,6 @@
 - (void)showLoadingWithText:(NSString *)text;
 - (void)showLoadingWithText:(NSString *)text toView:(UIView *)view;
 - (void)hideLoadingView;
+- (void)hideLoadingViewWithError:(NSString *)error;
 
 @end

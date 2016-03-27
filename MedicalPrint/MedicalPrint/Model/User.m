@@ -23,6 +23,9 @@
 @implementation User
 
 - (void)configureWithDic:(NSDictionary *)dic {
+    if (dic) {
+        self.serverDic = dic;
+    }
     NSNumber *value = dic[@"id"];
     if (IsSafeValue(value)) {
         self.uid = [value stringValue];

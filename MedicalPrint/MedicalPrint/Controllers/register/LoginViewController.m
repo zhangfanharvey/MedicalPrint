@@ -12,6 +12,7 @@
 #import "EdgeInputTextField.h"
 #import "FindPasswordController.h"
 #import "UserInfoRequest.h"
+#import "AppDelegate.h"
 
 @interface LoginViewController ()
 
@@ -51,6 +52,7 @@
     
     self.passwordTextField = [[EdgeInputTextField alloc] init];
     self.passwordTextField.placeholder = @"请输入密码";
+    self.passwordTextField.secureTextEntry = YES;
     [self.passwordTextField setBackground:[[UIImage imageNamed:@"注册界面输入框1"] generalResizableImageWithCenter]];
     [self.containerView addSubview:self.passwordTextField];
     
@@ -110,7 +112,7 @@
     [self registerKeyboardNotification];
     [self addTapGesture];
     
-    [self setupNavgation];
+    [self initNaviBarItem];
 
 }
 
@@ -132,15 +134,18 @@
 #pragma mark - IBAction
 
 - (IBAction)loginButtonClicked:(id)sender {
+    [self.view endEditing:YES];
     if (self.phoneNumberTextField.text.length > 0 && self.passwordTextField.text.length > 0) {
-        [self showLoadingWithText:@""];
+        [self showLoadingWithText:@"加载中..." toView:self.navigationController.view];
         [UserInfoRequest loginWithAccount:self.phoneNumberTextField.text passwork:self.passwordTextField.text withSuccess:^(User *user, BOOL loginStatus) {
             [self hideLoadingView];
+            [self showMainView];
         } failure:^(NSString *msg) {
-            [self hideLoadingView];
+            [self hideLoadingViewWithError:msg];
         }];
     }
 }
+
 
 - (IBAction)findPasswordButtonClicked:(id)sender {
     FindPasswordController *findPasswordVC = [[FindPasswordController alloc] init];
@@ -154,9 +159,16 @@
 
 #pragma mark - private
 
-- (void)setupNavgation {
+- (void)showMainView {
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [delegate showHomeView];
+}
+
+- (void)initNaviBarItem {
+    self.title = @"用户登录";
 //    [self initNavBarButtonItemWithTitle:@"取消" action:@selector(cancelButtonClicked:) isLeft:YES];
 }
+
 
 - (void)registerKeyboardNotification
 {

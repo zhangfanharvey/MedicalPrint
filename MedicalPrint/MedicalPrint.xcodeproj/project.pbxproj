@@ -95,6 +95,12 @@
 		7D5783201CA1533300493ADC /* UIView+SDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D5783191CA1533300493ADC /* UIView+SDExtension.m */; };
 		7D5783251CA16D3900493ADC /* MyOrderListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D5783241CA16D3900493ADC /* MyOrderListViewController.m */; };
 		7D5783281CA16D8A00493ADC /* OrderListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D5783271CA16D8A00493ADC /* OrderListCell.m */; };
+		7D6146501CA7ADB5002872B1 /* MainTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D61464F1CA7ADB5002872B1 /* MainTabController.m */; };
+		7D6146551CA7B05C002872B1 /* Print3DController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D6146541CA7B05C002872B1 /* Print3DController.m */; };
+		7D61465A1CA7B384002872B1 /* MedicalHelpController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D6146591CA7B384002872B1 /* MedicalHelpController.m */; };
+		7D6146621CA7ECB4002872B1 /* NSArray+JsonHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D61465D1CA7ECB4002872B1 /* NSArray+JsonHelper.m */; };
+		7D6146631CA7ECB4002872B1 /* NSDictionary+JsonHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D61465F1CA7ECB4002872B1 /* NSDictionary+JsonHelper.m */; };
+		7D6146641CA7ECB4002872B1 /* NSString+JsonHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D6146611CA7ECB4002872B1 /* NSString+JsonHelper.m */; };
 		7D996A991C994A890046566F /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D996A981C994A890046566F /* MBProgressHUD.m */; };
 		7DA868851CA23F8000C3EA50 /* MyClassListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DA868841CA23F8000C3EA50 /* MyClassListController.m */; };
 		7DA868881CA2445C00C3EA50 /* ClassListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DA868871CA2445C00C3EA50 /* ClassListCell.m */; };
@@ -326,6 +332,18 @@
 		7D5783241CA16D3900493ADC /* MyOrderListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrderListViewController.m; sourceTree = "<group>"; };
 		7D5783261CA16D8A00493ADC /* OrderListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderListCell.h; sourceTree = "<group>"; };
 		7D5783271CA16D8A00493ADC /* OrderListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderListCell.m; sourceTree = "<group>"; };
+		7D61464E1CA7ADB5002872B1 /* MainTabController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabController.h; sourceTree = "<group>"; };
+		7D61464F1CA7ADB5002872B1 /* MainTabController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabController.m; sourceTree = "<group>"; };
+		7D6146531CA7B05C002872B1 /* Print3DController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Print3DController.h; sourceTree = "<group>"; };
+		7D6146541CA7B05C002872B1 /* Print3DController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Print3DController.m; sourceTree = "<group>"; };
+		7D6146581CA7B384002872B1 /* MedicalHelpController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MedicalHelpController.h; sourceTree = "<group>"; };
+		7D6146591CA7B384002872B1 /* MedicalHelpController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MedicalHelpController.m; sourceTree = "<group>"; };
+		7D61465C1CA7ECB4002872B1 /* NSArray+JsonHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+JsonHelper.h"; sourceTree = "<group>"; };
+		7D61465D1CA7ECB4002872B1 /* NSArray+JsonHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+JsonHelper.m"; sourceTree = "<group>"; };
+		7D61465E1CA7ECB4002872B1 /* NSDictionary+JsonHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+JsonHelper.h"; sourceTree = "<group>"; };
+		7D61465F1CA7ECB4002872B1 /* NSDictionary+JsonHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+JsonHelper.m"; sourceTree = "<group>"; };
+		7D6146601CA7ECB4002872B1 /* NSString+JsonHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+JsonHelper.h"; sourceTree = "<group>"; };
+		7D6146611CA7ECB4002872B1 /* NSString+JsonHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+JsonHelper.m"; sourceTree = "<group>"; };
 		7D996A971C994A890046566F /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		7D996A981C994A890046566F /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		7DA868831CA23F8000C3EA50 /* MyClassListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyClassListController.h; sourceTree = "<group>"; };
@@ -503,6 +521,8 @@
 		7D2CB2D11C980EA40055C7F4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				7D6146561CA7B36A002872B1 /* MedicalHelp */,
+				7D6146511CA7B03F002872B1 /* Print3D */,
 				7DA868811CA23EBE00C3EA50 /* Class */,
 				7D5783211CA16D2700493ADC /* Order */,
 				7D55196C1C9FD75B0084A13A /* Home */,
@@ -666,6 +686,8 @@
 				7D5783071CA14A0100493ADC /* HomeViewController.m */,
 				7DE467791CA2331F00101660 /* MessageCenterController.h */,
 				7DE4677A1CA2331F00101660 /* MessageCenterController.m */,
+				7D61464E1CA7ADB5002872B1 /* MainTabController.h */,
+				7D61464F1CA7ADB5002872B1 /* MainTabController.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -823,6 +845,54 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		7D6146511CA7B03F002872B1 /* Print3D */ = {
+			isa = PBXGroup;
+			children = (
+				7D6146521CA7B03F002872B1 /* View */,
+				7D6146531CA7B05C002872B1 /* Print3DController.h */,
+				7D6146541CA7B05C002872B1 /* Print3DController.m */,
+			);
+			name = Print3D;
+			path = MedicalPrint/Controllers/Print3D;
+			sourceTree = SOURCE_ROOT;
+		};
+		7D6146521CA7B03F002872B1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7D6146561CA7B36A002872B1 /* MedicalHelp */ = {
+			isa = PBXGroup;
+			children = (
+				7D6146571CA7B36A002872B1 /* View */,
+				7D6146581CA7B384002872B1 /* MedicalHelpController.h */,
+				7D6146591CA7B384002872B1 /* MedicalHelpController.m */,
+			);
+			path = MedicalHelp;
+			sourceTree = "<group>";
+		};
+		7D6146571CA7B36A002872B1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7D61465B1CA7ECB4002872B1 /* YNJsonHelper */ = {
+			isa = PBXGroup;
+			children = (
+				7D61465C1CA7ECB4002872B1 /* NSArray+JsonHelper.h */,
+				7D61465D1CA7ECB4002872B1 /* NSArray+JsonHelper.m */,
+				7D61465E1CA7ECB4002872B1 /* NSDictionary+JsonHelper.h */,
+				7D61465F1CA7ECB4002872B1 /* NSDictionary+JsonHelper.m */,
+				7D6146601CA7ECB4002872B1 /* NSString+JsonHelper.h */,
+				7D6146611CA7ECB4002872B1 /* NSString+JsonHelper.m */,
+			);
+			path = YNJsonHelper;
+			sourceTree = "<group>";
+		};
 		7D996A961C994A890046566F /* MBProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
@@ -890,6 +960,7 @@
 		7DEEE1551C9BAA9000AC3B88 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				7D61465B1CA7ECB4002872B1 /* YNJsonHelper */,
 				7DEEE1561C9BAA9000AC3B88 /* ImageResize */,
 			);
 			path = Category;
@@ -1112,6 +1183,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D6146631CA7ECB4002872B1 /* NSDictionary+JsonHelper.m in Sources */,
 				7DEEE1771C9BB42B00AC3B88 /* LoginViewController.m in Sources */,
 				7D2CB34B1C980EA40055C7F4 /* SDWebImageDecoder.m in Sources */,
 				7DEEE1861C9BDEF200AC3B88 /* TagInputView.m in Sources */,
@@ -1119,6 +1191,7 @@
 				7DEEE17C1C9BD6D500AC3B88 /* EdgeInputTextField.m in Sources */,
 				7D5519681C9F82D70084A13A /* User.m in Sources */,
 				7DEEE1741C9BAF4800AC3B88 /* YouniNavigationController.m in Sources */,
+				7D6146641CA7ECB4002872B1 /* NSString+JsonHelper.m in Sources */,
 				7D5782D51CA11A5200493ADC /* BaseTableViewCell.m in Sources */,
 				7D5783081CA14A0100493ADC /* HomeViewController.m in Sources */,
 				7DE4677B1CA2331F00101660 /* MessageCenterController.m in Sources */,
@@ -1155,7 +1228,9 @@
 				7D2CB34C1C980EA40055C7F4 /* SDWebImageDownloader.m in Sources */,
 				7D2CB35F1C980EA40055C7F4 /* UIWebView+AFNetworking.m in Sources */,
 				7D2CB3421C980EA40055C7F4 /* MASViewConstraint.m in Sources */,
+				7D6146621CA7ECB4002872B1 /* NSArray+JsonHelper.m in Sources */,
 				7D2CB3551C980EA40055C7F4 /* UIImageView+WebCache.m in Sources */,
+				7D6146551CA7B05C002872B1 /* Print3DController.m in Sources */,
 				7D5782DB1CA12CEE00493ADC /* IconLableTableViewCell.m in Sources */,
 				7D2CB3501C980EA40055C7F4 /* UIButton+WebCache.m in Sources */,
 				7D2CB33B1C980EA40055C7F4 /* AFURLResponseSerialization.m in Sources */,
@@ -1199,6 +1274,7 @@
 				7D2CB34E1C980EA40055C7F4 /* SDWebImageManager.m in Sources */,
 				7D5782FE1CA147DD00493ADC /* bitstream.c in Sources */,
 				7D2CB3581C980EA40055C7F4 /* AFImageDownloader.m in Sources */,
+				7D61465A1CA7B384002872B1 /* MedicalHelpController.m in Sources */,
 				7D5782DE1CA1365000493ADC /* MemberInfoController.m in Sources */,
 				7D2CB3481C980EA40055C7F4 /* NSData+ImageContentType.m in Sources */,
 				7D55195F1C9F82CB0084A13A /* UserInfoRequest.m in Sources */,
@@ -1214,6 +1290,7 @@
 				7D5782E11CA1398A00493ADC /* TagLabelCell.m in Sources */,
 				7D5782D21CA119A500493ADC /* UserPersonalCenterController.m in Sources */,
 				7D2CB3541C980EA40055C7F4 /* UIImageView+HighlightedWebCache.m in Sources */,
+				7D6146501CA7ADB5002872B1 /* MainTabController.m in Sources */,
 				7D5783011CA147DD00493ADC /* qrinput.c in Sources */,
 				7D2CB33E1C980EA40055C7F4 /* MASConstraint.m in Sources */,
 				7D57831C1CA1533300493ADC /* TADotView.m in Sources */,

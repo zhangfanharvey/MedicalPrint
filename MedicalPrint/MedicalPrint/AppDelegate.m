@@ -11,8 +11,11 @@
 #import "RegisterAndLoginController.h"
 #import "YouniNavigationController.h"
 #import "Theme.h"
+#import "MainTabController.h"
 
 @interface AppDelegate ()
+
+
 
 @end
 
@@ -25,9 +28,11 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
-
-    if ([[AccountManager sharedManager] isUserLogin]) {
-        ;
+    
+    AccountManager *accountManager = [AccountManager sharedManager];
+    [accountManager readData];
+    if ([accountManager isUserLogin]) {
+        [self showHomeView];
     } else {
         [self showRegisterView];
     }
@@ -64,8 +69,12 @@
     RegisterAndLoginController *registerLoginVC = [[RegisterAndLoginController alloc] init];
     YouniNavigationController *nav =[[YouniNavigationController alloc] initWithRootViewController:registerLoginVC];
     self.window.rootViewController = nav;
-    
-    
+}
+
+- (void)showHomeView {
+    MainTabController *mainVC = [[MainTabController alloc] init];
+    self.mainTabVC = mainVC;
+    self.window.rootViewController = mainVC;
 }
 
 - (void)globalSetting {

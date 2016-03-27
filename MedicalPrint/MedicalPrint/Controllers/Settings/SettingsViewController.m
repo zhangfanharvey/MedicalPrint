@@ -18,6 +18,18 @@
 
 @implementation SettingsViewController
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.title = @"更多";
+        UITabBarItem *tabBarItem = [[UITabBarItem alloc] initWithTitle:@"" image:[[UIImage imageNamed:@"更多_常态"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"更多_按下"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+        tabBarItem.imageInsets = UIEdgeInsetsMake(4.5, 0, -7, 0);
+        self.tabBarItem = tabBarItem;
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.

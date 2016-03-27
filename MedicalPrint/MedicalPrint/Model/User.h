@@ -32,6 +32,8 @@
 @property (nonatomic, strong) NSString *position;
 @property (nonatomic, strong) NSString *authState;
 
+@property (nonatomic, strong) NSDictionary *serverDic;
+
 - (void)configureWithDic:(NSDictionary *)dic;
 
 @end

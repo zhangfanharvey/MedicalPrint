@@ -8,9 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class MainTabController;
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (nonatomic, strong) MainTabController *mainTabVC;
+
+- (void)showHomeView;
 
 
 @end

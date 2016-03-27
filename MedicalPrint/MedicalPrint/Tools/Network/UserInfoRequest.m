@@ -41,8 +41,9 @@
                 block(user, YES);
             }
         } else {
+            NSString *errorMsg = responseObject[@"msg"];
             if (failure) {
-                failure(responseObject);
+                failure(errorMsg);
             }
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -67,8 +68,9 @@
                 block(codeResult);
             }
         } else {
+            NSString *errorMsg = responseObject[@"msg"];
             if (failure) {
-                failure(responseObject);
+                failure(errorMsg);
             }
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -112,12 +114,15 @@
             }
             User *user = [[User alloc] init];
             [user configureWithDic:bodyDic];
+            accountManager.user = user;
+            [accountManager saveData];
             if (block) {
                 block(user, YES);
             }
         } else {
+            NSString *errorMsg = responseObject[@"msg"];
             if (failure) {
-                failure(responseObject);
+                failure(errorMsg);
             }
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

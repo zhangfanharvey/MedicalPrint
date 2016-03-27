@@ -22,6 +22,11 @@
     return UIStatusBarStyleLightContent;
 }
 
+- (void)viewDidLoad {
+    [super viewDidLoad];(
+    self.navigationController.navigationBar.barStyle = (UIBarStyle)[self preferredStatusBarStyle]);
+}
+
 #pragma mark - Navigation Bar methods
 
 - (void)initNavBarButtonItemWithImages:(NSArray *)imagesArray action:(SEL)selector isLeft:(BOOL)isLeft
@@ -85,11 +90,18 @@
 
 - (void)showLoadingWithText:(NSString *)text toView:(UIView *)view {
     self.hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
+    self.hud.square = YES;
     self.hud.label.text = text;
 }
 
 - (void)hideLoadingView {
     [self.hud hideAnimated:YES];
+    self.hud = nil;
+}
+
+- (void)hideLoadingViewWithError:(NSString *)error {
+    self.hud.label.text = error;
+    [self.hud hideAnimated:YES afterDelay:1.0f];
     self.hud = nil;
 }
 
