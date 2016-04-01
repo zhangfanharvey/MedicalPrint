@@ -7,8 +7,15 @@
 //
 
 #import "Print3DController.h"
+#import "UserInfoRequest.h"
+#import "Print3DItemView.h"
+#import "Masonry.h"
 
 @interface Print3DController ()
+
+@property (nonatomic, strong) UIImageView *backgroundImageView;
+@property (nonatomic, strong) UIImageView *bonesImageView;
+@property (nonatomic, strong) NSMutableArray *itemArray;
 
 @end
 
@@ -29,6 +36,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.backgroundImageView = [[UIImageView alloc] init];
+    self.backgroundImageView.image = [UIImage imageNamed:@"pringt_3d_底图"];
+    [self.view addSubview:self.backgroundImageView];
+    
+    self.bonesImageView = [[UIImageView alloc] init];
+    self.bonesImageView.image = [UIImage imageNamed:@"pringt_3d_骨骼"];
+    [self.view addSubview:self.bonesImageView];
+
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -36,14 +53,25 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
 }
-*/
+
+#pragma mark - private
+
+- (void)setupViewConstraints {
+    UIView *superView = self.view;
+    [self.backgroundImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(superView);
+    }];
+    
+    
+}
+
+- (void)createItemsView {
+    
+}
+
+
 
 @end

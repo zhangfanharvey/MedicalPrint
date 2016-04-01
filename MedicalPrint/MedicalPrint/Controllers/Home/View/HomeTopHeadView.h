@@ -13,6 +13,22 @@
 
 @interface HomeTopHeadView : UIView
 
++ (CGFloat)heightForTopHeadView;
 
+@property (nonatomic, strong) SDCycleScrollView *cycleScrollView;
+
+@property (nonatomic, strong) HomeTopCatogeryItemView *itemView1;
+@property (nonatomic, strong) HomeTopCatogeryItemView *itemView2;
+@property (nonatomic, strong) HomeTopCatogeryItemView *itemView3;
+@property (nonatomic, strong) HomeTopCatogeryItemView *itemView4;
+
+@property (nonatomic, strong) UILabel *leftLabel;
+@property (nonatomic, strong) UILabel *rightLabel;
+@property (nonatomic, strong) UIImageView *lineImageView;
+
+@property (nonatomic, strong) UIButton *leftButton;
+@property (nonatomic, strong) UIButton *rightButon;
+
+- (void)configureDemoData;
 
 @end

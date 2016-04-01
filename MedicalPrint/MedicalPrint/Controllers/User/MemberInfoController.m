@@ -10,6 +10,7 @@
 #import "BaseTableViewCell.h"
 #import "Masonry.h"
 #import "TagLabelCell.h"
+#import "UserInfoRequest.h"
 
 @interface MemberInfoController () <UITableViewDataSource, UITableViewDelegate>
 

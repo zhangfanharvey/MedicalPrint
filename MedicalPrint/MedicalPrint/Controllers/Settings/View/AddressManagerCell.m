@@ -8,6 +8,7 @@
 
 #import "AddressManagerCell.h"
 #import "Masonry.h"
+#import "ShippingAddress.h"
 
 /*
  @property (nonatomic, strong) UILabel *nickNameLabel;

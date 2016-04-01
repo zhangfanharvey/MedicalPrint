@@ -9,6 +9,9 @@
 #import "AddressManagerController.h"
 #import "BaseTableViewCell.h"
 #import "Masonry.h"
+#import "UserInfoRequest.h"
+#import "AddressManagerCell.h"
+#import "ShippingAddress.h"
 
 @interface AddressManagerController () <UITableViewDelegate, UITableViewDataSource>
 

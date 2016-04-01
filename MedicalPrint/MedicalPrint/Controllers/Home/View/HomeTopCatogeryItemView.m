@@ -7,6 +7,7 @@
 //
 
 #import "HomeTopCatogeryItemView.h"
+#import "Masonry.h"
 
 @implementation HomeTopCatogeryItemView
 
@@ -14,29 +15,34 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.iconImageView = [[UIImageView alloc] init];
-        [self addSubview:self.iconImageView];
+        self.iconImageButton = [[UIButton alloc] init];
+        [self addSubview:self.iconImageButton];
         
         self.nameLabel = [[UILabel alloc] init];
+        self.nameLabel.textAlignment = NSTextAlignmentCenter;
         [self addSubview:self.nameLabel];
         
+        [self setupViewConstraints];
     }
     return self;
 }
 
-//#pragma mark - View Auto-Layout
-//
-//- (void)setupViewConstraints
-//{
-//    NSDictionary *views = @{@"scrollView": self.scrollView,
-//                            };
-//    
-//    NSDictionary *metrics = @{
-//                              };
-//    
-//    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|[scrollView]|" options:0 metrics:metrics views:views]];
-//    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[scrollView]|" options:0 metrics:metrics views:views]];
-//}
+
+#pragma mark - view constraints
+
+- (void)setupViewConstraints {
+    UIView *superView = self;
+    [self.iconImageButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(superView.mas_top).offset(10);
+        make.centerX.equalTo(superView.mas_centerX);
+        make.width.and.height.equalTo(@50);
+    }];
+    
+    [self.nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.iconImageButton.mas_bottom).offset(5);
+        make.left.and.right.equalTo(superView);
+    }];
+}
 
 
 @end

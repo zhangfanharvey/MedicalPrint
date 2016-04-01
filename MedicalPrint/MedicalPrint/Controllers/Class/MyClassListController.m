@@ -9,6 +9,7 @@
 #import "MyClassListController.h"
 #import "BaseTableViewCell.h"
 #import "Masonry.h"
+#import "UserInfoRequest.h"
 
 @interface MyClassListController () <UITableViewDelegate, UITableViewDataSource>
 

@@ -7,8 +7,16 @@
 //
 
 #import "MedicalHelpController.h"
+#import "MedicalHelpCollectionViewCell.h"
+#import "UserInfoRequest.h"
+#import "CaseType.h"
+#import "Masonry.h"
 
-@interface MedicalHelpController ()
+@interface MedicalHelpController () <UICollectionViewDelegate, UICollectionViewDataSource>
+
+@property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic, strong) UICollectionViewFlowLayout *layout;
+@property (nonatomic, strong) NSArray *caseTypeArray;
 
 @end
 
@@ -30,6 +38,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.caseTypeArray = [[NSArray alloc] init];
+    
+    CGRect frame = self.view.bounds;
+    self.layout = [[UICollectionViewFlowLayout alloc] init];
+    self.layout.scrollDirection = UICollectionViewScrollDirectionVertical;
+    self.layout.minimumLineSpacing = 0;
+    self.layout.minimumInteritemSpacing = 0;
+    self.layout.itemSize = CGSizeMake(CGRectGetWidth(frame) / 2.0, 80);
+    
+    self.collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:self.layout];
+    self.collectionView.delegate = self;
+    self.collectionView.dataSource = self;
+    self.collectionView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:self.collectionView];
+    
+    [self.collectionView registerClass:[MedicalHelpCollectionViewCell class] forCellWithReuseIdentifier:[MedicalHelpCollectionViewCell cellIdentifier]];
+    
+    [self setupViewConstraints];
+    
+    [self loadCaseTypeList];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -37,14 +67,50 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark - private
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)initNaviBarItem {
+    self.title = @"发布求助";
 }
-*/
+
+
+
+
+- (void)setupViewConstraints {
+    UIView *superView = self.view;
+    [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(superView);
+    }];
+}
+
+- (void)loadCaseTypeList {
+    [self showLoadingWithText:@"加载中..."];
+    [UserInfoRequest fetchListCaseTypeWithSuccess:^(BOOL status, NSArray *caseTypeArray) {
+        [self hideLoadingView];
+        self.caseTypeArray = caseTypeArray;
+        [self.collectionView reloadData];
+    } failure:^(NSString *msg) {
+        [self hideLoadingViewWithError:msg];
+    }];
+}
+
+#pragma mark - UICollectionViewDelegate
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+}
+
+#pragma mark - UICollectionViewDataSource
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return self.caseTypeArray.count;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    MedicalHelpCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:[MedicalHelpCollectionViewCell cellIdentifier] forIndexPath:indexPath];
+    CaseType *caseType = [self.caseTypeArray objectAtIndex:indexPath.row];
+    [cell configureWithCaseType:caseType];
+    return cell;
+}
 
 @end

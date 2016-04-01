@@ -10,7 +10,7 @@
 
 @interface HomeTopCatogeryItemView : UIView
 
-@property (nonatomic, strong) UIImageView *iconImageView;
+@property (nonatomic, strong) UIButton *iconImageButton;
 
 @property (nonatomic, strong) UILabel *nameLabel;
 

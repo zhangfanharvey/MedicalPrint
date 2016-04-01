@@ -10,6 +10,7 @@
 #import "BaseTableViewCell.h"
 #import "Masonry.h"
 #import "MessageCenterCell.h"
+#import "UserInfoRequest.h"
 
 @interface MessageCenterController () <UITableViewDelegate, UITableViewDataSource>
 

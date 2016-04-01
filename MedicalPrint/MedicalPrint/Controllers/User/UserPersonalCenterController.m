@@ -10,11 +10,20 @@
 #import "BaseTableViewCell.h"
 #import "Masonry.h"
 #import "UserPersonalHeadView.h"
+#import "UserInfoRequest.h"
+#import "UserPersonalCenterNavView.h"
+#import "User.h"
+#import "IconLabelTableViewCell.h"
+#import "AccountManager.h"
+#import "UIImageView+WebCache.h"
 
 @interface UserPersonalCenterController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UserPersonalHeadView *userHeadView;
+@property (nonatomic, strong) UserPersonalCenterNavView *titleView;
+@property (nonatomic, strong) NSArray *dataSourceArray;
+@property (nonatomic, strong) User *user;
 
 @end
 
@@ -36,18 +45,31 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
     
-    self.userHeadView = [[UserPersonalHeadView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 120)];
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    self.userHeadView = [[UserPersonalHeadView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 180)];
     self.tableView.tableHeaderView = self.userHeadView;
+    
+    self.titleView = [[UserPersonalCenterNavView alloc] init];
+    [self.view addSubview:self.titleView];
     
     [self setupViewConstraints];
     [self initNaviBarItem];
     
-    [self.tableView registerClass:[BaseTableViewCell class] forCellReuseIdentifier:[BaseTableViewCell cellIdentifier]];
+    [self initDataSource];
+    
+    [self.tableView registerClass:[IconLabelTableViewCell class] forCellReuseIdentifier:[IconLabelTableViewCell cellIdentifier]];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -63,6 +85,11 @@
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(superView);
     }];
+    
+    [self.titleView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.top.and.right.equalTo(superView);
+        make.height.equalTo(@45);
+    }];
 }
 
 #pragma mark - private
@@ -70,6 +97,18 @@
 - (void)initNaviBarItem
 {
     self.title = @"个人信息";
+}
+
+- (void)initDataSource {
+    self.dataSourceArray = @[@[@{@"icon":@"消息中心_常态", @"name":@"消息中心"}, @{@"icon":@"申请项目_常态", @"name":@"申请项目"}], @[@{@"icon":@"我的订单_常态", @"name":@"我的订单"}, @{@"icon":@"我的课程_常态",@"name": @"我的课程"}], @[@{@"icon":@"地址管理_常态", @"name":@"地址管理"}, @{@"icon":@"意见提交_常态",@"name":@"意见提交"}],];
+}
+
+- (void)configureData {
+    AccountManager *accountManager = [AccountManager sharedManager];
+    self.user = accountManager.user;
+    self.titleView.titleLabel.text = @"个人信息";
+//    [self.userHeadView.avatarImageView sd_setImageWithURL:[NSURL URLWithString:nil]];
+    self.userHeadView.nameLabel.text = self.user.nickName;
 }
 
 #pragma mark - IBAction
@@ -85,12 +124,13 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 20.0f;
+    return 0.0001f;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    return 0.0001f;
+    return 20.0f;
+//    return 0.0001f;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -102,19 +142,26 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    NSArray *sectionArray = [self.dataSourceArray objectAtIndex:section];
+    return sectionArray.count;
 }
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return self.dataSourceArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    BaseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[BaseTableViewCell cellIdentifier] forIndexPath:indexPath];
+    IconLabelTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[IconLabelTableViewCell cellIdentifier] forIndexPath:indexPath];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    NSArray *sectionArray = [self.dataSourceArray objectAtIndex:indexPath.section];
+    NSDictionary *dic = [sectionArray objectAtIndex:indexPath.row];
+    NSString *iconName = dic[@"icon"];
+    NSString *name = dic[@"name"];
+    cell.iconImageView.image = [UIImage imageNamed:iconName];
+    cell.label.text = name;
     return cell;
 }
 

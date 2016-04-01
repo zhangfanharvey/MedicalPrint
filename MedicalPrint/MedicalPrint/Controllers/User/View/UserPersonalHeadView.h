@@ -10,6 +10,7 @@
 
 @interface UserPersonalHeadView : UIView
 
+@property (nonatomic, strong) UIImageView *backGroundImageView;
 @property (nonatomic, strong) UILabel *nameLabel;
 @property (nonatomic, strong) UIImageView *avatarImageView;
 

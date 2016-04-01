@@ -8,6 +8,7 @@
 
 #import "ClassDetailController.h"
 #import "Masonry.h"
+#import "UserInfoRequest.h"
 
 @interface ClassDetailController ()
 

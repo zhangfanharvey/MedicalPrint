@@ -33,6 +33,13 @@
 #define kMPAddOrderUrl  @"/app/order/add.do"
 #define kMPUpdateOrderUrl  @"/app/order/update.do"
 #define kMPDeleteOrderUrl  @"/app/order/delete.do"
+#define kMPFetchListCaseTypeUrl  @"/app/cases/listCaseType.do"
+#define kMPFetchAboutUsInfoUrl  @"/app/aboutus/look.do"
+#define kMPSendFeedbackUrl  @"/app/feedback/add.do"
+#define kMPFetchMedicalCaseUrl  @"/app/cases/listTypeCase.do"
+#define kMPFetchMyMedicalCaseUrl  @"/app/feedback/listCase.do"
+#define kMPAddMyMedicalCaseUrl  @"/app/cases/addCase.do"
+#define kMPUpdateMyMedicalCaseUrl  @"/app/cases/saveCase.do"
 
 
 #endif /* APIConfigure_h */

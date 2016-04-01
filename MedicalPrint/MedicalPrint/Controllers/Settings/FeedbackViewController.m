@@ -8,6 +8,7 @@
 
 #import "FeedbackViewController.h"
 #import "Masonry.h"
+#import "UserInfoRequest.h"
 
 @interface FeedbackViewController ()
 
@@ -28,6 +29,10 @@
     self.commitButton = [[UIButton alloc] init];
     [self.commitButton addTarget:self action:@selector(commitButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.commitButton];
+    
+    [self initNaviBarItem];
+    
+    [self setupViewConstraints];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -62,7 +67,14 @@
 #pragma mark - IBAction
 
 - (IBAction)commitButtonClicked:(id)sender {
-    
+    if (self.textView.text.length > 0) {
+        [self showLoadingWithText:@"加载中..."];
+        [UserInfoRequest sendFeedbackWithConten:self.textView.text success:^(BOOL status) {
+            [self hideLoadingView];
+        } failure:^(NSString *msg) {
+            [self hideLoadingViewWithError:msg];
+        }];
+    }
 }
 
 @end

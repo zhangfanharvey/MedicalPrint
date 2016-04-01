@@ -31,7 +31,7 @@
     
     AccountManager *accountManager = [AccountManager sharedManager];
     [accountManager readData];
-    if ([accountManager isUserLogin]) {
+    if ([accountManager isUserLogin] || YES) {
         [self showHomeView];
     } else {
         [self showRegisterView];

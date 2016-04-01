@@ -13,6 +13,7 @@
 #import "SettingsViewController.h"
 #import "UserPersonalCenterController.h"
 #import "YouniNavigationController.h"
+#import "UserInfoRequest.h"
 
 
 @interface MainTabController () <UITabBarControllerDelegate>

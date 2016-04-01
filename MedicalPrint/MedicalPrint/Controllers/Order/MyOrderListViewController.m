@@ -9,6 +9,7 @@
 #import "MyOrderListViewController.h"
 #import "BaseTableViewCell.h"
 #import "Masonry.h"
+#import "UserInfoRequest.h"
 
 @interface MyOrderListViewController () <UITableViewDelegate, UITableViewDataSource>
 
