@@ -8,6 +8,7 @@
 
 #import "MessageCenterCell.h"
 #import "Masonry.h"
+#import "Message.h"
 
 @implementation MessageCenterCell
 

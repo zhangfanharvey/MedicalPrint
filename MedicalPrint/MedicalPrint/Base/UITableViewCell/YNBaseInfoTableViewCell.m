@@ -21,6 +21,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.infoLabel = [[UILabel alloc] init];
+        self.infoLabel.font = [UIFont systemFontOfSize:kCommonCellFontSize];
         self.infoLabel.translatesAutoresizingMaskIntoConstraints = NO;
 
         [self.contentView addSubview:self.infoLabel];

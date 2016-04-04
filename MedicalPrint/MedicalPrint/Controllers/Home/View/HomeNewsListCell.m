@@ -20,9 +20,12 @@
         [self.contentView addSubview:self.newsImageView];
         
         self.titleLabel = [[UILabel alloc] init];
+        self.titleLabel.font = [UIFont systemFontOfSize:kCommonCellFontSize];
         [self.contentView addSubview:self.titleLabel];
         
         self.detailLabel = [[UILabel alloc] init];
+        self.detailLabel.font = [UIFont systemFontOfSize:13];
+        self.detailLabel.textColor = [UIColor colorWithRed:0.533 green:0.537 blue:0.541 alpha:1.00];
         [self.contentView addSubview:self.detailLabel];
         
         [self setupViewConstraints];

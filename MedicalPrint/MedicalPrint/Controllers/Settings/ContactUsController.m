@@ -17,10 +17,12 @@
 #import "FeedbackViewController.h"
 #import "ContactUsController.h"
 #import "BarcodeView.h"
+#import "AboutUsInfo.h"
 
 @interface ContactUsController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) AboutUsInfo *aboutUsInfo;
 
 
 @end
@@ -68,7 +70,12 @@
 }
 
 - (void)initDataSource {
-    
+    [UserInfoRequest fetchAboutUsWithSuccess:^(BOOL status, AboutUsInfo *aboutUsInfo) {
+        self.aboutUsInfo = aboutUsInfo;
+        [self.tableView reloadData];
+    } failure:^(NSString *msg) {
+        ;
+    }];
 }
 
 
@@ -139,7 +146,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

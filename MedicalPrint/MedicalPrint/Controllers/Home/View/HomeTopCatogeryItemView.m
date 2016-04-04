@@ -19,6 +19,7 @@
         [self addSubview:self.iconImageButton];
         
         self.nameLabel = [[UILabel alloc] init];
+        self.nameLabel.font = [UIFont systemFontOfSize:kCommonCellFontSize];
         self.nameLabel.textAlignment = NSTextAlignmentCenter;
         [self addSubview:self.nameLabel];
         

@@ -18,6 +18,8 @@
 #import "AboutUsInfo.h"
 #import "MedicalCase.h"
 #import "MedicalCaseReply.h"
+#import "NewsType.h"
+#import "News.h"
 
 @implementation UserInfoRequest
 
@@ -711,12 +713,10 @@
         QYLog(@"fetchAboutUsWithSuccess success%@", responseObject);
         if ([NetworkManager isResponseSuccess:responseObject]) {
             NSDictionary *responseDic = (NSDictionary *)responseObject;
-            NSArray *bodyArray = responseDic[@"body"];
+            NSDictionary *bodyDic = responseDic[@"body"];
             AboutUsInfo *abountUsInfo = [[AboutUsInfo alloc] init];
-            for (NSDictionary *dic in bodyArray) {
-                if (dic && [dic isKindOfClass:[NSDictionary class]]) {
-                    [abountUsInfo configureWithDic:dic];
-                }
+            if (bodyDic && [bodyDic isKindOfClass:[NSDictionary class]]) {
+                [abountUsInfo configureWithDic:bodyDic];
             }
             if (block) {
                 block(YES, abountUsInfo);
@@ -757,6 +757,112 @@
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         QYLog(@"sendFeedbackWithConten failure :%@", error.localizedDescription);
+        if (failure) {
+            failure(error.localizedDescription);
+        }
+    }];
+}
+
++ (void)fetchNewsTypeSuccess:(void(^)(BOOL status, NSArray *newsTypeArray))block failure:(NetworkFailureBlock)failure {
+    NSString *url = [NSString stringWithFormat:@"%@%@", kMPBaseUrl, kMPFetchListNewsTypeUrl];
+    
+    [[NetworkManager sharedManager] POST:url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        QYLog(@"fetchNewsTypeSuccess success%@", responseObject);
+        if ([NetworkManager isResponseSuccess:responseObject]) {
+            NSDictionary *responseDic = (NSDictionary *)responseObject;
+            NSArray *bodyArray = responseDic[@"body"];
+            NSMutableArray *caseTypeArray = [[NSMutableArray alloc] init];
+            for (NSDictionary *dic in bodyArray) {
+                if (dic && [dic isKindOfClass:[NSDictionary class]]) {
+                    NewsType *newsType = [[NewsType alloc] init];
+                    [newsType configureWithDic:dic];
+                    [caseTypeArray addObject:newsType];
+                }
+            }
+            if (block) {
+                block(YES, caseTypeArray);
+            }
+        } else {
+            NSString *errorMsg = responseObject[@"msg"];
+            if (failure) {
+                failure(errorMsg);
+            }
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        QYLog(@"fetchNewsTypeSuccess failure :%@", error.localizedDescription);
+        if (failure) {
+            failure(error.localizedDescription);
+        }
+    }];
+}
+
++ (void)fetchMyNewsListStart:(NSInteger)start length:(NSInteger)length success:(void(^)(BOOL status, NSArray *newsArray))block failure:(NetworkFailureBlock)failure {
+    NSString *url = [NSString stringWithFormat:@"%@%@", kMPBaseUrl, kMPFetchMyNewsUrl];
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    [dic setObject:@(start) forKey:@"start"];
+    [dic setObject:@(length) forKey:@"length"];
+    
+    [[NetworkManager sharedManager] POST:url parameters:dic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        QYLog(@"fetchMyNewsListStart success%@", responseObject);
+        if ([NetworkManager isResponseSuccess:responseObject]) {
+            NSDictionary *responseDic = (NSDictionary *)responseObject;
+            NSArray *bodyArray = responseDic[@"body"];
+            NSMutableArray *meicalcaseArray = [[NSMutableArray alloc] init];
+            for (NSDictionary *dic in bodyArray) {
+                if (dic && [dic isKindOfClass:[NSDictionary class]]) {
+                    News *news = [[News alloc] init];
+                    [news configureWithDic:dic];
+                    [meicalcaseArray addObject:news];
+                }
+            }
+            if (block) {
+                block(YES, meicalcaseArray);
+            }
+        } else {
+            NSString *errorMsg = responseObject[@"msg"];
+            if (failure) {
+                failure(errorMsg);
+            }
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        QYLog(@"fetchMyNewsListStart failure :%@", error.localizedDescription);
+        if (failure) {
+            failure(error.localizedDescription);
+        }
+    }];
+}
+
++ (void)fetchNewsListForType:(NewsType *)newsType withStart:(NSInteger)start length:(NSInteger)length success:(void(^)(BOOL status, NSArray *newsArray))block failure:(NetworkFailureBlock)failure {
+    NSString *url = [NSString stringWithFormat:@"%@%@", kMPBaseUrl, kMPFetchMedicalCaseUrl];
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    [dic setObject:newsType.p_ID forKey:@"id"];
+    [dic setObject:@(start) forKey:@"start"];
+    [dic setObject:@(length) forKey:@"length"];
+    
+    [[NetworkManager sharedManager] POST:url parameters:dic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        QYLog(@"fetchNewsListForType success%@", responseObject);
+        if ([NetworkManager isResponseSuccess:responseObject]) {
+            NSDictionary *responseDic = (NSDictionary *)responseObject;
+            NSArray *bodyArray = responseDic[@"body"];
+            NSMutableArray *meicalcaseArray = [[NSMutableArray alloc] init];
+            for (NSDictionary *dic in bodyArray) {
+                if (dic && [dic isKindOfClass:[NSDictionary class]]) {
+                    News *news = [[News alloc] init];
+                    [news configureWithDic:dic];
+                    [meicalcaseArray addObject:news];
+                }
+            }
+            if (block) {
+                block(YES, meicalcaseArray);
+            }
+        } else {
+            NSString *errorMsg = responseObject[@"msg"];
+            if (failure) {
+                failure(errorMsg);
+            }
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        QYLog(@"fetchNewsListForType failure :%@", error.localizedDescription);
         if (failure) {
             failure(error.localizedDescription);
         }

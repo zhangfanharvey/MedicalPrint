@@ -11,6 +11,7 @@
 #import "UserInfoRequest.h"
 #import "CaseType.h"
 #import "Masonry.h"
+#import "MedicalCaseListController.h"
 
 @interface MedicalHelpController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -97,7 +98,9 @@
 #pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
+    CaseType *caseType = [self.caseTypeArray objectAtIndex:indexPath.row];
+    MedicalCaseListController *medicalCaseListVC = [[MedicalCaseListController alloc] initWtithCaseType:caseType];
+    [self.navigationController pushViewController:medicalCaseListVC animated:YES];
 }
 
 #pragma mark - UICollectionViewDataSource

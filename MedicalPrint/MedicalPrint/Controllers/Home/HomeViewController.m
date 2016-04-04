@@ -19,6 +19,9 @@
 
 @property (nonatomic, strong) HomeTopHeadView *topHeadView;
 
+@property (nonatomic, strong) NSArray *newsTypeArray;
+@property (nonatomic, strong) NSArray *newsListArray;
+
 @end
 
 @implementation HomeViewController
@@ -54,6 +57,8 @@
     [self.tableView registerClass:[HomeNewsListCell class] forCellReuseIdentifier:[HomeNewsListCell cellIdentifier]];
     
     [self addSearchView];
+    
+    [self initDataSource];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -106,25 +111,48 @@
     }
 }
 
+- (void)initDataSource {
+    [UserInfoRequest fetchNewsTypeSuccess:^(BOOL status, NSArray *newsTypeArray) {
+        self.newsTypeArray = [newsTypeArray sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+            return [obj1 compare:obj2];
+        }];
+//        [self.topHeadView configureNewsTypeWithList:self.newsTypeArray];
+    } failure:^(NSString *msg) {
+        ;
+    }];
+    [UserInfoRequest fetchMyNewsListStart:0 length:20 success:^(BOOL status, NSArray *newsArray) {
+        self.newsListArray = newsArray;
+        [self.tableView reloadData];
+    } failure:^(NSString *msg) {
+        ;
+    }];
+}
+
+- (void)configureData {
+    
+}
+
 - (void)addSearchView {
 //    UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(-5.0, 0.0, 320.0, 44.0)];
 //    searchBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     UITextField *searchTextField = [[UITextField alloc] initWithFrame:CGRectZero];
     searchTextField.borderStyle = UITextBorderStyleRoundedRect;
     CGRect frame = self.view.bounds;
-    UIView *searchBarView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, CGRectGetWidth(frame) - 40, 44.0)];
+    UIView *searchBarView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, CGRectGetWidth(frame) - 40, 38.0)];
     searchBarView.autoresizingMask = 0;
 //    searchBar.delegate = self;
-    UIButton *button = [[UIButton alloc] init];
-    [searchBarView addSubview:button];
     
     [searchBarView addSubview:searchTextField];
+    
+    UIButton *button = [[UIButton alloc] init];
+    [searchBarView addSubview:button];
+
     self.navigationItem.titleView = searchBarView;
     [searchTextField mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(searchBarView.mas_left).offset(10);
-        make.right.equalTo(searchBarView.mas_right).offset(-10);
-        make.height.equalTo(@34);
-        make.bottom.equalTo(searchBarView.mas_bottom).offset(-6);
+        make.left.equalTo(searchBarView.mas_left).offset(4);
+        make.right.equalTo(searchBarView.mas_right).offset(-4);
+        make.height.equalTo(@32);
+        make.bottom.equalTo(searchBarView.mas_bottom).offset(-3);
     }];
     
     [button mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -143,7 +171,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 95.0f;
+    return 72.0f;
 }
 
 //- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -165,7 +193,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return self.newsListArray.count;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

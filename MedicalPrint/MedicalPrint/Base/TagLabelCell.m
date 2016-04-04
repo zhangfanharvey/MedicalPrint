@@ -16,9 +16,12 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.tagLabel = [[UILabel alloc] init];
+        self.tagLabel.font = [UIFont systemFontOfSize:kCommonCellFontSize];
         [self.contentView addSubview:self.tagLabel];
         
         self.label = [[UILabel alloc] init];
+        self.label.font = [UIFont systemFontOfSize:kCommonCellFontSize];
+        self.label.textAlignment = NSTextAlignmentRight;
         [self.contentView addSubview:self.label];
         
         self.textField = [[UITextField alloc] init];

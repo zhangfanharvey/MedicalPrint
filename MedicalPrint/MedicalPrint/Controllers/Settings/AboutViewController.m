@@ -16,11 +16,13 @@
 #import "AccountManager.h"
 #import "UIImageView+WebCache.h"
 #import "AboutUsInfo.h"
+#import "BarcodeView.h"
 
 @interface AboutViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) AboutUsInfo *aboutUsInfo;
+@property (nonatomic, strong) BarcodeView *barcodeView;
 
 @end
 
@@ -33,10 +35,15 @@
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.tableView.separatorInset = UIEdgeInsetsZero;
     [self.view addSubview:self.tableView];
     
     [self setupViewConstraints];
     [self initNaviBarItem];
+    
+    [self createBarcodeView];
+    
+    [self configureData];
     
     [self initDataSource];
     
@@ -80,7 +87,21 @@
 }
 
 - (void)configureData {
+    self.barcodeView.barcodeImageView.image = [UIImage imageNamed:@"二维码"];
+//    self.barcodeView.barcodeImageView.image = [UIImage mdQRCodeForString:@"test" size:140];
     
+}
+
+- (void)createBarcodeView {
+    BarcodeView *barcodeView = [[BarcodeView alloc] init];
+    self.barcodeView = barcodeView;
+    [self.view addSubview:barcodeView];
+    
+    UIView *superView = self.view;
+    [self.barcodeView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.and.bottom.equalTo(superView);
+        make.height.equalTo(@180);
+    }];
 }
 
 #pragma mark - IBAction
@@ -91,6 +112,9 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.section == 1 && indexPath.row == 1) {
+        return 180;
+    }
     return 45.0f;
 }
 
@@ -110,6 +134,24 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Remove seperator inset
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
+    // Prevent the cell from inheriting the Table View's margin settings
+    if ([cell respondsToSelector:@selector(setPreservesSuperviewLayoutMargins:)]) {
+        [cell setPreservesSuperviewLayoutMargins:NO];
+    }
+    
+    // Explictly set your cell's layout margins
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
+}
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -117,7 +159,7 @@
     if (section == 0) {
         return 3;
     }
-    return 1;
+    return 2;
 }
 
 
@@ -129,7 +171,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     IconLabelTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[IconLabelTableViewCell cellIdentifier] forIndexPath:indexPath];
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     NSString *iconName = @"";
     NSString *name = @"";
     if (indexPath.section == 0) {
@@ -145,8 +186,13 @@
             name = self.aboutUsInfo.email;
         }
     } else {
-        iconName = @"公司地址";
-        name = self.aboutUsInfo.address;
+        if (indexPath.row == 0) {
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            iconName = @"公司地址";
+            name = self.aboutUsInfo.address;
+        } else {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
     }
     cell.iconImageView.image = [UIImage imageNamed:iconName];
     cell.label.text = name;

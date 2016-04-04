@@ -16,6 +16,7 @@
 #import "IconLabelTableViewCell.h"
 #import "AccountManager.h"
 #import "UIImageView+WebCache.h"
+#import "MessageCenterController.h"
 
 @interface UserPersonalCenterController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -50,8 +51,9 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
-    
+//
     self.automaticallyAdjustsScrollViewInsets = NO;
+    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 44, 0);
     
     self.userHeadView = [[UserPersonalHeadView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 180)];
     self.tableView.tableHeaderView = self.userHeadView;
@@ -136,6 +138,69 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    switch (indexPath.section) {
+        case 0:
+        {
+            switch (indexPath.row) {
+                case 0:
+                {
+                    MessageCenterController *messageCenterVC = [[MessageCenterController alloc] init];
+                    [self.navigationController pushViewController:messageCenterVC animated:YES];
+                }
+                    break;
+                case 1:
+                {
+                    MessageCenterController *messageCenterVC = [[MessageCenterController alloc] init];
+                    [self.navigationController pushViewController:messageCenterVC animated:YES];
+                }
+                    break;
+                    
+                default:
+                    break;
+            }
+        }
+            break;
+        case 1:
+        {
+            switch (indexPath.row) {
+                case 0:
+                {
+                    
+                }
+                    break;
+                case 1:
+                {
+                    
+                }
+                    break;
+                    
+                default:
+                    break;
+            }
+        }
+            break;
+        case 2:
+        {
+            switch (indexPath.row) {
+                case 0:
+                {
+                    
+                }
+                    break;
+                case 1:
+                {
+                    
+                }
+                    break;
+                    
+                default:
+                    break;
+            }
+        }
+            break;
+        default:
+            break;
+    }
 }
 
 #pragma mark - UITableViewDataSource

@@ -22,6 +22,7 @@
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         self.tagLabel = [[UILabel alloc] init];
         self.tagLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        self.tagLabel.font = [UIFont systemFontOfSize:kCommonCellFontSize];
         [self.contentView addSubview:self.tagLabel];
         
         self.switchView = [[UISwitch alloc] initWithFrame:CGRectZero];

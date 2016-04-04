@@ -31,4 +31,6 @@
 
 - (void)configureDemoData;
 
+- (void)configureNewsTypeWithList:(NSArray *)newsTypeArray;
+
 @end

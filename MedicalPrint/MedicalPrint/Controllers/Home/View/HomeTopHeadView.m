@@ -11,6 +11,7 @@
 #import "SDCycleScrollView.h"
 #import "UIImageView+WebCache.h"
 #import "Masonry.h"
+#import "NewsType.h"
 
 @interface HomeTopHeadView () <SDCycleScrollViewDelegate>
 
@@ -35,7 +36,7 @@
 //        cycleScrollView3.pageDotImage = [UIImage imageNamed:@"pageControlDot"];
 //        cycleScrollView3.imageURLStringsGroup = imagesURLStrings;
 //        cycleScrollView3.bannerImageViewContentMode = UIViewContentModeScaleToFill;
-        cycleScrollView3.localizationImageNamesGroup = @[@"广告大图"];
+        cycleScrollView3.localizationImageNamesGroup = @[@"广告大图", @"广告大图", @"广告大图"];
         cycleScrollView3.backgroundColor = [UIColor redColor];
         [self addSubview:cycleScrollView3];
         
@@ -51,9 +52,13 @@
         [self addSubview:self.itemView4];
         
         self.leftLabel = [[UILabel alloc] init];
+        self.leftLabel.font = [UIFont systemFontOfSize:kCommonCellFontSize];
+        self.leftLabel.textColor = [UIColor colorWithRed:0.533 green:0.537 blue:0.541 alpha:1.00];
         [self addSubview:self.leftLabel];
         
         self.rightLabel = [[UILabel alloc] init];
+        self.rightLabel.font = [UIFont systemFontOfSize:kCommonCellFontSize];
+        self.rightLabel.textColor = [UIColor colorWithRed:0.533 green:0.537 blue:0.541 alpha:1.00];
         self.rightLabel.textAlignment = NSTextAlignmentRight;
         [self addSubview:self.rightLabel];
         
@@ -114,7 +119,7 @@
 
 
     [self.leftLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(superView.mas_bottom).offset(-2);
+        make.bottom.equalTo(superView.mas_bottom).offset(-6);
         make.left.equalTo(superView.mas_left).offset(15);
 //        make.top.equalTo(self.itemView1.mas_bottom).offset(10);
     }];
@@ -141,7 +146,7 @@
         make.bottom.equalTo(superView.mas_bottom).offset(-1);
         make.left.equalTo(superView.mas_left);
         make.right.equalTo(superView.mas_right);
-        make.height.equalTo(@1);
+        make.height.equalTo(@SINGLE_LINE_WIDTH);
     }];
 }
 
@@ -164,9 +169,37 @@
     [self.itemView4.iconImageButton setBackgroundImage:[UIImage imageNamed:@"转化_按下"] forState:UIControlStateHighlighted];
     self.itemView4.nameLabel.text = @"转化";
     
-    self.leftLabel.text = @"HDP";
-    self.rightLabel.text = @"更多";
+    self.leftLabel.text = @"DOF Info";
+    self.rightLabel.text = @"更多…";
 
+}
+
+- (void)configureNewsTypeWithList:(NSArray *)newsTypeArray {
+    NewsType *newsType = nil;
+    if (newsTypeArray.count > 0) {
+        newsType = [newsTypeArray objectAtIndex:0];
+        [self.itemView1.iconImageButton setBackgroundImage:[UIImage imageNamed:newsType.icon] forState:UIControlStateNormal];
+        self.itemView1.nameLabel.text = newsType.name;
+    }
+    
+    if (newsTypeArray.count > 1) {
+        newsType = [newsTypeArray objectAtIndex:1];
+        [self.itemView2.iconImageButton setBackgroundImage:[UIImage imageNamed:newsType.icon] forState:UIControlStateNormal];
+        self.itemView2.nameLabel.text = newsType.name;
+    }
+    if (newsTypeArray.count > 2) {
+        newsType = [newsTypeArray objectAtIndex:2];
+        [self.itemView3.iconImageButton setBackgroundImage:[UIImage imageNamed:newsType.icon] forState:UIControlStateNormal];
+        self.itemView3.nameLabel.text = newsType.name;
+    }
+    if (newsTypeArray.count > 3) {
+        newsType = [newsTypeArray objectAtIndex:3];
+        [self.itemView4.iconImageButton setBackgroundImage:[UIImage imageNamed:newsType.icon] forState:UIControlStateNormal];
+        self.itemView4.nameLabel.text = newsType.name;
+    }
+    
+    self.leftLabel.text = @"DOF Info";
+    self.rightLabel.text = @"更多…";
 }
 
 #pragma mark - SDCycleScrollViewDelegate

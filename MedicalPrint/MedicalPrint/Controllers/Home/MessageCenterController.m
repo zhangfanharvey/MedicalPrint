@@ -11,6 +11,7 @@
 #import "Masonry.h"
 #import "MessageCenterCell.h"
 #import "UserInfoRequest.h"
+#import "Message.h"
 
 @interface MessageCenterController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -32,6 +33,8 @@
     [self initNaviBarItem];
     
     [self.tableView registerClass:[MessageCenterCell class] forCellReuseIdentifier:[MessageCenterCell cellIdentifier]];
+    
+    [self initDataSource];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -54,6 +57,10 @@
 - (void)initNaviBarItem
 {
     self.title = @"个人信息";
+}
+
+- (void)initDataSource {
+    
 }
 
 #pragma mark - IBAction
@@ -96,8 +103,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    BaseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[BaseTableViewCell cellIdentifier] forIndexPath:indexPath];
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    MessageCenterCell *cell = [tableView dequeueReusableCellWithIdentifier:[MessageCenterCell cellIdentifier] forIndexPath:indexPath];
+    
     return cell;
 }
 

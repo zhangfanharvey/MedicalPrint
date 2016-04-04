@@ -43,9 +43,11 @@
     self.bonesImageView = [[UIImageView alloc] init];
     self.bonesImageView.image = [UIImage imageNamed:@"pringt_3d_骨骼"];
     [self.view addSubview:self.bonesImageView];
-
+    
+    [self setupViewConstraints];
     
     
+    [self initDataSource];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -62,9 +64,29 @@
 - (void)setupViewConstraints {
     UIView *superView = self.view;
     [self.backgroundImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(superView);
+        make.left.right.and.bottom.equalTo(superView);
+        make.top.equalTo(self.mas_topLayoutGuideBottom);
     }];
     
+    CGRect frame = self.view.bounds;
+    UIImage *image = [UIImage imageNamed:@"pringt_3d_骨骼"];
+    CGFloat scaleX = image.size.width / CGRectGetWidth(frame);
+    CGFloat scaleY = image.size.height / (CGRectGetHeight(frame) - 44 - 64 - 25);
+    CGFloat scale = MAX(scaleX, scaleY);
+    
+    CGFloat height = image.size.height / scale;
+    CGFloat width = image.size.width / scale;
+    
+    [self.bonesImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(superView);
+        make.width.equalTo([NSNumber numberWithFloat:width]);
+        make.height.equalTo([NSNumber numberWithFloat:height]);
+    }];
+    
+    
+}
+
+- (void)initDataSource {
     
 }
 

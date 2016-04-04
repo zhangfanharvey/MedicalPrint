@@ -19,6 +19,8 @@
         [self.contentView addSubview:self.iconImageView];
         
         self.label = [[UILabel alloc] init];
+        self.label.font = [UIFont systemFontOfSize:15];
+        self.label.textColor = [UIColor colorWithRed:0.616 green:0.620 blue:0.624 alpha:1.00];
         [self.contentView addSubview:self.label];
         
         [self setupViewConstraints];
@@ -29,9 +31,9 @@
 - (void)setupViewConstraints {
     UIView *superView = self.contentView;
     [self.iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(superView.mas_left);
+        make.left.equalTo(superView.mas_left).offset(10);
         make.centerY.equalTo(superView.mas_centerY);
-        make.width.and.height.equalTo(@30);
+        make.width.and.height.equalTo(@22);
     }];
     
     [self.label mas_makeConstraints:^(MASConstraintMaker *make) {

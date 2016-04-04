@@ -9,6 +9,12 @@
 #import "BaseViewController.h"
 #import "MBProgressHUD.h"
 #import "Masonry.h"
+#import "HomeViewController.h"
+#import "MedicalHelpController.h"
+#import "Print3DController.h"
+#import "SettingsViewController.h"
+#import "UserPersonalCenterController.h"
+
 
 @interface BaseViewController ()
 
@@ -20,6 +26,17 @@
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
+}
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        if (!([self isKindOfClass:[HomeViewController class]] || [self isKindOfClass:[MedicalHelpController class]] || [self isKindOfClass:[Print3DController class]] || [self isKindOfClass:[SettingsViewController class]] || [self isKindOfClass:[UserPersonalCenterController class]])) {
+            self.hidesBottomBarWhenPushed = YES;
+        }
+    }
+    return self;
 }
 
 - (void)viewDidLoad {
@@ -100,7 +117,8 @@
 }
 
 - (void)hideLoadingViewWithError:(NSString *)error {
-    self.hud.label.text = error;
+    self.hud.label.text = @"失败";
+    self.hud.detailsLabel.text = error;
     [self.hud hideAnimated:YES afterDelay:1.0f];
     self.hud = nil;
 }

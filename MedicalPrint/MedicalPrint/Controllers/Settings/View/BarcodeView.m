@@ -15,6 +15,8 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.backgroundColor = [UIColor whiteColor];
+        
         self.barcodeImageView = [[UIImageView alloc] init];
         [self addSubview:self.barcodeImageView];
         
@@ -30,13 +32,13 @@
     UIView *superView = self;
     [self.barcodeImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.equalTo(superView);
-        make.width.equalTo(@190);
+        make.width.equalTo(@140);
         make.height.equalTo(self.barcodeImageView.mas_width);
     }];
     
-    [self.barcodeImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.equalTo(superView);
-        make.width.equalTo(@40);
+        make.width.equalTo(@34);
         make.height.equalTo(self.barcodeImageView.mas_width);
     }];
 }

@@ -183,8 +183,10 @@
         if (indexPath.row == 0) {
             TagLabelCell *cell = [tableView dequeueReusableCellWithIdentifier:[TagLabelCell cellIdentifier] forIndexPath:indexPath];
             cell.tagLabel.text = @"清理缓存";
-            NSString *fileSizeStr = [NSByteCountFormatter stringFromByteCount:self.cacheSize countStyle:NSByteCountFormatterCountStyleFile];
-            cell.label.text = fileSizeStr;
+            if (self.cacheSize > 0) {
+                NSString *fileSizeStr = [NSByteCountFormatter stringFromByteCount:self.cacheSize countStyle:NSByteCountFormatterCountStyleFile];
+                cell.label.text = fileSizeStr;
+            }
             return cell;
         } else if (indexPath.row == 1) {
             TagLabelCell *cell = [tableView dequeueReusableCellWithIdentifier:[TagLabelCell cellIdentifier] forIndexPath:indexPath];

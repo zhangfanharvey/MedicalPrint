@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D1549191CB0DE69006C247C /* NewsType.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1549181CB0DE69006C247C /* NewsType.m */; };
+		7D15491C1CB0E1F0006C247C /* News.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D15491B1CB0E1F0006C247C /* News.m */; };
+		7D1AD1671CB26FAD00845D53 /* MedicalCaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1AD1661CB26FAD00845D53 /* MedicalCaseCell.m */; };
 		7D222EE41CA2A12B002092D2 /* TrainClassListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D222EE31CA2A12B002092D2 /* TrainClassListController.m */; };
 		7D222EE71CA3E225002092D2 /* TrainClassCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D222EE61CA3E225002092D2 /* TrainClassCell.m */; };
 		7D222EEA1CA3E567002092D2 /* TraintClassNewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D222EE91CA3E567002092D2 /* TraintClassNewsCell.m */; };
@@ -161,6 +164,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7D1549161CB0C524006C247C /* CommonUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonUI.h; sourceTree = "<group>"; };
+		7D1549171CB0DE69006C247C /* NewsType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsType.h; sourceTree = "<group>"; };
+		7D1549181CB0DE69006C247C /* NewsType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsType.m; sourceTree = "<group>"; };
+		7D15491A1CB0E1F0006C247C /* News.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = News.h; sourceTree = "<group>"; };
+		7D15491B1CB0E1F0006C247C /* News.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = News.m; sourceTree = "<group>"; };
+		7D1AD1651CB26FAD00845D53 /* MedicalCaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MedicalCaseCell.h; sourceTree = "<group>"; };
+		7D1AD1661CB26FAD00845D53 /* MedicalCaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MedicalCaseCell.m; sourceTree = "<group>"; };
 		7D222EE21CA2A12B002092D2 /* TrainClassListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrainClassListController.h; sourceTree = "<group>"; };
 		7D222EE31CA2A12B002092D2 /* TrainClassListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrainClassListController.m; sourceTree = "<group>"; };
 		7D222EE51CA3E225002092D2 /* TrainClassCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrainClassCell.h; sourceTree = "<group>"; };
@@ -562,6 +572,7 @@
 			children = (
 				7D2CB2D01C980EA40055C7F4 /* Common.h */,
 				7DEEE1791C9BCE5000AC3B88 /* APIConfigure.h */,
+				7D1549161CB0C524006C247C /* CommonUI.h */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -949,6 +960,8 @@
 			children = (
 				7D4EEA851CA919CD0014E38D /* MedicalHelpCollectionViewCell.h */,
 				7D4EEA861CA919CD0014E38D /* MedicalHelpCollectionViewCell.m */,
+				7D1AD1651CB26FAD00845D53 /* MedicalCaseCell.h */,
+				7D1AD1661CB26FAD00845D53 /* MedicalCaseCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1082,6 +1095,10 @@
 				7D4EEAAE1CACBF530014E38D /* MedicalCaseReply.m */,
 				7D4EEA941CAAAA570014E38D /* AboutUsInfo.h */,
 				7D4EEA951CAAAA570014E38D /* AboutUsInfo.m */,
+				7D1549171CB0DE69006C247C /* NewsType.h */,
+				7D1549181CB0DE69006C247C /* NewsType.m */,
+				7D15491A1CB0E1F0006C247C /* News.h */,
+				7D15491B1CB0E1F0006C247C /* News.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1281,6 +1298,7 @@
 				7DA868851CA23F8000C3EA50 /* MyClassListController.m in Sources */,
 				7DEEE1831C9BDC5200AC3B88 /* RegisterController.m in Sources */,
 				7D57831D1CA1533300493ADC /* TAPageControl.m in Sources */,
+				7D1549191CB0DE69006C247C /* NewsType.m in Sources */,
 				7D2CB33A1C980EA40055C7F4 /* AFURLRequestSerialization.m in Sources */,
 				7D2CB35B1C980EA40055C7F4 /* UIButton+AFNetworking.m in Sources */,
 				7D2CB3471C980EA40055C7F4 /* MKAnnotationView+WebCache.m in Sources */,
@@ -1321,6 +1339,7 @@
 				7D2CB3501C980EA40055C7F4 /* UIButton+WebCache.m in Sources */,
 				7D2CB33B1C980EA40055C7F4 /* AFURLResponseSerialization.m in Sources */,
 				7D2CB3451C980EA40055C7F4 /* View+MASAdditions.m in Sources */,
+				7D1AD1671CB26FAD00845D53 /* MedicalCaseCell.m in Sources */,
 				7D222EE41CA2A12B002092D2 /* TrainClassListController.m in Sources */,
 				7D4EEAA61CACB6C90014E38D /* MedicalCaseListController.m in Sources */,
 				7D2CB3441C980EA40055C7F4 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
@@ -1371,6 +1390,7 @@
 				7D2CB3581C980EA40055C7F4 /* AFImageDownloader.m in Sources */,
 				7D61465A1CA7B384002872B1 /* MedicalHelpController.m in Sources */,
 				7D5782DE1CA1365000493ADC /* MemberInfoController.m in Sources */,
+				7D15491C1CB0E1F0006C247C /* News.m in Sources */,
 				7D2CB3481C980EA40055C7F4 /* NSData+ImageContentType.m in Sources */,
 				7D2CB3371C980EA40055C7F4 /* AFHTTPSessionManager.m in Sources */,
 				7D2CB29E1C980E5F0055C7F4 /* FirstViewController.m in Sources */,

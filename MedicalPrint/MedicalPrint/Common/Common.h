@@ -17,6 +17,8 @@
 
 #define IsSafeValue(value) ((value)!= nil && (NSNull *)(value)!= [NSNull null])
 
+#define SINGLE_LINE_WIDTH   (1 / [UIScreen mainScreen].scale)
+
 
 ///app/memeber/updatePwd.do
 ///app/memeber/updateEmail.do

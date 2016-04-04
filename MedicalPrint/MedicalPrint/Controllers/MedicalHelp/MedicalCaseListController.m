@@ -12,27 +12,45 @@
 #import "UserInfoRequest.h"
 #import "BaseTableViewCell.h"
 #import "MedicalCase.h"
+#import "MedicalCaseCell.h"
+#import "SVPullToRefresh.h"
 
 @interface MedicalCaseListController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) CaseType *caseType;
+@property (nonatomic, strong) NSMutableArray *medicalCaseArray;
 
 @end
 
 @implementation MedicalCaseListController
 
+
+- (instancetype)initWtithCaseType:(CaseType *)caseType {
+    self = [self init];
+    if (self) {
+        self.caseType = caseType;
+        self.medicalCaseArray = [[NSMutableArray alloc] init];
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
+    self.tableView.tableFooterView = [[UIView alloc] init];
     
     [self setupViewConstraints];
     [self initNaviBarItem];
     
-    [self.tableView registerClass:[BaseTableViewCell class] forCellReuseIdentifier:[BaseTableViewCell cellIdentifier]];
+    [self.tableView registerClass:[MedicalCaseCell class] forCellReuseIdentifier:[MedicalCaseCell cellIdentifier]];
+    
+    [self addPushFresh];
+    [self initDataSource];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -54,7 +72,40 @@
 
 - (void)initNaviBarItem
 {
-    self.title = @"个人信息";
+    self.title = self.caseType.name;
+}
+
+- (void)initDataSource {
+    [self showLoadingWithText:@"加载中..."];
+    [UserInfoRequest fetchMedicalCaseListForType:self.caseType withStart:0 length:20 success:^(BOOL status, NSArray *medicalCaseArray) {
+        [self hideLoadingView];
+        [self.medicalCaseArray addObjectsFromArray:medicalCaseArray];
+        
+        [self.tableView reloadData];
+    } failure:^(NSString *msg) {
+        [self hideLoadingViewWithError:@"加载失败"];
+    }];
+}
+
+- (void)loadMoreData {
+    [UserInfoRequest fetchMedicalCaseListForType:self.caseType withStart:self.medicalCaseArray.count length:20 success:^(BOOL status, NSArray *medicalCaseArray) {
+        [self hideLoadingView];
+        [self.medicalCaseArray addObjectsFromArray:medicalCaseArray];
+        
+        [self.tableView reloadData];
+        [self.tableView.infiniteScrollingView stopAnimating];
+    } failure:^(NSString *msg) {
+        [self hideLoadingViewWithError:msg];
+        [self.tableView.infiniteScrollingView stopAnimating];
+    }];
+}
+
+- (void)addPushFresh {
+    __weak MedicalCaseListController *weakSelf = self;
+    
+    [self.tableView addInfiniteScrollingWithActionHandler:^{
+        [weakSelf loadMoreData];
+    }];
 }
 
 #pragma mark - IBAction
@@ -65,18 +116,18 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 45.0f;
+    return 82.0f;
 }
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return 20.0f;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
-    return 0.0001f;
-}
+//
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+//{
+//    return 20.0f;
+//}
+//
+//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+//{
+//    return 0.0001f;
+//}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -87,7 +138,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return self.medicalCaseArray.count + 10;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -97,8 +148,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    BaseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[BaseTableViewCell cellIdentifier] forIndexPath:indexPath];
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    MedicalCaseCell *cell = [tableView dequeueReusableCellWithIdentifier:[MedicalCaseCell cellIdentifier] forIndexPath:indexPath];
+    [cell configureWithMedicalCase:nil];
     return cell;
 }
 

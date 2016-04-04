@@ -12,4 +12,6 @@
 
 @interface MedicalCaseListController : BaseViewController
 
+- (instancetype)initWtithCaseType:(CaseType *)caseType;
+
 @end
