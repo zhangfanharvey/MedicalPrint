@@ -9,7 +9,6 @@
 #import "AboutViewController.h"
 #import "BaseTableViewCell.h"
 #import "Masonry.h"
-#import "UIImage+MDQRCode.h"
 #import "UserInfoRequest.h"
 #import "AboutUsInfo.h"
 #import "IconLabelTableViewCell.h"
@@ -88,7 +87,6 @@
 
 - (void)configureData {
     self.barcodeView.barcodeImageView.image = [UIImage imageNamed:@"二维码"];
-//    self.barcodeView.barcodeImageView.image = [UIImage mdQRCodeForString:@"test" size:140];
     
 }
 
@@ -97,11 +95,19 @@
     self.barcodeView = barcodeView;
     [self.view addSubview:barcodeView];
     
+    CGFloat bottomHeight = [self bottomViewHeight];
     UIView *superView = self.view;
     [self.barcodeView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.and.bottom.equalTo(superView);
-        make.height.equalTo(@180);
+        make.height.equalTo(@(bottomHeight));
     }];
+}
+
+- (CGFloat)bottomViewHeight {
+    CGFloat height = 180;
+    height = self.view.bounds.size.height - 5 * 45.0f - 84;
+    
+    return height;
 }
 
 #pragma mark - IBAction
@@ -112,8 +118,9 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     if (indexPath.section == 1 && indexPath.row == 1) {
-        return 180;
+        return [self bottomViewHeight];
     }
     return 45.0f;
 }

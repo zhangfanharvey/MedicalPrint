@@ -67,7 +67,6 @@
 		7D2CB35E1C980EA40055C7F4 /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D2CB3301C980EA40055C7F4 /* UIRefreshControl+AFNetworking.m */; };
 		7D2CB35F1C980EA40055C7F4 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D2CB3321C980EA40055C7F4 /* UIWebView+AFNetworking.m */; };
 		7D4EEA841CA90BC30014E38D /* HomeNewsListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D4EEA831CA90BC30014E38D /* HomeNewsListCell.m */; };
-		7D4EEA871CA919CD0014E38D /* MedicalHelpCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D4EEA861CA919CD0014E38D /* MedicalHelpCollectionViewCell.m */; };
 		7D4EEA8A1CA919E40014E38D /* BaseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D4EEA891CA919E40014E38D /* BaseCollectionViewCell.m */; };
 		7D4EEA8D1CA922540014E38D /* CaseType.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D4EEA8C1CA922540014E38D /* CaseType.m */; };
 		7D4EEA901CA95E8A0014E38D /* UserPersonalCenterNavView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D4EEA8F1CA95E8A0014E38D /* UserPersonalCenterNavView.m */; };
@@ -94,14 +93,6 @@
 		7D5782E41CA144A800493ADC /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D5782E31CA144A800493ADC /* SettingsViewController.m */; };
 		7D5782E81CA145BD00493ADC /* YNBaseSwitchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D5782E71CA145BD00493ADC /* YNBaseSwitchTableViewCell.m */; };
 		7D5782EB1CA146E100493ADC /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D5782EA1CA146E100493ADC /* AboutViewController.m */; };
-		7D5782FE1CA147DD00493ADC /* bitstream.c in Sources */ = {isa = PBXBuildFile; fileRef = 7D5782EE1CA147DD00493ADC /* bitstream.c */; };
-		7D5782FF1CA147DD00493ADC /* mask.c in Sources */ = {isa = PBXBuildFile; fileRef = 7D5782F01CA147DD00493ADC /* mask.c */; };
-		7D5783001CA147DD00493ADC /* qrencode.c in Sources */ = {isa = PBXBuildFile; fileRef = 7D5782F21CA147DD00493ADC /* qrencode.c */; settings = {COMPILER_FLAGS = "-Wno-shorten-64-to-32"; }; };
-		7D5783011CA147DD00493ADC /* qrinput.c in Sources */ = {isa = PBXBuildFile; fileRef = 7D5782F41CA147DD00493ADC /* qrinput.c */; };
-		7D5783021CA147DD00493ADC /* qrspec.c in Sources */ = {isa = PBXBuildFile; fileRef = 7D5782F61CA147DD00493ADC /* qrspec.c */; };
-		7D5783031CA147DD00493ADC /* rscode.c in Sources */ = {isa = PBXBuildFile; fileRef = 7D5782F81CA147DD00493ADC /* rscode.c */; };
-		7D5783041CA147DD00493ADC /* split.c in Sources */ = {isa = PBXBuildFile; fileRef = 7D5782FA1CA147DD00493ADC /* split.c */; settings = {COMPILER_FLAGS = "-Wno-shorten-64-to-32"; }; };
-		7D5783051CA147DD00493ADC /* UIImage+MDQRCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D5782FD1CA147DD00493ADC /* UIImage+MDQRCode.m */; };
 		7D5783081CA14A0100493ADC /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D5783071CA14A0100493ADC /* HomeViewController.m */; };
 		7D57831A1CA1533300493ADC /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D57830D1CA1533300493ADC /* TAAbstractDotView.m */; };
 		7D57831B1CA1533300493ADC /* TAAnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D57830F1CA1533300493ADC /* TAAnimatedDotView.m */; };
@@ -120,6 +111,11 @@
 		7D6146641CA7ECB4002872B1 /* NSString+JsonHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D6146611CA7ECB4002872B1 /* NSString+JsonHelper.m */; };
 		7D6146671CA8350D002872B1 /* HomeTopHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D6146661CA8350D002872B1 /* HomeTopHeadView.m */; };
 		7D61466A1CA83573002872B1 /* HomeTopCatogeryItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D6146691CA83573002872B1 /* HomeTopCatogeryItemView.m */; };
+		7D6C463F1CB34B9F003C6C10 /* MedicalCaseDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D6C463E1CB34B9F003C6C10 /* MedicalCaseDetailController.m */; };
+		7D6C46421CB3527E003C6C10 /* MedicalCaseDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D6C46411CB3527E003C6C10 /* MedicalCaseDetailCell.m */; };
+		7D6C46451CB3529D003C6C10 /* MedicalHelpCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D6C46441CB3529D003C6C10 /* MedicalHelpCollectionViewCell.m */; };
+		7D6C46531CB53B0E003C6C10 /* AddressEditController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D6C46521CB53B0E003C6C10 /* AddressEditController.m */; };
+		7D6C46561CB63042003C6C10 /* TagSexSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D6C46551CB63042003C6C10 /* TagSexSelectCell.m */; };
 		7D93CB4D1CAE772C009D462F /* Print3DItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D93CB4C1CAE772C009D462F /* Print3DItemView.m */; };
 		7D996A991C994A890046566F /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D996A981C994A890046566F /* MBProgressHUD.m */; };
 		7DA868851CA23F8000C3EA50 /* MyClassListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DA868841CA23F8000C3EA50 /* MyClassListController.m */; };
@@ -296,8 +292,6 @@
 		7D2CB3611C980F250055C7F4 /* MedicalPrintPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MedicalPrintPrefixHeader.pch; sourceTree = "<group>"; };
 		7D4EEA821CA90BC30014E38D /* HomeNewsListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeNewsListCell.h; sourceTree = "<group>"; };
 		7D4EEA831CA90BC30014E38D /* HomeNewsListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeNewsListCell.m; sourceTree = "<group>"; };
-		7D4EEA851CA919CD0014E38D /* MedicalHelpCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MedicalHelpCollectionViewCell.h; path = MedicalPrint/Controllers/Home/View/MedicalHelpCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
-		7D4EEA861CA919CD0014E38D /* MedicalHelpCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MedicalHelpCollectionViewCell.m; path = MedicalPrint/Controllers/Home/View/MedicalHelpCollectionViewCell.m; sourceTree = SOURCE_ROOT; };
 		7D4EEA881CA919E40014E38D /* BaseCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCollectionViewCell.h; sourceTree = "<group>"; };
 		7D4EEA891CA919E40014E38D /* BaseCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCollectionViewCell.m; sourceTree = "<group>"; };
 		7D4EEA8B1CA922540014E38D /* CaseType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseType.h; sourceTree = "<group>"; };
@@ -350,22 +344,6 @@
 		7D5782E71CA145BD00493ADC /* YNBaseSwitchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNBaseSwitchTableViewCell.m; sourceTree = "<group>"; };
 		7D5782E91CA146E100493ADC /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		7D5782EA1CA146E100493ADC /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
-		7D5782EE1CA147DD00493ADC /* bitstream.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = bitstream.c; sourceTree = "<group>"; };
-		7D5782EF1CA147DD00493ADC /* bitstream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bitstream.h; sourceTree = "<group>"; };
-		7D5782F01CA147DD00493ADC /* mask.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mask.c; sourceTree = "<group>"; };
-		7D5782F11CA147DD00493ADC /* mask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mask.h; sourceTree = "<group>"; };
-		7D5782F21CA147DD00493ADC /* qrencode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = qrencode.c; sourceTree = "<group>"; };
-		7D5782F31CA147DD00493ADC /* qrencode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = qrencode.h; sourceTree = "<group>"; };
-		7D5782F41CA147DD00493ADC /* qrinput.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = qrinput.c; sourceTree = "<group>"; };
-		7D5782F51CA147DD00493ADC /* qrinput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = qrinput.h; sourceTree = "<group>"; };
-		7D5782F61CA147DD00493ADC /* qrspec.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = qrspec.c; sourceTree = "<group>"; };
-		7D5782F71CA147DD00493ADC /* qrspec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = qrspec.h; sourceTree = "<group>"; };
-		7D5782F81CA147DD00493ADC /* rscode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rscode.c; sourceTree = "<group>"; };
-		7D5782F91CA147DD00493ADC /* rscode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rscode.h; sourceTree = "<group>"; };
-		7D5782FA1CA147DD00493ADC /* split.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = split.c; sourceTree = "<group>"; };
-		7D5782FB1CA147DD00493ADC /* split.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = split.h; sourceTree = "<group>"; };
-		7D5782FC1CA147DD00493ADC /* UIImage+MDQRCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+MDQRCode.h"; sourceTree = "<group>"; };
-		7D5782FD1CA147DD00493ADC /* UIImage+MDQRCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+MDQRCode.m"; sourceTree = "<group>"; };
 		7D5783061CA14A0100493ADC /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		7D5783071CA14A0100493ADC /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		7D57830C1CA1533300493ADC /* TAAbstractDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAbstractDotView.h; sourceTree = "<group>"; };
@@ -402,6 +380,16 @@
 		7D6146661CA8350D002872B1 /* HomeTopHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTopHeadView.m; sourceTree = "<group>"; };
 		7D6146681CA83573002872B1 /* HomeTopCatogeryItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTopCatogeryItemView.h; sourceTree = "<group>"; };
 		7D6146691CA83573002872B1 /* HomeTopCatogeryItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTopCatogeryItemView.m; sourceTree = "<group>"; };
+		7D6C463D1CB34B9F003C6C10 /* MedicalCaseDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MedicalCaseDetailController.h; sourceTree = "<group>"; };
+		7D6C463E1CB34B9F003C6C10 /* MedicalCaseDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MedicalCaseDetailController.m; sourceTree = "<group>"; };
+		7D6C46401CB3527E003C6C10 /* MedicalCaseDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MedicalCaseDetailCell.h; sourceTree = "<group>"; };
+		7D6C46411CB3527E003C6C10 /* MedicalCaseDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MedicalCaseDetailCell.m; sourceTree = "<group>"; };
+		7D6C46431CB3529D003C6C10 /* MedicalHelpCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MedicalHelpCollectionViewCell.h; sourceTree = "<group>"; };
+		7D6C46441CB3529D003C6C10 /* MedicalHelpCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MedicalHelpCollectionViewCell.m; sourceTree = "<group>"; };
+		7D6C46511CB53B0E003C6C10 /* AddressEditController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressEditController.h; sourceTree = "<group>"; };
+		7D6C46521CB53B0E003C6C10 /* AddressEditController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressEditController.m; sourceTree = "<group>"; };
+		7D6C46541CB63042003C6C10 /* TagSexSelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagSexSelectCell.h; sourceTree = "<group>"; };
+		7D6C46551CB63042003C6C10 /* TagSexSelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagSexSelectCell.m; sourceTree = "<group>"; };
 		7D93CB4B1CAE772C009D462F /* Print3DItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Print3DItemView.h; sourceTree = "<group>"; };
 		7D93CB4C1CAE772C009D462F /* Print3DItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Print3DItemView.m; sourceTree = "<group>"; };
 		7D996A971C994A890046566F /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
@@ -596,7 +584,6 @@
 			isa = PBXGroup;
 			children = (
 				7D5783091CA1533300493ADC /* HelperUI */,
-				7D5782EC1CA147DD00493ADC /* QR */,
 				7DEEE1481C9B95F900AC3B88 /* SVPullToRefresh */,
 				7D996A961C994A890046566F /* MBProgressHUD */,
 				7D2CB2D41C980EA40055C7F4 /* AFNetworking */,
@@ -790,6 +777,8 @@
 				7DA8688A1CA244F800C3EA50 /* ContactUsController.m */,
 				7D222EEB1CA3EF08002092D2 /* AddressManagerController.h */,
 				7D222EEC1CA3EF08002092D2 /* AddressManagerController.m */,
+				7D6C46511CB53B0E003C6C10 /* AddressEditController.h */,
+				7D6C46521CB53B0E003C6C10 /* AddressEditController.m */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -801,6 +790,8 @@
 				7D222EEF1CA3F29D002092D2 /* AddressManagerCell.m */,
 				7D4EEA971CABEA690014E38D /* BarcodeView.h */,
 				7D4EEA981CABEA690014E38D /* BarcodeView.m */,
+				7D6C46541CB63042003C6C10 /* TagSexSelectCell.h */,
+				7D6C46551CB63042003C6C10 /* TagSexSelectCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -839,37 +830,6 @@
 				7D4EEA891CA919E40014E38D /* BaseCollectionViewCell.m */,
 			);
 			path = UITableViewCell;
-			sourceTree = "<group>";
-		};
-		7D5782EC1CA147DD00493ADC /* QR */ = {
-			isa = PBXGroup;
-			children = (
-				7D5782ED1CA147DD00493ADC /* libqrencode */,
-				7D5782FC1CA147DD00493ADC /* UIImage+MDQRCode.h */,
-				7D5782FD1CA147DD00493ADC /* UIImage+MDQRCode.m */,
-			);
-			path = QR;
-			sourceTree = "<group>";
-		};
-		7D5782ED1CA147DD00493ADC /* libqrencode */ = {
-			isa = PBXGroup;
-			children = (
-				7D5782EE1CA147DD00493ADC /* bitstream.c */,
-				7D5782EF1CA147DD00493ADC /* bitstream.h */,
-				7D5782F01CA147DD00493ADC /* mask.c */,
-				7D5782F11CA147DD00493ADC /* mask.h */,
-				7D5782F21CA147DD00493ADC /* qrencode.c */,
-				7D5782F31CA147DD00493ADC /* qrencode.h */,
-				7D5782F41CA147DD00493ADC /* qrinput.c */,
-				7D5782F51CA147DD00493ADC /* qrinput.h */,
-				7D5782F61CA147DD00493ADC /* qrspec.c */,
-				7D5782F71CA147DD00493ADC /* qrspec.h */,
-				7D5782F81CA147DD00493ADC /* rscode.c */,
-				7D5782F91CA147DD00493ADC /* rscode.h */,
-				7D5782FA1CA147DD00493ADC /* split.c */,
-				7D5782FB1CA147DD00493ADC /* split.h */,
-			);
-			path = libqrencode;
 			sourceTree = "<group>";
 		};
 		7D5783091CA1533300493ADC /* HelperUI */ = {
@@ -949,6 +909,8 @@
 				7D4EEA9B1CABEE910014E38D /* PublishMedicalHelpController.m */,
 				7D4EEAA41CACB6C90014E38D /* MedicalCaseListController.h */,
 				7D4EEAA51CACB6C90014E38D /* MedicalCaseListController.m */,
+				7D6C463D1CB34B9F003C6C10 /* MedicalCaseDetailController.h */,
+				7D6C463E1CB34B9F003C6C10 /* MedicalCaseDetailController.m */,
 				7D4EEAAA1CACBDD90014E38D /* MyMedicalCaseListController.h */,
 				7D4EEAAB1CACBDD90014E38D /* MyMedicalCaseListController.m */,
 			);
@@ -958,10 +920,12 @@
 		7D6146571CA7B36A002872B1 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				7D4EEA851CA919CD0014E38D /* MedicalHelpCollectionViewCell.h */,
-				7D4EEA861CA919CD0014E38D /* MedicalHelpCollectionViewCell.m */,
+				7D6C46431CB3529D003C6C10 /* MedicalHelpCollectionViewCell.h */,
+				7D6C46441CB3529D003C6C10 /* MedicalHelpCollectionViewCell.m */,
 				7D1AD1651CB26FAD00845D53 /* MedicalCaseCell.h */,
 				7D1AD1661CB26FAD00845D53 /* MedicalCaseCell.m */,
+				7D6C46401CB3527E003C6C10 /* MedicalCaseDetailCell.h */,
+				7D6C46411CB3527E003C6C10 /* MedicalCaseDetailCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1283,6 +1247,7 @@
 				7D6146631CA7ECB4002872B1 /* NSDictionary+JsonHelper.m in Sources */,
 				7DEEE1771C9BB42B00AC3B88 /* LoginViewController.m in Sources */,
 				7D2CB34B1C980EA40055C7F4 /* SDWebImageDecoder.m in Sources */,
+				7D6C46451CB3529D003C6C10 /* MedicalHelpCollectionViewCell.m in Sources */,
 				7DEEE1861C9BDEF200AC3B88 /* TagInputView.m in Sources */,
 				7D5782E41CA144A800493ADC /* SettingsViewController.m in Sources */,
 				7DEEE17C1C9BD6D500AC3B88 /* EdgeInputTextField.m in Sources */,
@@ -1315,7 +1280,6 @@
 				7DE467811CA236D700101660 /* Message.m in Sources */,
 				7DEEE1611C9BAA9000AC3B88 /* UIImage+RoundedCorner.m in Sources */,
 				7D2CB34A1C980EA40055C7F4 /* SDWebImageCompat.m in Sources */,
-				7D5783001CA147DD00493ADC /* qrencode.c in Sources */,
 				7D2CB3571C980EA40055C7F4 /* AFAutoPurgingImageCache.m in Sources */,
 				7D4EEA8D1CA922540014E38D /* CaseType.m in Sources */,
 				7D5783281CA16D8A00493ADC /* OrderListCell.m in Sources */,
@@ -1340,6 +1304,7 @@
 				7D2CB33B1C980EA40055C7F4 /* AFURLResponseSerialization.m in Sources */,
 				7D2CB3451C980EA40055C7F4 /* View+MASAdditions.m in Sources */,
 				7D1AD1671CB26FAD00845D53 /* MedicalCaseCell.m in Sources */,
+				7D6C46421CB3527E003C6C10 /* MedicalCaseDetailCell.m in Sources */,
 				7D222EE41CA2A12B002092D2 /* TrainClassListController.m in Sources */,
 				7D4EEAA61CACB6C90014E38D /* MedicalCaseListController.m in Sources */,
 				7D2CB3441C980EA40055C7F4 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
@@ -1349,7 +1314,6 @@
 				7DEEE1801C9BDA9800AC3B88 /* Theme.m in Sources */,
 				7D57831A1CA1533300493ADC /* TAAbstractDotView.m in Sources */,
 				7D57831F1CA1533300493ADC /* SDCycleScrollView.m in Sources */,
-				7D5782FF1CA147DD00493ADC /* mask.c in Sources */,
 				7D4EEA931CAA66C30014E38D /* YNBaseInfoTableViewCell.m in Sources */,
 				7D2CB35C1C980EA40055C7F4 /* UIImageView+AFNetworking.m in Sources */,
 				7DA8688E1CA24C9E00C3EA50 /* ClassDetailController.m in Sources */,
@@ -1361,21 +1325,17 @@
 				7D2CB33F1C980EA40055C7F4 /* MASConstraintMaker.m in Sources */,
 				7D2CB34D1C980EA40055C7F4 /* SDWebImageDownloaderOperation.m in Sources */,
 				7D5519661C9F82D70084A13A /* Order.m in Sources */,
-				7D5783051CA147DD00493ADC /* UIImage+MDQRCode.m in Sources */,
 				7D4EEA901CA95E8A0014E38D /* UserPersonalCenterNavView.m in Sources */,
 				7D2CB3381C980EA40055C7F4 /* AFNetworkReachabilityManager.m in Sources */,
 				7D57831E1CA1533300493ADC /* SDCollectionViewCell.m in Sources */,
 				7D2CB3391C980EA40055C7F4 /* AFSecurityPolicy.m in Sources */,
 				7D996A991C994A890046566F /* MBProgressHUD.m in Sources */,
-				7D5783041CA147DD00493ADC /* split.c in Sources */,
 				7D2CB34F1C980EA40055C7F4 /* SDWebImagePrefetcher.m in Sources */,
 				7D5782E81CA145BD00493ADC /* YNBaseSwitchTableViewCell.m in Sources */,
 				7DEEE14E1C9B95F900AC3B88 /* UIScrollView+SVInfiniteScrolling.m in Sources */,
+				7D6C46561CB63042003C6C10 /* TagSexSelectCell.m in Sources */,
 				7D2CB3531C980EA40055C7F4 /* UIImage+WebP.m in Sources */,
-				7D5783021CA147DD00493ADC /* qrspec.c in Sources */,
 				7DEEE1531C9BA2EF00AC3B88 /* RegisterAndLoginController.m in Sources */,
-				7D5783031CA147DD00493ADC /* rscode.c in Sources */,
-				7D4EEA871CA919CD0014E38D /* MedicalHelpCollectionViewCell.m in Sources */,
 				7D5519671C9F82D70084A13A /* ShippingAddress.m in Sources */,
 				7DEEE1891C9BF37200AC3B88 /* FindPasswordController.m in Sources */,
 				7D2CB35E1C980EA40055C7F4 /* UIRefreshControl+AFNetworking.m in Sources */,
@@ -1386,7 +1346,7 @@
 				7D4EEAAF1CACBF530014E38D /* MedicalCaseReply.m in Sources */,
 				7D5782EB1CA146E100493ADC /* AboutViewController.m in Sources */,
 				7D2CB34E1C980EA40055C7F4 /* SDWebImageManager.m in Sources */,
-				7D5782FE1CA147DD00493ADC /* bitstream.c in Sources */,
+				7D6C463F1CB34B9F003C6C10 /* MedicalCaseDetailController.m in Sources */,
 				7D2CB3581C980EA40055C7F4 /* AFImageDownloader.m in Sources */,
 				7D61465A1CA7B384002872B1 /* MedicalHelpController.m in Sources */,
 				7D5782DE1CA1365000493ADC /* MemberInfoController.m in Sources */,
@@ -1399,6 +1359,7 @@
 				7D222EED1CA3EF08002092D2 /* AddressManagerController.m in Sources */,
 				7D2CB3431C980EA40055C7F4 /* NSArray+MASAdditions.m in Sources */,
 				7D2CB3411C980EA40055C7F4 /* MASViewAttribute.m in Sources */,
+				7D6C46531CB53B0E003C6C10 /* AddressEditController.m in Sources */,
 				7D2CB2981C980E5F0055C7F4 /* main.m in Sources */,
 				7D2CB3561C980EA40055C7F4 /* UIView+WebCacheOperation.m in Sources */,
 				7D2CB35A1C980EA40055C7F4 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
@@ -1406,7 +1367,6 @@
 				7D5782D21CA119A500493ADC /* UserPersonalCenterController.m in Sources */,
 				7D2CB3541C980EA40055C7F4 /* UIImageView+HighlightedWebCache.m in Sources */,
 				7D6146501CA7ADB5002872B1 /* MainTabController.m in Sources */,
-				7D5783011CA147DD00493ADC /* qrinput.c in Sources */,
 				7D2CB33E1C980EA40055C7F4 /* MASConstraint.m in Sources */,
 				7D57831C1CA1533300493ADC /* TADotView.m in Sources */,
 				7D5782D81CA11F5400493ADC /* UserPersonalHeadView.m in Sources */,

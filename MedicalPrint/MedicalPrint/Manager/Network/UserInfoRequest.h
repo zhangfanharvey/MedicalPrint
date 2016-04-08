@@ -54,7 +54,11 @@
 + (void)fetchMedicalCaseListForType:(CaseType *)caseType withStart:(NSInteger)start length:(NSInteger)length success:(void(^)(BOOL status, NSArray *medicalCaseArray))block failure:(NetworkFailureBlock)failure;
 + (void)fetchMyMedicalCaseListStart:(NSInteger)start length:(NSInteger)length success:(void(^)(BOOL status, NSArray *medicalCaseArray))block failure:(NetworkFailureBlock)failure;
 + (void)addMyMedicalCaseForType:(CaseType *)caseType withTitle:(NSString *)title content:(NSString *)content success:(void(^)(BOOL status))block failure:(NetworkFailureBlock)failure;
++ (void)deleteMedicalCase:(MedicalCase *)medicalCase success:(void(^)(BOOL status))block failure:(NetworkFailureBlock)failure;
 + (void)updateMyMedicalCaseFor:(MedicalCase *)medicalCase success:(void(^)(BOOL status, MedicalCase *medicalCase))block failure:(NetworkFailureBlock)failure;
++ (void)fetchMedicalCaseReplyForCase:(MedicalCase *)medicalCase withStart:(NSInteger)start length:(NSInteger)length success:(void(^)(BOOL status, NSArray *medicalCaseReplyArray))block failure:(NetworkFailureBlock)failure;
+
+
 
 
 + (void)fetchAboutUsWithSuccess:(void(^)(BOOL status, AboutUsInfo *aboutUsInfo))block failure:(NetworkFailureBlock)failure;

@@ -9,6 +9,7 @@
 #import "PublishMedicalHelpController.h"
 #import "Masonry.h"
 #import "UserInfoRequest.h"
+#import "CaseType.h"
 
 @interface PublishMedicalHelpController ()
 
@@ -16,10 +17,19 @@
 @property (nonatomic, strong) UITextField *titleTextField;
 @property (nonatomic, strong) UITextView *contentTextView;
 @property (nonatomic, strong) UIButton *submitButton;
+@property (nonatomic, strong) CaseType *caseType;
 
 @end
 
 @implementation PublishMedicalHelpController
+
+- (instancetype)initWithCaseType:(id)caseType {
+    self = [self init];
+    if (self) {
+        self.caseType = caseType;
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -82,9 +92,9 @@
 #pragma mark - IBAction
 
 - (IBAction)submitButtonClicked:(id)sender {
-    if (self.contentTextView.text.length > 0) {
+    if (self.contentTextView.text.length > 0 && self.titleTextField.text.length > 0) {
         [self showLoadingWithText:@"加载中..."];
-        [UserInfoRequest sendFeedbackWithConten:self.contentTextView.text success:^(BOOL status) {
+        [UserInfoRequest addMyMedicalCaseForType:self.caseType withTitle:self.titleTextField.text content:self.contentTextView.text success:^(BOOL status) {
             [self hideLoadingView];
         } failure:^(NSString *msg) {
             [self hideLoadingViewWithError:msg];

@@ -118,6 +118,17 @@
                 QYLog(@"domain: '%@'\n", [cookie domain]);
                 QYLog(@"path: '%@'\n",   [cookie path]);
             }
+            NSArray *cookiesWrite = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies];
+            for (NSHTTPCookie *cookie in cookiesWrite) {
+                // Here I see the correct rails session cookie
+                NSLog(@"Block cookie: %@", cookie);
+            }
+            
+            NSData *cookiesData = [NSKeyedArchiver archivedDataWithRootObject: [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies]];
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setObject: cookiesData forKey: @"sessionCookies"];
+            [defaults synchronize];
+
             User *user = [[User alloc] init];
             [user configureWithDic:bodyDic];
             accountManager.user = user;
@@ -675,6 +686,34 @@
     }];
 }
 
++ (void)deleteMedicalCase:(MedicalCase *)medicalCase success:(void(^)(BOOL status))block failure:(NetworkFailureBlock)failure {
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    [dic setObject:medicalCase.p_ID forKey:@"id"];
+    
+    NSString *url = [NSString stringWithFormat:@"%@%@", kMPBaseUrl, kMPDeleteMedicalCaseUrl];
+    
+    [[NetworkManager sharedManager] POST:url parameters:dic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        QYLog(@"deleteMedicalCase success%@", responseObject);
+        if ([NetworkManager isResponseSuccess:responseObject]) {
+//            NSDictionary *responseDic = (NSDictionary *)responseObject;
+//            NSDictionary *bodyDic = responseDic[@"body"];
+            if (block) {
+                block(YES);
+            }
+        } else {
+            NSString *errorMsg = responseObject[@"msg"];
+            if (failure) {
+                failure(errorMsg);
+            }
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        QYLog(@"deleteMedicalCase failure :%@", error.localizedDescription);
+        if (failure) {
+            failure(error.localizedDescription);
+        }
+    }];
+}
+
 + (void)updateMyMedicalCaseFor:(MedicalCase *)medicalCase success:(void(^)(BOOL status, MedicalCase *medicalCase))block failure:(NetworkFailureBlock)failure {
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     [dic setObject:medicalCase.p_ID forKey:@"caseTypeId"];
@@ -704,6 +743,43 @@
         }
     }];
 
+}
+
++ (void)fetchMedicalCaseReplyForCase:(MedicalCase *)medicalCase withStart:(NSInteger)start length:(NSInteger)length success:(void(^)(BOOL status, NSArray *medicalCaseReplyArray))block failure:(NetworkFailureBlock)failure {
+    NSString *url = [NSString stringWithFormat:@"%@%@", kMPBaseUrl, kMPFetchMedicalCaseReplyUrl];
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    [dic setObject:medicalCase.p_ID forKey:@"id"];
+    [dic setObject:@(start) forKey:@"start"];
+    [dic setObject:@(length) forKey:@"length"];
+    
+    [[NetworkManager sharedManager] POST:url parameters:dic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        QYLog(@"fetchMedicalCaseReplyForCase success%@", responseObject);
+        if ([NetworkManager isResponseSuccess:responseObject]) {
+            NSDictionary *responseDic = (NSDictionary *)responseObject;
+            NSArray *bodyArray = responseDic[@"body"];
+            NSMutableArray *meicalcaseArray = [[NSMutableArray alloc] init];
+            for (NSDictionary *dic in bodyArray) {
+                if (dic && [dic isKindOfClass:[NSDictionary class]]) {
+                    MedicalCaseReply *medicalCaseReply = [[MedicalCaseReply alloc] init];
+                    [medicalCaseReply configureWithDic:dic];
+                    [meicalcaseArray addObject:medicalCaseReply];
+                }
+            }
+            if (block) {
+                block(YES, meicalcaseArray);
+            }
+        } else {
+            NSString *errorMsg = responseObject[@"msg"];
+            if (failure) {
+                failure(errorMsg);
+            }
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        QYLog(@"fetchMedicalCaseReplyForCase failure :%@", error.localizedDescription);
+        if (failure) {
+            failure(error.localizedDescription);
+        }
+    }];
 }
 
 + (void)fetchAboutUsWithSuccess:(void(^)(BOOL status, AboutUsInfo *aboutUsInfo))block failure:(NetworkFailureBlock)failure {

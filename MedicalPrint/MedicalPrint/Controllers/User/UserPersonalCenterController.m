@@ -17,6 +17,7 @@
 #import "AccountManager.h"
 #import "UIImageView+WebCache.h"
 #import "MessageCenterController.h"
+#import "AddressManagerController.h"
 
 @interface UserPersonalCenterController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -184,7 +185,8 @@
             switch (indexPath.row) {
                 case 0:
                 {
-                    
+                    AddressManagerController *addressManagerVC = [[AddressManagerController alloc] init];
+                    [self.navigationController pushViewController:addressManagerVC animated:YES];
                 }
                     break;
                 case 1:

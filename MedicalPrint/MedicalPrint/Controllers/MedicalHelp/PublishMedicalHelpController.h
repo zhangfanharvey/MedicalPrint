@@ -8,6 +8,10 @@
 
 #import "BaseViewController.h"
 
+@class CaseType;
+
 @interface PublishMedicalHelpController : BaseViewController
+
+- (instancetype)initWithCaseType:(CaseType *)caseType;
 
 @end

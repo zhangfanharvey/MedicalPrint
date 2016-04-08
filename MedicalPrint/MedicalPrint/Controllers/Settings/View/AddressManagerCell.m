@@ -28,6 +28,9 @@
         self.nickNameLabel = [[UILabel alloc] init];
         [self.contentView addSubview:self.nickNameLabel];
         
+        self.sexLabel = [[UILabel alloc] init];
+        [self.contentView addSubview:self.sexLabel];
+
         self.phoneLabel = [[UILabel alloc] init];
         [self.contentView addSubview:self.phoneLabel];
         
@@ -41,9 +44,13 @@
         [self.contentView addSubview:self.locationLabel];
 
         self.editButton = [[UIButton alloc] init];
+        [self.editButton setImage:[UIImage imageNamed:@"address_编辑按钮_常态"] forState:UIControlStateNormal];
+        [self.editButton setImage:[UIImage imageNamed:@"address_编辑按钮_按下"] forState:UIControlStateHighlighted];
         [self.contentView addSubview:self.editButton];
         
         self.deleteButton = [[UIButton alloc] init];
+        [self.deleteButton setImage:[UIImage imageNamed:@"address_删除按钮_常态"] forState:UIControlStateNormal];
+        [self.deleteButton setImage:[UIImage imageNamed:@"address_删除按钮_按下"] forState:UIControlStateHighlighted];
         [self.contentView addSubview:self.deleteButton];
         
         [self setupViewConstraints];
@@ -56,26 +63,36 @@
     [self.nickNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(superView.mas_left).offset(15);
         make.top.equalTo(superView.mas_top).offset(15);
-        make.width.lessThanOrEqualTo(@260);
+        make.width.equalTo(@90);
+//        make.width.lessThanOrEqualTo(@260);
     }];
     
+    [self.sexLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(superView.mas_left).offset(115);
+        make.top.equalTo(self.nickNameLabel.mas_top);
+        make.right.lessThanOrEqualTo(self.editButton.mas_left).offset(-10);
+    }];
+
+    
     [self.phoneLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.nickNameLabel);
-        make.top.equalTo(self.nickNameLabel.mas_bottom).offset(5);
+        make.left.equalTo(self.nickNameLabel.mas_left);
+        make.top.equalTo(self.nickNameLabel.mas_bottom).offset(4);
         make.right.equalTo(self.editButton.mas_right).offset(-10);
     }];
     
     [self.cityLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.phoneLabel.mas_bottom).offset(10);
-        make.left.equalTo(self.nickNameLabel);
+        make.top.equalTo(self.phoneLabel.mas_bottom).offset(8);
+        make.left.equalTo(self.nickNameLabel.mas_left);
 //        make.bottom.equalTo(superView.mas_bottom).offset(-10);
-        make.right.equalTo(self.zipCodeLabel.mas_left).offset(-15);
+//        make.right.equalTo(self.zipCodeLabel.mas_left).offset(-15);
     }];
     
     [self.zipCodeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.cityLabel.mas_top);
-        make.right.equalTo(superView.mas_right).offset(-15);
+        make.left.equalTo(self.cityLabel.mas_right).offset(20);
+        make.right.lessThanOrEqualTo(self.editButton.mas_left).offset(-10);
     }];
+    
     [self.locationLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.nickNameLabel.mas_left);
         make.top.equalTo(self.zipCodeLabel.mas_bottom).offset(5);
@@ -84,20 +101,44 @@
     
     [self.editButton mas_makeConstraints:^(MASConstraintMaker *make) {
 //        make.top.equalTo(superView.mas_top).offset(20).multipliedBy(1.0);
-        make.centerY.equalTo(superView.mas_centerY).offset(-60);
+        make.centerY.equalTo(superView.mas_centerY).offset(-30);
         make.right.equalTo(superView.mas_right).offset(-15);
         make.width.and.height.equalTo(@40);
     }];
     
-    [self.editButton mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.deleteButton mas_makeConstraints:^(MASConstraintMaker *make) {
 //        make.top.equalTo(superView.mas_top).offset(20);
-        make.centerY.equalTo(superView.mas_centerY).offset(-60);
+        make.centerY.equalTo(superView.mas_centerY).offset(20);
         make.right.equalTo(superView.mas_right).offset(-15);
         make.width.and.height.equalTo(@40);
     }];
 
     
     
+}
+
+/*
+ @property (nonatomic, strong) NSString *p_ID;
+ @property (nonatomic, strong) NSNumber *memberId;
+ @property (nonatomic, strong) NSString *name;
+ @property (nonatomic, assign) NSInteger sex;
+ @property (nonatomic, strong) NSString *phone;
+ @property (nonatomic, strong) NSString *address;
+*/
+
+- (void)configureWithShipAddress:(ShippingAddress *)shipAddress {
+    self.shipAddress = shipAddress;
+    [self configureWithFakeData];
+}
+
+- (void)configureWithFakeData {
+    self.nickNameLabel.text = @"name";
+    self.sexLabel.text = @"sexLabel";
+
+    self.phoneLabel.text = @"phoneLabel";
+    self.cityLabel.text = @"cityLabel";
+    self.zipCodeLabel.text = @"zipCodeLabel";
+    self.locationLabel.text = @"locationLabel";
 }
 
 @end

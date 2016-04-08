@@ -42,6 +42,8 @@
 #define kMPUpdateMyMedicalCaseUrl  @"/app/cases/saveCase.do"
 #define kMPFetchListNewsTypeUrl  @"/app/homepage/listNewsType.do"
 #define kMPFetchMyNewsUrl  @"/app/homepage/listNews.do"
+#define kMPFetchMedicalCaseReplyUrl  @"/app/cases/listCaseReply.do"
+#define kMPDeleteMedicalCaseUrl  @"/app/cases/deleteCase.do"
 
 
 #endif /* APIConfigure_h */

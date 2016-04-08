@@ -14,6 +14,7 @@
 #import "MedicalCase.h"
 #import "MedicalCaseCell.h"
 #import "SVPullToRefresh.h"
+#import "PublishMedicalHelpController.h"
 
 @interface MedicalCaseListController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -73,6 +74,7 @@
 - (void)initNaviBarItem
 {
     self.title = self.caseType.name;
+    [self initNavBarButtonItemWithTitle:@"发布" action:@selector(publishMedicalCaseHelp:) isLeft:NO];
 }
 
 - (void)initDataSource {
@@ -110,7 +112,10 @@
 
 #pragma mark - IBAction
 
-
+- (IBAction)publishMedicalCaseHelp:(id)sender {
+    PublishMedicalHelpController *publishMedicalHelpVC = [[PublishMedicalHelpController alloc] initWithCaseType:self.caseType];
+    [self.navigationController pushViewController:publishMedicalHelpVC animated:YES];
+}
 
 #pragma mark - UITableViewDelegate
 
@@ -132,6 +137,29 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return UITableViewCellEditingStyleDelete;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        MedicalCase *medicalCase = [self.medicalCaseArray objectAtIndex:indexPath.row];
+        [self showLoadingWithText:@"删除中..."];
+        [UserInfoRequest deleteMedicalCase:medicalCase success:^(BOOL status) {
+            [self hideLoadingView];
+            [self.self.medicalCaseArray removeObjectAtIndex:indexPath.row];
+            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        } failure:^(NSString *msg) {
+            [self hideLoadingViewWithError:@"删除失败"];
+        }];
+    }
 }
 
 #pragma mark - UITableViewDataSource

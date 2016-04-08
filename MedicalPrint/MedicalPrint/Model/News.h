@@ -20,6 +20,8 @@
 @property (nonatomic, strong) NSString *content;
 @property (nonatomic, strong) NSString *icon;
 @property (nonatomic, strong) NSString *createTimeLong;
+@property (nonatomic, strong) NSString *createTimeStr;
+@property (nonatomic, strong) NSString *newsTypeName;
 
 - (void)configureWithDic:(NSDictionary *)dic;
 

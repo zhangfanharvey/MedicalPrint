@@ -51,7 +51,15 @@
     if (IsSafeValue(valueStr)) {
         self.createTimeLong = valueStr;
     }
-    
+    valueStr = dic[@"createTimeStr"];
+    if (IsSafeValue(valueStr)) {
+        self.createTimeStr = valueStr;
+    }
+    valueStr = dic[@"newsTypeName"];
+    if (IsSafeValue(valueStr)) {
+        self.newsTypeName = valueStr;
+    }
+
 }
 
 @end
