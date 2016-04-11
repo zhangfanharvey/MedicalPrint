@@ -22,4 +22,6 @@
 - (void)hideLoadingView;
 - (void)hideLoadingViewWithError:(NSString *)error;
 
+- (IBAction)backButtonClicked:(id)sender;
+
 @end

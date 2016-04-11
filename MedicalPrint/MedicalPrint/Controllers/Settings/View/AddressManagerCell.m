@@ -26,21 +26,27 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.nickNameLabel = [[UILabel alloc] init];
+        self.nickNameLabel.textColor = [UIColor colorWithRed:0.314 green:0.318 blue:0.322 alpha:1.00];
         [self.contentView addSubview:self.nickNameLabel];
         
         self.sexLabel = [[UILabel alloc] init];
+        self.sexLabel.textColor = [UIColor colorWithRed:0.314 green:0.318 blue:0.322 alpha:1.00];
         [self.contentView addSubview:self.sexLabel];
 
         self.phoneLabel = [[UILabel alloc] init];
+        self.phoneLabel.textColor = [UIColor colorWithRed:0.314 green:0.318 blue:0.322 alpha:1.00];
         [self.contentView addSubview:self.phoneLabel];
         
         self.cityLabel = [[UILabel alloc] init];
+        self.cityLabel.textColor = [UIColor colorWithRed:0.592 green:0.596 blue:0.600 alpha:1.00];
         [self.contentView addSubview:self.cityLabel];
         
         self.zipCodeLabel = [[UILabel alloc] init];
+        self.zipCodeLabel.textColor = [UIColor colorWithRed:0.592 green:0.596 blue:0.600 alpha:1.00];
         [self.contentView addSubview:self.zipCodeLabel];
 
         self.locationLabel = [[UILabel alloc] init];
+        self.locationLabel.textColor = [UIColor colorWithRed:0.592 green:0.596 blue:0.600 alpha:1.00];
         [self.contentView addSubview:self.locationLabel];
 
         self.editButton = [[UIButton alloc] init];
@@ -68,7 +74,7 @@
     }];
     
     [self.sexLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(superView.mas_left).offset(115);
+        make.left.equalTo(superView.mas_left).offset(74);
         make.top.equalTo(self.nickNameLabel.mas_top);
         make.right.lessThanOrEqualTo(self.editButton.mas_left).offset(-10);
     }];

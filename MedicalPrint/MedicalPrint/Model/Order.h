@@ -34,4 +34,6 @@
 
 - (void)configureWithDic:(NSDictionary *)dic;
 
+- (NSString *)orderStatusImageName;
+
 @end

@@ -34,6 +34,7 @@
     if (self) {
         if (!([self isKindOfClass:[HomeViewController class]] || [self isKindOfClass:[MedicalHelpController class]] || [self isKindOfClass:[Print3DController class]] || [self isKindOfClass:[SettingsViewController class]] || [self isKindOfClass:[UserPersonalCenterController class]])) {
             self.hidesBottomBarWhenPushed = YES;
+            [self initNavBarButtonItemWithImages:@[@"顶部撤回键"] action:@selector(backButtonClicked:) isLeft:YES];
         }
     }
     return self;
@@ -42,6 +43,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];(
     self.navigationController.navigationBar.barStyle = (UIBarStyle)[self preferredStatusBarStyle]);
+    
+//    [self initNavBarButtonItemWithImages:@[@"顶部撤回键"] action:@selector(backButtonClicked:) isLeft:YES];
 }
 
 #pragma mark - Navigation Bar methods
@@ -123,6 +126,10 @@
     self.hud = nil;
 }
 
+#pragma mark - IBAction
 
+- (IBAction)backButtonClicked:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 @end

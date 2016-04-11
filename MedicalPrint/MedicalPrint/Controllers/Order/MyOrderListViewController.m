@@ -10,27 +10,51 @@
 #import "BaseTableViewCell.h"
 #import "Masonry.h"
 #import "UserInfoRequest.h"
+#import "OrderListCell.h"
+#import "SVPullToRefresh.h"
+#import "Order.h"
 
 @interface MyOrderListViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) NSMutableArray *myOrderArray;
 
 @end
 
 @implementation MyOrderListViewController
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.myOrderArray = [[NSMutableArray alloc] init];
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
+    self.tableView.tableFooterView = [[UIView alloc] init];
+    self.tableView.separatorColor = [UIColor colorWithRed:0.929 green:0.933 blue:0.937 alpha:1.00];
     
     [self setupViewConstraints];
     [self initNaviBarItem];
     
-    [self.tableView registerClass:[BaseTableViewCell class] forCellReuseIdentifier:[BaseTableViewCell cellIdentifier]];
+    [self.tableView registerClass:[OrderListCell class] forCellReuseIdentifier:[OrderListCell cellIdentifier]];
+    
+    [self initDataSource];
+    
+    [self createRefreshView];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -52,7 +76,36 @@
 
 - (void)initNaviBarItem
 {
-    self.title = @"个人信息";
+    self.title = @"我的订单";
+}
+
+- (void)initDataSource {
+    [self showLoadingWithText:@"加载中..."];
+    [UserInfoRequest fetchOrderList:0 length:20 success:^(BOOL status, NSArray *addressArray) {
+        [self.myOrderArray addObjectsFromArray:addressArray];
+        [self hideLoadingView];
+        [self.tableView reloadData];
+    } failure:^(NSString *msg) {
+        [self hideLoadingViewWithError:@"加载失败"];
+    }];
+    
+}
+
+- (void)loadMoreData {
+    [UserInfoRequest fetchOrderList:self.myOrderArray.count length:20 success:^(BOOL status, NSArray *addressArray) {
+        [self.tableView.infiniteScrollingView stopAnimating];
+        [self.myOrderArray addObjectsFromArray:addressArray];
+        [self.tableView reloadData];
+    } failure:^(NSString *msg) {
+        [self.tableView.infiniteScrollingView stopAnimating];
+    }];
+}
+
+- (void)createRefreshView {
+    __weak MyOrderListViewController *weakSelf = self;
+    [self.tableView addInfiniteScrollingWithActionHandler:^{
+        [weakSelf loadMoreData];
+    }];
 }
 
 #pragma mark - IBAction
@@ -63,17 +116,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 45.0f;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return 20.0f;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
-    return 0.0001f;
+    return 86.0f;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -85,7 +128,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return self.myOrderArray.count + 3;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -95,8 +138,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    BaseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[BaseTableViewCell cellIdentifier] forIndexPath:indexPath];
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    OrderListCell *cell = [tableView dequeueReusableCellWithIdentifier:[OrderListCell cellIdentifier] forIndexPath:indexPath];
+//    Order *order = [self.myOrderArray objectAtIndex:indexPath.row];
+//    [cell configureWithOrder:order];
+    [cell configureWithOrder:nil];
     return cell;
 }
 

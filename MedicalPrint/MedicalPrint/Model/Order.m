@@ -59,4 +59,25 @@
 
 
 }
+
+- (NSString *)orderStatusImageName {
+    NSString *imageName = nil;
+    switch (self.state) {
+        case 0:
+        {
+            imageName = @"未完成";
+        }
+            break;
+        case 1:
+        {
+            imageName = @"已完成";
+        }
+            break;
+
+        default:
+            break;
+    }
+    return imageName;
+}
+
 @end
