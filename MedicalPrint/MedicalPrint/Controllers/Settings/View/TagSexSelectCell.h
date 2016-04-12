@@ -18,6 +18,8 @@
 @property (nonatomic, strong) UIButton *firstButton;
 @property (nonatomic, strong) UIButton *secondButton;
 
+@property (nonatomic, assign) BOOL maleSelected;
+
 - (void)selectMale:(BOOL)male;
 
 @end

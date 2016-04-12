@@ -18,6 +18,8 @@
 #import "UIImageView+WebCache.h"
 #import "MessageCenterController.h"
 #import "AddressManagerController.h"
+#import "FeedbackViewController.h"
+#import "MyOrderListViewController.h"
 
 @interface UserPersonalCenterController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -166,7 +168,9 @@
             switch (indexPath.row) {
                 case 0:
                 {
-                    
+                    MyOrderListViewController *myOrderListVC = [[MyOrderListViewController alloc] init];
+                    [self.navigationController pushViewController:myOrderListVC animated:YES];
+
                 }
                     break;
                 case 1:
@@ -191,7 +195,8 @@
                     break;
                 case 1:
                 {
-                    
+                    FeedbackViewController *feedBackVC = [[FeedbackViewController alloc] init];
+                    [self.navigationController pushViewController:feedBackVC animated:YES];
                 }
                     break;
                     

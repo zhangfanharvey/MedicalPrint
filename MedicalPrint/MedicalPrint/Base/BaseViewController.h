@@ -22,6 +22,8 @@
 - (void)hideLoadingView;
 - (void)hideLoadingViewWithError:(NSString *)error;
 
+- (IBAction)backButtonClicked:(id)sender;
+
 #pragma mark - no result
 - (void)showNoResultPrompt;
 - (void)hideNoResultPrompt;

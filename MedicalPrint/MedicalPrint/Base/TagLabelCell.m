@@ -8,6 +8,7 @@
 
 #import "TagLabelCell.h"
 #import "Masonry.h"
+#import "UIImage+Resize.h"
 
 @implementation TagLabelCell
 
@@ -17,6 +18,7 @@
     if (self) {
         self.tagLabel = [[UILabel alloc] init];
         self.tagLabel.font = [UIFont systemFontOfSize:kCommonCellFontSize];
+        self.tagLabel.textColor = [UIColor colorWithRed:0.314 green:0.318 blue:0.322 alpha:1.00];
         [self.contentView addSubview:self.tagLabel];
         
         self.label = [[UILabel alloc] init];
@@ -26,6 +28,9 @@
         
         self.textField = [[UITextField alloc] init];
         self.textField.hidden = YES;
+        self.textField.background = [[UIImage imageNamed:@"address_输入底框"] generalResizableImageWithCenter];
+        
+        self.textField.textColor = [UIColor colorWithRed:0.314 green:0.318 blue:0.322 alpha:1.00];
         [self.contentView addSubview:self.textField];
         
         
@@ -52,6 +57,7 @@
         make.left.equalTo(self.label.mas_left);
         make.centerY.equalTo(superView.mas_centerY);
         make.right.equalTo(superView.mas_right).offset(-15);
+        make.height.equalTo(@24);
     }];
 }
 

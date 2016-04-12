@@ -10,5 +10,7 @@
 #define CommonUI_h
 
 #define kCommonCellFontSize 15
+#define kBigCellFontSize 16
+#define kLittleCellFontSize 13
 
 #endif /* CommonUI_h */

@@ -13,6 +13,7 @@
 #import "AddressManagerCell.h"
 #import "ShippingAddress.h"
 #import "SVPullToRefresh.h"
+#import "AddressEditController.h"
 
 @interface AddressManagerController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -75,6 +76,8 @@
 - (void)initNaviBarItem
 {
     self.title = @"地址管理";
+    [self initNavBarButtonItemWithImages:@[@"顶部撤回键"] action:@selector(backButtonClicked:) isLeft:YES];
+    [self initNavBarButtonItemWithTitle:@"新增" action:@selector(addAddressButtonClicked:) isLeft:NO];
 }
 
 - (void)initDataSource {
@@ -112,6 +115,11 @@
     UIButton *button = (UIButton *)sender;
     ShippingAddress *address = [self.shipAddressArray objectAtIndex:button.tag];
     
+}
+
+- (IBAction)addAddressButtonClicked:(id)sender {
+    AddressEditController *addressEditVC = [[AddressEditController alloc] init];
+    [self.navigationController pushViewController:addressEditVC animated:YES];
 }
 
 - (IBAction)deleteButtonClicked:(id)sender {

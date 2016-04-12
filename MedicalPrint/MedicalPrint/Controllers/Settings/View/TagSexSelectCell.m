@@ -16,12 +16,21 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.tagLabel = [[UILabel alloc] init];
+        self.tagLabel.textColor = [UIColor colorWithRed:0.314 green:0.318 blue:0.322 alpha:1.00];
+        self.tagLabel.font = [UIFont systemFontOfSize:kCommonCellFontSize];
+
         [self.contentView addSubview:self.tagLabel];
         
         self.firstLabel = [[UILabel alloc] init];
+        self.firstLabel.text = @"先生";
+        self.firstLabel.textColor = [UIColor colorWithRed:0.314 green:0.318 blue:0.322 alpha:1.00];
+        self.firstLabel.font = [UIFont systemFontOfSize:kCommonCellFontSize];
         [self.contentView addSubview:self.firstLabel];
 
         self.secondLabel = [[UILabel alloc] init];
+        self.secondLabel.text = @"女士";
+        self.secondLabel.font = [UIFont systemFontOfSize:kCommonCellFontSize];
+        self.secondLabel.textColor = [UIColor colorWithRed:0.314 green:0.318 blue:0.322 alpha:1.00];
         [self.contentView addSubview:self.secondLabel];
         
         self.firstImageView = [[UIImageView alloc] init];
@@ -55,7 +64,7 @@
     [self.firstImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.firstLabel.mas_left).offset(-10);
         make.centerY.equalTo(superView.mas_centerY);
-        make.width.and.height.equalTo(@30);
+        make.width.and.height.equalTo(@20);
     }];
     
     [self.firstLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -67,7 +76,7 @@
     [self.secondImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.secondLabel.mas_left).offset(-10);
         make.centerY.equalTo(superView.mas_centerY);
-        make.width.and.height.equalTo(@30);
+        make.width.and.height.equalTo(@20);
     }];
     
     [self.secondLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -92,6 +101,7 @@
 }
 
 - (void)selectMale:(BOOL)male {
+    self.maleSelected = male;
     if (male) {
         self.firstImageView.image = [UIImage imageNamed:@"address_先生"];
         self.secondImageView.image = [UIImage imageNamed:@"address_女士"];

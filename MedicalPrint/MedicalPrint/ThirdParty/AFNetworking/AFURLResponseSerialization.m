@@ -245,7 +245,7 @@ static id AFJSONObjectByRemovingKeysWithNullValues(id JSONObject, NSJSONReadingO
     // Workaround for behavior of Rails to return a single space for `head :ok` (a workaround for a bug in Safari), which is not interpreted as valid input by NSJSONSerialization.
     // See https://github.com/rails/rails/issues/1742
     BOOL isSpace = [data isEqualToData:[NSData dataWithBytes:" " length:1]];
-    NSString *tempStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+//    NSString *tempStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     if (data.length > 0 && !isSpace) {
         responseObject = [NSJSONSerialization JSONObjectWithData:data options:self.readingOptions error:&serializationError];
     } else {
