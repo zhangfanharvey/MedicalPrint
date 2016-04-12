@@ -116,6 +116,9 @@
 		7D6C46451CB3529D003C6C10 /* MedicalHelpCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D6C46441CB3529D003C6C10 /* MedicalHelpCollectionViewCell.m */; };
 		7D6C46531CB53B0E003C6C10 /* AddressEditController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D6C46521CB53B0E003C6C10 /* AddressEditController.m */; };
 		7D6C46561CB63042003C6C10 /* TagSexSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D6C46551CB63042003C6C10 /* TagSexSelectCell.m */; };
+		7D6C5DA11CBB7324002E088E /* SearchNewsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D6C5DA01CBB7324002E088E /* SearchNewsController.m */; };
+		7D6C5DAA1CBB7774002E088E /* MLPAutoCompleteTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D6C5DA41CBB7774002E088E /* MLPAutoCompleteTextField.m */; };
+		7D6C5DAB1CBB7774002E088E /* NSString+Levenshtein.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D6C5DA91CBB7774002E088E /* NSString+Levenshtein.m */; };
 		7D93CB4D1CAE772C009D462F /* Print3DItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D93CB4C1CAE772C009D462F /* Print3DItemView.m */; };
 		7D996A991C994A890046566F /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D996A981C994A890046566F /* MBProgressHUD.m */; };
 		7DA868851CA23F8000C3EA50 /* MyClassListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DA868841CA23F8000C3EA50 /* MyClassListController.m */; };
@@ -390,6 +393,15 @@
 		7D6C46521CB53B0E003C6C10 /* AddressEditController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressEditController.m; sourceTree = "<group>"; };
 		7D6C46541CB63042003C6C10 /* TagSexSelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagSexSelectCell.h; sourceTree = "<group>"; };
 		7D6C46551CB63042003C6C10 /* TagSexSelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagSexSelectCell.m; sourceTree = "<group>"; };
+		7D6C5D9F1CBB7324002E088E /* SearchNewsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchNewsController.h; sourceTree = "<group>"; };
+		7D6C5DA01CBB7324002E088E /* SearchNewsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchNewsController.m; sourceTree = "<group>"; };
+		7D6C5DA31CBB7774002E088E /* MLPAutoCompleteTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLPAutoCompleteTextField.h; sourceTree = "<group>"; };
+		7D6C5DA41CBB7774002E088E /* MLPAutoCompleteTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLPAutoCompleteTextField.m; sourceTree = "<group>"; };
+		7D6C5DA51CBB7774002E088E /* MLPAutoCompleteTextFieldDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLPAutoCompleteTextFieldDataSource.h; sourceTree = "<group>"; };
+		7D6C5DA61CBB7774002E088E /* MLPAutoCompleteTextFieldDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLPAutoCompleteTextFieldDelegate.h; sourceTree = "<group>"; };
+		7D6C5DA71CBB7774002E088E /* MLPAutoCompletionObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLPAutoCompletionObject.h; sourceTree = "<group>"; };
+		7D6C5DA81CBB7774002E088E /* NSString+Levenshtein.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Levenshtein.h"; sourceTree = "<group>"; };
+		7D6C5DA91CBB7774002E088E /* NSString+Levenshtein.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Levenshtein.m"; sourceTree = "<group>"; };
 		7D93CB4B1CAE772C009D462F /* Print3DItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Print3DItemView.h; sourceTree = "<group>"; };
 		7D93CB4C1CAE772C009D462F /* Print3DItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Print3DItemView.m; sourceTree = "<group>"; };
 		7D996A971C994A890046566F /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
@@ -740,6 +752,8 @@
 				7D55196D1C9FD75B0084A13A /* View */,
 				7D5783061CA14A0100493ADC /* HomeViewController.h */,
 				7D5783071CA14A0100493ADC /* HomeViewController.m */,
+				7D6C5D9F1CBB7324002E088E /* SearchNewsController.h */,
+				7D6C5DA01CBB7324002E088E /* SearchNewsController.m */,
 				7DE467791CA2331F00101660 /* MessageCenterController.h */,
 				7DE4677A1CA2331F00101660 /* MessageCenterController.m */,
 				7D61464E1CA7ADB5002872B1 /* MainTabController.h */,
@@ -835,6 +849,7 @@
 		7D5783091CA1533300493ADC /* HelperUI */ = {
 			isa = PBXGroup;
 			children = (
+				7D6C5DA21CBB7774002E088E /* MLPAutoCompleteTextField */,
 				7D57830A1CA1533300493ADC /* SDCycleScrollView */,
 			);
 			path = HelperUI;
@@ -941,6 +956,20 @@
 				7D6146611CA7ECB4002872B1 /* NSString+JsonHelper.m */,
 			);
 			path = YNJsonHelper;
+			sourceTree = "<group>";
+		};
+		7D6C5DA21CBB7774002E088E /* MLPAutoCompleteTextField */ = {
+			isa = PBXGroup;
+			children = (
+				7D6C5DA31CBB7774002E088E /* MLPAutoCompleteTextField.h */,
+				7D6C5DA41CBB7774002E088E /* MLPAutoCompleteTextField.m */,
+				7D6C5DA51CBB7774002E088E /* MLPAutoCompleteTextFieldDataSource.h */,
+				7D6C5DA61CBB7774002E088E /* MLPAutoCompleteTextFieldDelegate.h */,
+				7D6C5DA71CBB7774002E088E /* MLPAutoCompletionObject.h */,
+				7D6C5DA81CBB7774002E088E /* NSString+Levenshtein.h */,
+				7D6C5DA91CBB7774002E088E /* NSString+Levenshtein.m */,
+			);
+			path = MLPAutoCompleteTextField;
 			sourceTree = "<group>";
 		};
 		7D93CB4A1CAE7720009D462F /* View */ = {
@@ -1253,6 +1282,7 @@
 				7DEEE17C1C9BD6D500AC3B88 /* EdgeInputTextField.m in Sources */,
 				7D5519681C9F82D70084A13A /* User.m in Sources */,
 				7D4EEA8A1CA919E40014E38D /* BaseCollectionViewCell.m in Sources */,
+				7D6C5DAA1CBB7774002E088E /* MLPAutoCompleteTextField.m in Sources */,
 				7DEEE1741C9BAF4800AC3B88 /* YouniNavigationController.m in Sources */,
 				7D6146641CA7ECB4002872B1 /* NSString+JsonHelper.m in Sources */,
 				7D5782D51CA11A5200493ADC /* BaseTableViewCell.m in Sources */,
@@ -1318,6 +1348,7 @@
 				7D2CB35C1C980EA40055C7F4 /* UIImageView+AFNetworking.m in Sources */,
 				7DA8688E1CA24C9E00C3EA50 /* ClassDetailController.m in Sources */,
 				7D2CB35D1C980EA40055C7F4 /* UIProgressView+AFNetworking.m in Sources */,
+				7D6C5DAB1CBB7774002E088E /* NSString+Levenshtein.m in Sources */,
 				7DEEE1601C9BAA9000AC3B88 /* UIImage+Resize.m in Sources */,
 				7D4EEAA31CACB48E0014E38D /* UserInfoRequest.m in Sources */,
 				7D2CB3461C980EA40055C7F4 /* ViewController+MASAdditions.m in Sources */,
@@ -1353,6 +1384,7 @@
 				7D15491C1CB0E1F0006C247C /* News.m in Sources */,
 				7D2CB3481C980EA40055C7F4 /* NSData+ImageContentType.m in Sources */,
 				7D2CB3371C980EA40055C7F4 /* AFHTTPSessionManager.m in Sources */,
+				7D6C5DA11CBB7324002E088E /* SearchNewsController.m in Sources */,
 				7D2CB29E1C980E5F0055C7F4 /* FirstViewController.m in Sources */,
 				7D55195C1C9F82B30084A13A /* AccountManager.m in Sources */,
 				7D61466A1CA83573002872B1 /* HomeTopCatogeryItemView.m in Sources */,

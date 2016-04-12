@@ -8,6 +8,8 @@
 
 #import "HomeNewsListCell.h"
 #import "Masonry.h"
+#import "News.h"
+#import "UIImageView+WebCache.h"
 
 @implementation HomeNewsListCell
 
@@ -53,6 +55,12 @@
         make.bottom.equalTo(superView.mas_bottom).offset(-20);
         make.right.equalTo(superView.mas_right).offset(-15);
     }];
+}
+
+- (void)configureWithNews:(News *)news {
+    [self.newsImageView sd_setImageWithURL:[NSURL URLWithString:[news iconImageUrl]] placeholderImage:nil];
+    self.titleLabel.text = news.title;
+    self.detailLabel.text = news.content;
 }
 
 

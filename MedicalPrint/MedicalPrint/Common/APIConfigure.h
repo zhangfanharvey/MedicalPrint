@@ -11,8 +11,10 @@
 
 #define MPTestEnviroment    1
 #ifdef MPTestEnviroment
-#define kMPBaseUrl  @"http://119.29.25.47/orthopedics"
+//#define kMPBaseUrl  @"http://119.29.25.47/orthopedics"
+#define kMPBaseUrl  @"http://115.159.75.148:8081/orthopedics"
 #else
+//#define kMPBaseUrl  @"http://119.29.25.47/orthopedics"
 #define kMPBaseUrl  @"http://119.29.25.47/orthopedics"
 #endif
 
@@ -44,6 +46,7 @@
 #define kMPFetchMyNewsUrl  @"/app/homepage/listNews.do"
 #define kMPFetchMedicalCaseReplyUrl  @"/app/cases/listCaseReply.do"
 #define kMPDeleteMedicalCaseUrl  @"/app/cases/deleteCase.do"
+#define kMPSearchHomePageNewsUrl  @"/app/homepage/find.do"
 
 
 #endif /* APIConfigure_h */

@@ -945,4 +945,76 @@
     }];
 }
 
++ (void)fetchNewsDetail:(News *)news success:(void(^)(BOOL status, NSString *newsDetail))block failure:(NetworkFailureBlock)failure {
+    NSString *url = [NSString stringWithFormat:@"%@%@", kMPBaseUrl, kMPSearchHomePageNewsUrl];
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    [dic setObject:news.p_ID forKey:@"newsId"];
+    
+    [[NetworkManager sharedManager] POST:url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        QYLog(@"fetchNewsDetail success%@", responseObject);
+        if ([NetworkManager isResponseSuccess:responseObject]) {
+            NSDictionary *responseDic = (NSDictionary *)responseObject;
+            NSArray *bodyArray = responseDic[@"body"];
+            NSString *detail = nil;
+            NSMutableArray *meicalcaseArray = [[NSMutableArray alloc] init];
+            for (NSDictionary *dic in bodyArray) {
+                if (dic && [dic isKindOfClass:[NSDictionary class]]) {
+                    News *news = [[News alloc] init];
+                    [news configureWithDic:dic];
+                    [meicalcaseArray addObject:news];
+                }
+            }
+            if (block) {
+                block(YES, meicalcaseArray);
+            }
+        } else {
+            NSString *errorMsg = responseObject[@"msg"];
+            if (failure) {
+                failure(errorMsg);
+            }
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        QYLog(@"fetchNewsDetail failure :%@", error.localizedDescription);
+        if (failure) {
+            failure(error.localizedDescription);
+        }
+    }];
+
+}
+
++ (void)searchHomePageNewsWithText:(NSString *)text success:(void(^)(BOOL status, NSArray *newsArray))block failure:(NetworkFailureBlock)failure {
+    NSString *url = [NSString stringWithFormat:@"%@%@", kMPBaseUrl, kMPSearchHomePageNewsUrl];
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    [dic setObject:text forKey:@"title"];
+
+    [[NetworkManager sharedManager] POST:url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        QYLog(@"searchHomePageNewsWithText success%@", responseObject);
+        if ([NetworkManager isResponseSuccess:responseObject]) {
+            NSDictionary *responseDic = (NSDictionary *)responseObject;
+            NSArray *bodyArray = responseDic[@"body"];
+            NSMutableArray *meicalcaseArray = [[NSMutableArray alloc] init];
+            for (NSDictionary *dic in bodyArray) {
+                if (dic && [dic isKindOfClass:[NSDictionary class]]) {
+                    News *news = [[News alloc] init];
+                    [news configureWithDic:dic];
+                    [meicalcaseArray addObject:news];
+                }
+            }
+            if (block) {
+                block(YES, meicalcaseArray);
+            }
+        } else {
+            NSString *errorMsg = responseObject[@"msg"];
+            if (failure) {
+                failure(errorMsg);
+            }
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        QYLog(@"searchHomePageNewsWithText failure :%@", error.localizedDescription);
+        if (failure) {
+            failure(error.localizedDescription);
+        }
+    }];
+}
+
 @end

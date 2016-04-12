@@ -12,6 +12,8 @@
 #import "HomeTopHeadView.h"
 #import "HomeNewsListCell.h"
 #import "UserInfoRequest.h"
+#import "MessageCenterController.h"
+#import "SearchNewsController.h"
 
 @interface HomeViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
@@ -59,6 +61,11 @@
     [self addSearchView];
     
     [self initDataSource];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -145,6 +152,7 @@
     [searchBarView addSubview:searchTextField];
     
     UIButton *button = [[UIButton alloc] init];
+    [button addTarget:self action:@selector(searchButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [searchBarView addSubview:button];
 
     self.navigationItem.titleView = searchBarView;
@@ -164,8 +172,15 @@
 #pragma mark - IBAction
 
 - (IBAction)messageCenterButtonClicked:(id)sender {
-    
+    MessageCenterController *messageCenterVC = [[MessageCenterController alloc] init];
+    [self.navigationController pushViewController:messageCenterVC animated:YES];
 }
+
+- (IBAction)searchButtonClicked:(id)sender {
+    SearchNewsController *searchNewsVC = [[SearchNewsController alloc] init];
+    [self.navigationController pushViewController:searchNewsVC animated:YES];
+}
+
 
 #pragma mark - UITableViewDelegate
 
@@ -204,9 +219,11 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     HomeNewsListCell *cell = [tableView dequeueReusableCellWithIdentifier:[HomeNewsListCell cellIdentifier] forIndexPath:indexPath];
-    cell.newsImageView.image = [UIImage imageNamed:@"广告小图"];
-    cell.titleLabel.text = @"test";
-    cell.detailLabel.text = @"test";
+    News *news = [self.newsListArray objectAtIndex:indexPath.row];
+    [cell configureWithNews:news];
+//    cell.newsImageView.image = [UIImage imageNamed:@"广告小图"];
+//    cell.titleLabel.text = @"test";
+//    cell.detailLabel.text = @"test";
     return cell;
 }
 

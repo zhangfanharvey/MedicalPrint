@@ -7,6 +7,7 @@
 //
 
 #import "News.h"
+#import "APIConfigure.h"
 
 @implementation News
 
@@ -39,7 +40,7 @@
     if (IsSafeValue(valueStr)) {
         self.title = valueStr;
     }
-    valueStr = dic[@"content"];
+    valueStr = dic[@"contents"];
     if (IsSafeValue(valueStr)) {
         self.content = valueStr;
     }
@@ -60,6 +61,14 @@
         self.newsTypeName = valueStr;
     }
 
+}
+
+- (NSString *)iconImageUrl {
+    NSString *url = nil;
+    if (self.icon) {
+        url = [NSString stringWithFormat:@"%@/%@", kMPBaseUrl, self.icon];
+    }
+    return url;
 }
 
 @end

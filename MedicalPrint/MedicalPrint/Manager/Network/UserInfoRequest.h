@@ -16,6 +16,7 @@
 @class CaseType;
 @class MedicalCase;
 @class NewsType;
+@class News;
 
 @interface UserInfoRequest : NSObject
 
@@ -68,5 +69,8 @@
 + (void)fetchNewsTypeSuccess:(void(^)(BOOL status, NSArray *newsTypeArray))block failure:(NetworkFailureBlock)failure;
 + (void)fetchMyNewsListStart:(NSInteger)start length:(NSInteger)length success:(void(^)(BOOL status, NSArray *newsArray))block failure:(NetworkFailureBlock)failure;
 + (void)fetchNewsListForType:(NewsType *)newsType withStart:(NSInteger)start length:(NSInteger)length success:(void(^)(BOOL status, NSArray *newsArray))block failure:(NetworkFailureBlock)failure;
++ (void)fetchNewsDetail:(News *)news success:(void(^)(BOOL status, NSString *newsDetail))block failure:(NetworkFailureBlock)failure;
+
++ (void)searchHomePageNewsWithText:(NSString *)text success:(void(^)(BOOL status, NSArray *newsArray))block failure:(NetworkFailureBlock)failure;
 
 @end

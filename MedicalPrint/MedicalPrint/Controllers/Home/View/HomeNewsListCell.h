@@ -8,10 +8,14 @@
 
 #import "BaseTableViewCell.h"
 
+@class News;
+
 @interface HomeNewsListCell : BaseTableViewCell
 
 @property (nonatomic, strong) UIImageView *newsImageView;
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UILabel *detailLabel;
+
+- (void)configureWithNews:(News *)news;
 
 @end

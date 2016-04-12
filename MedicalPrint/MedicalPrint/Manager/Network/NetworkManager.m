@@ -23,13 +23,6 @@
         NSMutableDictionary *cookieProperties = [NSMutableDictionary dictionary];
 //        NSArray *cookieStorage = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:url];
 //        NSDictionary *cookieHeaders = [NSHTTPCookie requestHeaderFieldsWithCookies:cookieStorage];
-
-//        [cookieProperties setObject:@"username" forKey:NSHTTPCookieName];
-//        [cookieProperties setObject:@"rainbird" forKey:NSHTTPCookieValue];
-//        [cookieProperties setObject:@"cnrainbird.com" forKey:NSHTTPCookieDomain];
-//        [cookieProperties setObject:@"cnrainbird.com" forKey:NSHTTPCookieOriginURL];
-//        [cookieProperties setObject:@"/" forKey:NSHTTPCookiePath];
-//        [cookieProperties setObject:@"0" forKey:NSHTTPCookieVersion];
         if ([AccountManager sharedManager].cookie) {
             [cookieProperties setObject:[AccountManager sharedManager].cookie forKey:@"JSESSIONID"];
             [instance.requestSerializer setValue:[AccountManager sharedManager].cookie forHTTPHeaderField:@"JSESSIONID"];

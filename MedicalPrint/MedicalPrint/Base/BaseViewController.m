@@ -14,11 +14,13 @@
 #import "Print3DController.h"
 #import "SettingsViewController.h"
 #import "UserPersonalCenterController.h"
+#import "Masonry.h"
 
 
 @interface BaseViewController ()
 
 @property (nonatomic, strong) MBProgressHUD *hud;
+@property (nonatomic, strong) UILabel *noResultLabel;
 
 @end
 
@@ -123,6 +125,24 @@
     self.hud = nil;
 }
 
+- (void)showNoResultPrompt {
+    self.noResultLabel = [[UILabel alloc] init];
+    self.noResultLabel.text = @"没有结果";
+    self.noResultLabel.textAlignment = NSTextAlignmentCenter;
+    self.noResultLabel.font = [UIFont systemFontOfSize:18];
+    self.noResultLabel.textColor = [UIColor grayColor];
+    [self.view addSubview:self.noResultLabel];
+    
+    UIView *superView = self.view;
+    [self.noResultLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(superView);
+    }];
+    
+}
 
+- (void)hideNoResultPrompt {
+    [self.noResultLabel removeFromSuperview];
+    self.noResultLabel = nil;
+}
 
 @end

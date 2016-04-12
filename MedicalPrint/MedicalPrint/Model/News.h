@@ -25,4 +25,6 @@
 
 - (void)configureWithDic:(NSDictionary *)dic;
 
+- (NSString *)iconImageUrl;
+
 @end
