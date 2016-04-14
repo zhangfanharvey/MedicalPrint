@@ -46,9 +46,8 @@
 }
 
 - (void)configureWithCaseType:(CaseType *)caseType {
-    if (caseType.icon) {
+    if (caseType.icon && caseType.icon.length > 0) {
         self.iconImageView.image = [UIImage imageNamed:caseType.icon];
-        self.iconImageView.image = [UIImage imageNamed:@"手臂_常态"];
     } else {
         self.iconImageView.image = [UIImage imageNamed:@"手臂_常态"];
     }

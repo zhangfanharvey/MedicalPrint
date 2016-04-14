@@ -15,6 +15,7 @@
 #import "MedicalCaseCell.h"
 #import "SVPullToRefresh.h"
 #import "PublishMedicalHelpController.h"
+#import "MedicalCaseDetailController.h"
 
 @interface MedicalCaseListController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -44,7 +45,8 @@
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
     self.tableView.tableFooterView = [[UIView alloc] init];
-    
+    self.tableView.separatorColor = [UIColor colorWithRed:0.929 green:0.933 blue:0.937 alpha:1.00];
+
     [self setupViewConstraints];
     [self initNaviBarItem];
     
@@ -91,13 +93,11 @@
 
 - (void)loadMoreData {
     [UserInfoRequest fetchMedicalCaseListForType:self.caseType withStart:self.medicalCaseArray.count length:20 success:^(BOOL status, NSArray *medicalCaseArray) {
-        [self hideLoadingView];
         [self.medicalCaseArray addObjectsFromArray:medicalCaseArray];
         
         [self.tableView reloadData];
         [self.tableView.infiniteScrollingView stopAnimating];
     } failure:^(NSString *msg) {
-        [self hideLoadingViewWithError:msg];
         [self.tableView.infiniteScrollingView stopAnimating];
     }];
 }
@@ -137,6 +137,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    MedicalCase *medicalCase = [self.medicalCaseArray objectAtIndex:indexPath.row];
+    MedicalCaseDetailController *medicalCaseDetailVC = [[MedicalCaseDetailController alloc] initWithMedicalCase:medicalCase];
+    [self.navigationController pushViewController:medicalCaseDetailVC animated:YES];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -177,6 +180,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MedicalCaseCell *cell = [tableView dequeueReusableCellWithIdentifier:[MedicalCaseCell cellIdentifier] forIndexPath:indexPath];
+//    MedicalCase *medicalCase = [self.medicalCaseArray objectAtIndex:indexPath.row];
     [cell configureWithMedicalCase:nil];
     return cell;
 }

@@ -22,9 +22,12 @@
 @property (nonatomic, strong) NSString *createTimeLong;
 @property (nonatomic, strong) NSString *createTimeStr;
 @property (nonatomic, strong) NSString *newsTypeName;
+@property (nonatomic, strong) NSString *newsDescription;
 
 - (void)configureWithDic:(NSDictionary *)dic;
 
 - (NSString *)iconImageUrl;
+
+- (NSString *)newsDetailUrl;
 
 @end

@@ -14,6 +14,8 @@
 #import "UserInfoRequest.h"
 #import "MessageCenterController.h"
 #import "MLPAutoCompleteTextField.h"
+#import "SearchAutoCompleteCell.h"
+#import "AccountManager.h"
 
 
 @interface SearchNewsController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, MLPAutoCompleteTextFieldDataSource, MLPAutoCompleteTextFieldDelegate>
@@ -44,7 +46,8 @@
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
     self.tableView.tableFooterView = [[UIView alloc] init];
-    
+    self.tableView.separatorColor = [UIColor colorWithRed:0.929 green:0.933 blue:0.937 alpha:1.00];
+
     
     [self setupViewConstraints];
     [self initNaviBarItem];
@@ -56,7 +59,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES animated:NO];
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -95,6 +98,16 @@
     self.searchTextField.autoCompleteDelegate = self;
     self.searchTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     self.searchTextField.showAutoCompleteTableWhenEditingBegins = YES;
+    self.searchTextField.autoCompleteRowHeight = 38;
+    self.searchTextField.autoCompleteTableCellBackgroundColor = [UIColor whiteColor];
+    self.searchTextField.autoCompleteFontSize = 15;
+    self.searchTextField.autoCompleteTableCellTextColor = [UIColor colorWithRed:0.643 green:0.643 blue:0.643 alpha:1.00];
+    self.searchTextField.autoCompleteTableView.backgroundColor = [UIColor whiteColor];
+
+    
+//    [self.searchTextField registerAutoCompleteCellClass:[SearchAutoCompleteCell class]
+//                                       forCellReuseIdentifier:[SearchAutoCompleteCell cellIdentifier]];
+
 //    CGRect frame = self.view.bounds;
 //    UIView *searchBarView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, CGRectGetWidth(frame) - 40, 38.0)];
 //    searchBarView.autoresizingMask = 0;
@@ -139,7 +152,7 @@
     
     UIButton *backButton = [[UIButton alloc] init];
     [backButton setImage:[UIImage imageNamed:@"顶部撤回键"] forState:UIControlStateNormal];
-//    backButton addTarget:self action:@selector(backbuttonc) forControlEvents:<#(UIControlEvents)#>
+    [backButton addTarget:self action:@selector(backButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [myNavBarView addSubview:backButton];
     
     UIButton *searchButton = [[UIButton alloc] init];
@@ -174,9 +187,12 @@
 
 - (IBAction)searchButtonClicked:(id)sender {
     if (self.searchTextField.text.length > 0) {
+        [[AccountManager sharedManager] addSearchResult:self.searchTextField.text];
         [self showLoadingWithText:@"加载中..."];
         [UserInfoRequest searchHomePageNewsWithText:self.searchTextField.text success:^(BOOL status, NSArray *newsArray) {
             [self hideLoadingView];
+            [self.newsListArray addObjectsFromArray:newsArray];
+            [self.tableView reloadData];
         } failure:^(NSString *msg) {
             [self hideLoadingViewWithError:@"搜索失败"];
         }];
@@ -229,11 +245,7 @@
 - (void)autoCompleteTextField:(MLPAutoCompleteTextField *)textField
  possibleCompletionsForString:(NSString *)string
             completionHandler:(void(^)(NSArray *suggestions))handler {
-    NSMutableArray *resultArray = [[NSMutableArray alloc] init];
-    for (int i = 0; i < 4; ++i) {
-        [resultArray addObject:@"fdsaf"];
-
-    }
+    NSArray *resultArray = [[AccountManager sharedManager] allSearchResult];
     handler(resultArray);
     return;
 
@@ -244,6 +256,24 @@
     NSMutableArray *resultArray = [[NSMutableArray alloc] init];
     
     return resultArray;
+}
+
+#pragma mark - MLPAutoCompleteTextField Delegate
+
+
+- (BOOL)autoCompleteTextField:(MLPAutoCompleteTextField *)textField
+          shouldConfigureCell:(UITableViewCell *)cell
+       withAutoCompleteString:(NSString *)autocompleteString
+         withAttributedString:(NSAttributedString *)boldedString
+        forAutoCompleteObject:(id<MLPAutoCompletionObject>)autocompleteObject
+            forRowAtIndexPath:(NSIndexPath *)indexPath;
+{
+    //This is your chance to customize an autocomplete tableview cell before it appears in the autocomplete tableview
+//    SearchAutoCompleteCell *autoCell = (SearchAutoCompleteCell *)cell;
+////    cell.backgroundView.backgroundColor = [UIColor whiteColor];
+//    autoCell.label.attributedText = boldedString;
+    
+    return YES;
 }
 
 @end

@@ -128,6 +128,13 @@
     self.hud = nil;
 }
 
+- (void)hideLoadingViewWithSuccess:(NSString *)msg {
+    self.hud.label.text = @"成功";
+    self.hud.detailsLabel.text = msg;
+    [self.hud hideAnimated:YES afterDelay:1.0f];
+    self.hud = nil;
+}
+
 - (void)showNoResultPrompt {
     self.noResultLabel = [[UILabel alloc] init];
     self.noResultLabel.text = @"没有结果";

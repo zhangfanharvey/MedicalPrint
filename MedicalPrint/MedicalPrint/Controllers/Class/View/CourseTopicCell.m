@@ -1,34 +1,30 @@
 //
-//  HomeNewsListCell.m
+//  CourseTopicCell.m
 //  MedicalPrint
 //
-//  Created by zhangfan on 16/3/28.
+//  Created by zhangfan on 16/4/14.
 //  Copyright © 2016年 Medical. All rights reserved.
 //
 
-#import "HomeNewsListCell.h"
+#import "CourseTopicCell.h"
 #import "Masonry.h"
-#import "News.h"
+#import "CourseTopic.h"
 #import "UIImageView+WebCache.h"
 
-@implementation HomeNewsListCell
+@implementation CourseTopicCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        self.accessoryType = UITableViewCellAccessoryNone;
         self.newsImageView = [[UIImageView alloc] init];
         [self.contentView addSubview:self.newsImageView];
         
         self.titleLabel = [[UILabel alloc] init];
-        self.titleLabel.font = [UIFont systemFontOfSize:kCommonCellFontSize];
         [self.contentView addSubview:self.titleLabel];
         
         self.detailLabel = [[UILabel alloc] init];
-        self.detailLabel.font = [UIFont systemFontOfSize:13];
         self.detailLabel.numberOfLines = 0;
-        self.detailLabel.textColor = [UIColor colorWithRed:0.533 green:0.537 blue:0.541 alpha:1.00];
         [self.contentView addSubview:self.detailLabel];
         
         [self setupViewConstraints];
@@ -59,11 +55,10 @@
     }];
 }
 
-- (void)configureWithNews:(News *)news {
-    [self.newsImageView sd_setImageWithURL:[NSURL URLWithString:[news iconImageUrl]] placeholderImage:nil];
-    self.titleLabel.text = news.title;
-    self.detailLabel.text = news.newsDescription;
+- (void)configureWithCourseTopic:(CourseTopic *)topic {
+    [self.newsImageView sd_setImageWithURL:[NSURL URLWithString:[topic iconImageUrl]] placeholderImage:nil];
+    self.titleLabel.text = topic.title;
+    self.detailLabel.text = topic.content;
 }
-
 
 @end

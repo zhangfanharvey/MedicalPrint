@@ -16,7 +16,8 @@
 #import "TagLabelCell.h"
 #import "TagSexSelectCell.h"
 
-@interface AddressEditController () <UITableViewDelegate, UITableViewDataSource>
+
+@interface AddressEditController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIButton *saveButton;
@@ -28,8 +29,13 @@
 @property (nonatomic, assign) NSInteger sex;
 @property (nonatomic, strong) NSString *phone;
 @property (nonatomic, strong) NSString *address;
+@property (nonatomic, strong) NSString *zipCode;
 
 @property (nonatomic, strong) UITextField *currentActivedTextField;
+@property (nonatomic, weak) UITextField *nameTextField;
+@property (nonatomic, weak) UITextField *phoneTextField;
+@property (nonatomic, weak) UITextField *zipCodeTextField;
+@property (nonatomic, weak) UITextField *addressTextField;
 
 
 @end
@@ -62,6 +68,7 @@
     [self.saveButton setBackgroundImage:[UIImage imageNamed:@"通用长按钮底_常态"] forState:UIControlStateNormal];
     [self.saveButton setBackgroundImage:[UIImage imageNamed:@"通用长按钮底_按下"] forState:UIControlStateHighlighted];
     [self.saveButton setTitle:@"保存" forState:UIControlStateNormal];
+    [self.saveButton addTarget:self action:@selector(saveButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.saveButton];
     
     [self setupViewConstraints];
@@ -120,25 +127,46 @@
     }
 }
 
+- (ShippingAddress *)createAddressFromInput {
+    ShippingAddress *address = [[ShippingAddress alloc] init];
+    address.name = self.name;
+    address.phone = self.phone;
+    address.address = self.address;
+    self.sex = self.sex;
+    return address;
+}
+
 #pragma mark - IBAction
 
 - (IBAction)saveButtonClicked:(id)sender {
+    [self showLoadingWithText:@"加载中..."];
     if (self.shipAddress) {
         [UserInfoRequest updateAddress:self.shipAddress success:^(BOOL status, ShippingAddress *shippingAddress) {
-            ;
+            [self hideLoadingView];
+            [self.navigationController popViewControllerAnimated:YES];
         } failure:^(NSString *msg) {
-            ;
+            [self hideLoadingViewWithError:@"添加失败"];
+        }];
+    } else {
+        ShippingAddress *address = [self createAddressFromInput];
+        [UserInfoRequest updateAddress:address success:^(BOOL status, ShippingAddress *shippingAddress) {
+            [self hideLoadingView];
+            [self.navigationController popViewControllerAnimated:YES];
+        } failure:^(NSString *msg) {
+            [self hideLoadingViewWithError:@"添加失败"];
         }];
     }
 }
 
 - (IBAction)maleButtonClicked:(id)sender{
+    self.sex = YES;
     TagSexSelectCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
     [cell selectMale:YES];
     
 }
 
 - (IBAction)femaleButtonClicked:(id)sender {
+    self.sex = NO;
     TagSexSelectCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
     [cell selectMale:NO];
 }
@@ -185,6 +213,8 @@
         cell.label.text = self.name;
         cell.label.hidden = YES;
         cell.textField.hidden = NO;
+        cell.textField.delegate = self;
+        self.nameTextField = cell.textField;
         return cell;
         
     } else if (indexPath.row == 1) {
@@ -204,6 +234,8 @@
         cell.label.text = self.phone;
         cell.label.hidden = YES;
         cell.textField.hidden = NO;
+        cell.textField.delegate = self;
+        self.phoneTextField = cell.textField;
         return cell;
     } else if (indexPath.row == 3) {
         TagLabelCell *cell = [tableView dequeueReusableCellWithIdentifier:[TagLabelCell cellIdentifier] forIndexPath:indexPath];
@@ -211,6 +243,8 @@
         cell.label.text = self.address;
         cell.label.hidden = YES;
         cell.textField.hidden = NO;
+        cell.textField.delegate = self;
+        self.zipCodeTextField = cell.textField;
         return cell;
     } else if (indexPath.row == 4) {
         TagLabelCell *cell = [tableView dequeueReusableCellWithIdentifier:[TagLabelCell cellIdentifier] forIndexPath:indexPath];
@@ -218,6 +252,9 @@
         cell.label.text = self.address;
         cell.label.hidden = YES;
         cell.textField.hidden = NO;
+        cell.textField.delegate = self;
+        cell.textField.delegate = self;
+        self.addressTextField = cell.textField;
         return cell;
     }
     return nil;
@@ -256,6 +293,9 @@
     CGRect rect = [self.tableView convertRect:self.currentActivedTextField.frame fromView:self.currentActivedTextField];
     
     CGPoint offsetPoint = CGPointMake(0, CGRectGetMaxY(rect) + 10 - (CGRectGetHeight(self.tableView.frame) - keyboardSize.height));
+    if (CGRectGetMaxY(rect) + 30 < ([UIScreen mainScreen].bounds.size.height - keyboardSize.height)) {
+        offsetPoint.y = self.tableView.contentOffset.y;
+    }
     if (offsetPoint.y < 0) {
         offsetPoint.y = 0;
     }
@@ -301,6 +341,18 @@
     self.currentActivedTextField = nil;
 }
 
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    if (textField == self.nameTextField) {
+        self.name = self.nameTextField.text;
+    } else if (textField == self.phoneTextField) {
+        self.phone = self.phoneTextField.text;
+    } else if (textField == self.zipCodeTextField) {
+        self.zipCode = self.zipCodeTextField.text;
+    } else if (textField == self.addressTextField) {
+        self.address = self.addressTextField.text;
+    }
+    return YES;
+}
 
 
 @end

@@ -6,11 +6,12 @@
 //  Copyright © 2016年 Medical. All rights reserved.
 //
 
-#import "ClassDetailController.h"
+#import "CourseDetailController.h"
 #import "Masonry.h"
 #import "UserInfoRequest.h"
+#import "Course.h"
 
-@interface ClassDetailController ()
+@interface CourseDetailController ()
 
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UIView *containerView;
@@ -21,9 +22,19 @@
 @property (nonatomic, strong) UITextView *textView;
 @property (nonatomic, strong) UIButton *applyButton;
 
+@property (nonatomic, strong) Course *course;
+
 @end
 
-@implementation ClassDetailController
+@implementation CourseDetailController
+
+- (instancetype)initWithCourse:(Course *)course {
+    self = [self init];
+    if (self) {
+        self.course = course;
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -50,8 +61,18 @@
     [self.view addSubview:self.textView];
     
     self.applyButton = [[UIButton alloc] init];
+    [self.applyButton addTarget:self action:@selector(applyButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [self.applyButton setBackgroundImage:[UIImage imageNamed:@"通用长按钮底_常态"] forState:UIControlStateNormal];
+    [self.applyButton setBackgroundImage:[UIImage imageNamed:@"通用长按钮底_按下"] forState:UIControlStateHighlighted];
+    [self.applyButton setTitle:@"在线报名" forState:UIControlStateNormal];
+
     [self.view addSubview:self.applyButton];
     
+    [self setupViewConstraints];
+    
+    [self initNaviBarItem];
+    
+    [self initDataSource];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -59,12 +80,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - View Auto-Layout
+
 - (void)setupViewConstraints {
     UIView *superView = self.view;
     CGFloat gap = 15;
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(superView.mas_left).offset(gap);
-        make.top.equalTo(superView.mas_top).offset(5);
+        make.top.equalTo(self.mas_topLayoutGuide).offset(5);
         make.right.equalTo(superView.mas_right).offset(-gap);
     }];
     
@@ -98,5 +121,33 @@
     }];
 }
 
+
+#pragma mark - private
+
+- (void)initNaviBarItem
+{
+    self.title = @"培训课程";
+}
+
+- (void)initDataSource {
+    if (self.course) {
+        self.titleLabel.text = self.course.title;
+//        self.timeLabel.text = self.course.startTime;
+//        self.locationLabel.text = self.course.endTime;
+        self.textView.text = self.course.content;
+    }
+}
+
+#pragma mark - IBAction
+
+- (IBAction)applyButtonClicked:(id)sender {
+    [self showLoadingWithText:@"加载中..."];
+    [UserInfoRequest addMeToMemberOfCourse:self.course success:^(BOOL status) {
+        [self hideLoadingViewWithSuccess:@"申请成功"];
+        self.applyButton.enabled = NO;
+    } failure:^(NSString *msg) {
+        [self hideLoadingViewWithError:@"申请失败"];
+    }];
+}
 
 @end

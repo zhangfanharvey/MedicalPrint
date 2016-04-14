@@ -21,6 +21,7 @@
 - (void)showLoadingWithText:(NSString *)text toView:(UIView *)view;
 - (void)hideLoadingView;
 - (void)hideLoadingViewWithError:(NSString *)error;
+- (void)hideLoadingViewWithSuccess:(NSString *)msg;
 
 - (IBAction)backButtonClicked:(id)sender;
 

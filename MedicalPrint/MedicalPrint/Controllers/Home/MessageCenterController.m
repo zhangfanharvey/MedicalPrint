@@ -29,7 +29,8 @@
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
     self.tableView.tableFooterView = [[UIView alloc] init];
-    
+    self.tableView.separatorColor = [UIColor colorWithRed:0.929 green:0.933 blue:0.937 alpha:1.00];
+
     [self setupViewConstraints];
     [self initNaviBarItem];
     

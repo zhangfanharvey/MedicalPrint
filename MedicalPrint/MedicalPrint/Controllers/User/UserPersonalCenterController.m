@@ -20,6 +20,8 @@
 #import "AddressManagerController.h"
 #import "FeedbackViewController.h"
 #import "MyOrderListViewController.h"
+#import "MyClassListController.h"
+#import "CourseTopicController.h"
 
 @interface UserPersonalCenterController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -153,8 +155,8 @@
                     break;
                 case 1:
                 {
-                    MessageCenterController *messageCenterVC = [[MessageCenterController alloc] init];
-                    [self.navigationController pushViewController:messageCenterVC animated:YES];
+                    CourseTopicController *courseTopicVC = [[CourseTopicController alloc] init];
+                    [self.navigationController pushViewController:courseTopicVC animated:YES];
                 }
                     break;
                     
@@ -175,7 +177,8 @@
                     break;
                 case 1:
                 {
-                    
+                    MyClassListController *myClassController = [[MyClassListController alloc] init];
+                    [self.navigationController pushViewController:myClassController animated:YES];
                 }
                     break;
                     

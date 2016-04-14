@@ -20,6 +20,8 @@
 #import "MedicalCaseReply.h"
 #import "NewsType.h"
 #import "News.h"
+#import "Course.h"
+#import "CourseTopic.h"
 
 @implementation UserInfoRequest
 
@@ -586,7 +588,7 @@
 + (void)fetchMedicalCaseListForType:(CaseType *)caseType withStart:(NSInteger)start length:(NSInteger)length success:(void(^)(BOOL status, NSArray *medicalCaseArray))block failure:(NetworkFailureBlock)failure {
     NSString *url = [NSString stringWithFormat:@"%@%@", kMPBaseUrl, kMPFetchMedicalCaseUrl];
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-    [dic setObject:caseType.p_ID forKey:@"id"];
+    [dic setObject:caseType.p_ID forKey:@"caseTypeId"];
     [dic setObject:@(start) forKey:@"start"];
     [dic setObject:@(length) forKey:@"length"];
 
@@ -1011,6 +1013,164 @@
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         QYLog(@"searchHomePageNewsWithText failure :%@", error.localizedDescription);
+        if (failure) {
+            failure(error.localizedDescription);
+        }
+    }];
+}
+
++ (void)updateAPNSStatus:(BOOL)isOpen success:(void(^)(BOOL status))block failure:(NetworkFailureBlock)failure {
+    NSString *url = [NSString stringWithFormat:@"%@%@", kMPBaseUrl, kMPUpdateAPNSStatusUrl];
+//    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+//    [dic setObject:text forKey:@"title"];
+    
+    [[NetworkManager sharedManager] POST:url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        QYLog(@"updateAPNSStatus success%@", responseObject);
+        if ([NetworkManager isResponseSuccess:responseObject]) {
+            if (block) {
+                block(YES);
+            }
+        } else {
+            NSString *errorMsg = responseObject[@"msg"];
+            if (failure) {
+                failure(errorMsg);
+            }
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        QYLog(@"updateAPNSStatus failure :%@", error.localizedDescription);
+        if (failure) {
+            failure(error.localizedDescription);
+        }
+    }];
+}
+
++ (void)fetchCourseTopicSuccess:(void(^)(BOOL status, NSArray *courseTopicArray))block failure:(NetworkFailureBlock)failure {
+    NSString *url = [NSString stringWithFormat:@"%@%@", kMPBaseUrl, kMPFetchCourseTopicUrl];
+    
+    [[NetworkManager sharedManager] POST:url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        QYLog(@"fetchCourseTopicSuccess success%@", responseObject);
+        if ([NetworkManager isResponseSuccess:responseObject]) {
+            NSDictionary *responseDic = (NSDictionary *)responseObject;
+            NSArray *bodyArray = responseDic[@"body"];
+            NSMutableArray *array = [[NSMutableArray alloc] init];
+            for (NSDictionary *dic in bodyArray) {
+                if (dic && [dic isKindOfClass:[NSDictionary class]]) {
+                    CourseTopic *courseTopic = [[CourseTopic alloc] init];
+                    [courseTopic configureWithDic:dic];
+                    [array addObject:courseTopic];
+                }
+            }
+            if (block) {
+                block(YES, array);
+            }
+        } else {
+            NSString *errorMsg = responseObject[@"msg"];
+            if (failure) {
+                failure(errorMsg);
+            }
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        QYLog(@"fetchCourseTopicSuccess failure :%@", error.localizedDescription);
+        if (failure) {
+            failure(error.localizedDescription);
+        }
+    }];
+
+}
++ (void)fetchMyCourseListStart:(NSInteger)start length:(NSInteger)length success:(void(^)(BOOL status, NSArray *courseArray))block failure:(NetworkFailureBlock)failure {
+    NSString *url = [NSString stringWithFormat:@"%@%@", kMPBaseUrl, kMPFetchMyCourseUrl];
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    [dic setObject:@(start) forKey:@"start"];
+    [dic setObject:@(length) forKey:@"length"];
+    
+    [[NetworkManager sharedManager] POST:url parameters:dic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        QYLog(@"fetchMyCourseListStart success%@", responseObject);
+        if ([NetworkManager isResponseSuccess:responseObject]) {
+            NSDictionary *responseDic = (NSDictionary *)responseObject;
+            NSArray *bodyArray = responseDic[@"body"];
+            NSMutableArray *array = [[NSMutableArray alloc] init];
+            for (NSDictionary *dic in bodyArray) {
+                if (dic && [dic isKindOfClass:[NSDictionary class]]) {
+                    Course *course = [[Course alloc] init];
+                    [course configureWithDic:dic];
+                    [array addObject:course];
+                }
+            }
+            if (block) {
+                block(YES, array);
+            }
+        } else {
+            NSString *errorMsg = responseObject[@"msg"];
+            if (failure) {
+                failure(errorMsg);
+            }
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        QYLog(@"fetchMyCourseListStart failure :%@", error.localizedDescription);
+        if (failure) {
+            failure(error.localizedDescription);
+        }
+    }];
+}
++ (void)fetchCourseListForTopic:(CourseTopic *)courseTopic withStart:(NSInteger)start length:(NSInteger)length success:(void(^)(BOOL status, NSArray *courseArray))block failure:(NetworkFailureBlock)failure {
+    NSString *url = [NSString stringWithFormat:@"%@%@", kMPBaseUrl, kMPFetchCourseForTopicUrl];
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    [dic setObject:courseTopic.p_ID forKey:@"topicId"];
+    [dic setObject:@(start) forKey:@"start"];
+    [dic setObject:@(length) forKey:@"length"];
+    
+    [[NetworkManager sharedManager] POST:url parameters:dic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        QYLog(@"fetchCourseListForTopic success%@", responseObject);
+        if ([NetworkManager isResponseSuccess:responseObject]) {
+            NSDictionary *responseDic = (NSDictionary *)responseObject;
+            NSArray *bodyArray = responseDic[@"body"];
+            NSMutableArray *array = [[NSMutableArray alloc] init];
+            for (NSDictionary *dic in bodyArray) {
+                if (dic && [dic isKindOfClass:[NSDictionary class]]) {
+                    Course *sourse = [[Course alloc] init];
+                    [sourse configureWithDic:dic];
+                    [array addObject:sourse];
+                }
+            }
+            if (block) {
+                block(YES, array);
+            }
+        } else {
+            NSString *errorMsg = responseObject[@"msg"];
+            if (failure) {
+                failure(errorMsg);
+            }
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        QYLog(@"fetchCourseListForTopic failure :%@", error.localizedDescription);
+        if (failure) {
+            failure(error.localizedDescription);
+        }
+    }];
+}
+
++ (void)addMeToMemberOfCourse:(Course *)course success:(void(^)(BOOL status))block failure:(NetworkFailureBlock)failure {
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    [dic setObject:course.p_ID forKey:@"courseId"];
+
+    NSString *url = [NSString stringWithFormat:@"%@%@", kMPBaseUrl, kMPMeToMemberOfCourseUrl];
+    
+    [[NetworkManager sharedManager] POST:url parameters:dic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        QYLog(@"addMeToMemberOfCourse success%@", responseObject);
+        if ([NetworkManager isResponseSuccess:responseObject]) {
+            //            NSDictionary *responseDic = (NSDictionary *)responseObject;
+            //            NSDictionary *bodyDic = responseDic[@"body"];
+            if (block) {
+                block(YES);
+            }
+        } else {
+            NSString *errorMsg = responseObject[@"msg"];
+            if (failure) {
+                failure(errorMsg);
+            }
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        QYLog(@"addMeToMemberOfCourse failure :%@", error.localizedDescription);
         if (failure) {
             failure(error.localizedDescription);
         }

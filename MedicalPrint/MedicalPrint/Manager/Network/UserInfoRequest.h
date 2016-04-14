@@ -17,6 +17,8 @@
 @class MedicalCase;
 @class NewsType;
 @class News;
+@class CourseTopic;
+@class Course;
 
 @interface UserInfoRequest : NSObject
 
@@ -72,5 +74,12 @@
 + (void)fetchNewsDetail:(News *)news success:(void(^)(BOOL status, NSString *newsDetail))block failure:(NetworkFailureBlock)failure;
 
 + (void)searchHomePageNewsWithText:(NSString *)text success:(void(^)(BOOL status, NSArray *newsArray))block failure:(NetworkFailureBlock)failure;
+
++ (void)updateAPNSStatus:(BOOL)isOpen success:(void(^)(BOOL status))block failure:(NetworkFailureBlock)failure;
+
++ (void)fetchCourseTopicSuccess:(void(^)(BOOL status, NSArray *courseTopicArray))block failure:(NetworkFailureBlock)failure;
++ (void)fetchMyCourseListStart:(NSInteger)start length:(NSInteger)length success:(void(^)(BOOL status, NSArray *courseArray))block failure:(NetworkFailureBlock)failure;
++ (void)fetchCourseListForTopic:(CourseTopic *)courseTopic withStart:(NSInteger)start length:(NSInteger)length success:(void(^)(BOOL status, NSArray *courseArray))block failure:(NetworkFailureBlock)failure;
++ (void)addMeToMemberOfCourse:(Course *)course success:(void(^)(BOOL status))block failure:(NetworkFailureBlock)failure;
 
 @end

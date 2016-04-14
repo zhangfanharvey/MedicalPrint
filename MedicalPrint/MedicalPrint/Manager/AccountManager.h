@@ -24,4 +24,13 @@
 
 - (BOOL)isUserLogin;
 
+- (void)configureCookie;
+- (void)updateCookie;
+
+#pragma mark - search result
+
+- (NSArray *)allSearchResult;
+- (void)addSearchResult:(NSString *)text;
+
+
 @end

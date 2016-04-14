@@ -17,8 +17,9 @@
 #import "FeedbackViewController.h"
 #import "ContactUsController.h"
 #import "SDImageCache.h"
+#import "UserHelpController.h"
 
-@interface SettingsViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface SettingsViewController () <UITableViewDataSource, UITableViewDelegate, YNBaseSwitchTableViewCellDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, assign) NSUInteger cacheSize;
@@ -138,6 +139,12 @@
         
     } else {
         if (indexPath.row == 0) {
+            [self showLoadingWithText:@"清理中..."];
+            [[SDImageCache sharedImageCache] clearDiskOnCompletion:^{
+                [self hideLoadingViewWithSuccess:@"清理成功"];
+                [self initDataSource];
+//                [self.tableView reloadData];
+            }];
         } else if (indexPath.row == 1) {
         } else {
         }
@@ -169,6 +176,7 @@
     if (indexPath.section == 0) {
         YNBaseSwitchTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[YNBaseSwitchTableViewCell cellIdentifier] forIndexPath:indexPath];
         cell.tagLabel.text = @"信息推送";
+        cell.delegate = self;
         return cell;
     } else if (indexPath.section == 1) {
         YNBaseInfoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[YNBaseInfoTableViewCell cellIdentifier] forIndexPath:indexPath];
@@ -186,6 +194,8 @@
             if (self.cacheSize > 0) {
                 NSString *fileSizeStr = [NSByteCountFormatter stringFromByteCount:self.cacheSize countStyle:NSByteCountFormatterCountStyleFile];
                 cell.label.text = fileSizeStr;
+            } else {
+                cell.label.text = nil;
             }
             return cell;
         } else if (indexPath.row == 1) {
@@ -201,6 +211,18 @@
     }
     
     return nil;
+}
+
+#pragma mark - YNBaseSwitchTableViewCellDelegate
+
+- (void)didChangedSwitchTalbleViewCell:(YNBaseSwitchTableViewCell *)cell switchView:(UISwitch *)switchButton {
+    [self showLoadingWithText:@"加载中..."];
+    [UserInfoRequest updateAPNSStatus:switchButton.on success:^(BOOL status) {
+        [self hideLoadingView];
+    } failure:^(NSString *msg) {
+        [self hideLoadingViewWithError:@"修改失败"];
+        [switchButton setOn:!switchButton.on];
+    }];
 }
 
 

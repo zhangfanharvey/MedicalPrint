@@ -14,6 +14,7 @@
 #import "UserInfoRequest.h"
 #import "MessageCenterController.h"
 #import "SearchNewsController.h"
+#import "NewsDetailController.h"
 
 @interface HomeViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
@@ -65,7 +66,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:NO animated:NO];
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -202,6 +203,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    News *news = [self.newsListArray objectAtIndex:indexPath.row];
+    NewsDetailController *newsDetailVC = [[NewsDetailController alloc] initWithNews:news];
+    [self.navigationController pushViewController:newsDetailVC animated:YES];
 }
 
 #pragma mark - UITableViewDataSource

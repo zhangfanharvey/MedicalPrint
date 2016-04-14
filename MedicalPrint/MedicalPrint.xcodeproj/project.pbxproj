@@ -119,12 +119,21 @@
 		7D6C5DA11CBB7324002E088E /* SearchNewsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D6C5DA01CBB7324002E088E /* SearchNewsController.m */; };
 		7D6C5DAA1CBB7774002E088E /* MLPAutoCompleteTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D6C5DA41CBB7774002E088E /* MLPAutoCompleteTextField.m */; };
 		7D6C5DAB1CBB7774002E088E /* NSString+Levenshtein.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D6C5DA91CBB7774002E088E /* NSString+Levenshtein.m */; };
+		7D6C5DAF1CBC9435002E088E /* NewsDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D6C5DAE1CBC9435002E088E /* NewsDetailController.m */; };
+		7D6C5DB21CBCBFB0002E088E /* SearchAutoCompleteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D6C5DB11CBCBFB0002E088E /* SearchAutoCompleteCell.m */; };
+		7D6C5DB51CBE11D4002E088E /* UserHelpController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D6C5DB41CBE11D4002E088E /* UserHelpController.m */; };
+		7D6C5DB81CBE1482002E088E /* CourseTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D6C5DB71CBE1482002E088E /* CourseTopic.m */; };
+		7D6C5DBB1CBE1523002E088E /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D6C5DBA1CBE1523002E088E /* Course.m */; };
+		7D6C5DBE1CBF3D04002E088E /* CourseTopicController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D6C5DBD1CBF3D04002E088E /* CourseTopicController.m */; };
+		7D6C5DC11CBF3D8F002E088E /* CourseTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D6C5DC01CBF3D8F002E088E /* CourseTopicCell.m */; };
+		7D6C5DC41CBF49F4002E088E /* CourseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D6C5DC31CBF49F3002E088E /* CourseCell.m */; };
+		7D6C5DC71CBF4B85002E088E /* CourseListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D6C5DC61CBF4B85002E088E /* CourseListController.m */; };
 		7D93CB4D1CAE772C009D462F /* Print3DItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D93CB4C1CAE772C009D462F /* Print3DItemView.m */; };
 		7D996A991C994A890046566F /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D996A981C994A890046566F /* MBProgressHUD.m */; };
 		7DA868851CA23F8000C3EA50 /* MyClassListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DA868841CA23F8000C3EA50 /* MyClassListController.m */; };
 		7DA868881CA2445C00C3EA50 /* ClassListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DA868871CA2445C00C3EA50 /* ClassListCell.m */; };
 		7DA8688B1CA244F800C3EA50 /* ContactUsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DA8688A1CA244F800C3EA50 /* ContactUsController.m */; };
-		7DA8688E1CA24C9E00C3EA50 /* ClassDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DA8688D1CA24C9E00C3EA50 /* ClassDetailController.m */; };
+		7DA8688E1CA24C9E00C3EA50 /* CourseDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DA8688D1CA24C9E00C3EA50 /* CourseDetailController.m */; };
 		7DE4677B1CA2331F00101660 /* MessageCenterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE4677A1CA2331F00101660 /* MessageCenterController.m */; };
 		7DE4677E1CA2336E00101660 /* MessageCenterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE4677D1CA2336E00101660 /* MessageCenterCell.m */; };
 		7DE467811CA236D700101660 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE467801CA236D700101660 /* Message.m */; };
@@ -402,6 +411,24 @@
 		7D6C5DA71CBB7774002E088E /* MLPAutoCompletionObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLPAutoCompletionObject.h; sourceTree = "<group>"; };
 		7D6C5DA81CBB7774002E088E /* NSString+Levenshtein.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Levenshtein.h"; sourceTree = "<group>"; };
 		7D6C5DA91CBB7774002E088E /* NSString+Levenshtein.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Levenshtein.m"; sourceTree = "<group>"; };
+		7D6C5DAD1CBC9435002E088E /* NewsDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsDetailController.h; sourceTree = "<group>"; };
+		7D6C5DAE1CBC9435002E088E /* NewsDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsDetailController.m; sourceTree = "<group>"; };
+		7D6C5DB01CBCBFB0002E088E /* SearchAutoCompleteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchAutoCompleteCell.h; sourceTree = "<group>"; };
+		7D6C5DB11CBCBFB0002E088E /* SearchAutoCompleteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchAutoCompleteCell.m; sourceTree = "<group>"; };
+		7D6C5DB31CBE11D4002E088E /* UserHelpController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserHelpController.h; sourceTree = "<group>"; };
+		7D6C5DB41CBE11D4002E088E /* UserHelpController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserHelpController.m; sourceTree = "<group>"; };
+		7D6C5DB61CBE1482002E088E /* CourseTopic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseTopic.h; sourceTree = "<group>"; };
+		7D6C5DB71CBE1482002E088E /* CourseTopic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseTopic.m; sourceTree = "<group>"; };
+		7D6C5DB91CBE1523002E088E /* Course.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Course.h; sourceTree = "<group>"; };
+		7D6C5DBA1CBE1523002E088E /* Course.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Course.m; sourceTree = "<group>"; };
+		7D6C5DBC1CBF3D04002E088E /* CourseTopicController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseTopicController.h; sourceTree = "<group>"; };
+		7D6C5DBD1CBF3D04002E088E /* CourseTopicController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseTopicController.m; sourceTree = "<group>"; };
+		7D6C5DBF1CBF3D8F002E088E /* CourseTopicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseTopicCell.h; sourceTree = "<group>"; };
+		7D6C5DC01CBF3D8F002E088E /* CourseTopicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseTopicCell.m; sourceTree = "<group>"; };
+		7D6C5DC21CBF49F3002E088E /* CourseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseCell.h; sourceTree = "<group>"; };
+		7D6C5DC31CBF49F3002E088E /* CourseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseCell.m; sourceTree = "<group>"; };
+		7D6C5DC51CBF4B85002E088E /* CourseListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseListController.h; sourceTree = "<group>"; };
+		7D6C5DC61CBF4B85002E088E /* CourseListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseListController.m; sourceTree = "<group>"; };
 		7D93CB4B1CAE772C009D462F /* Print3DItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Print3DItemView.h; sourceTree = "<group>"; };
 		7D93CB4C1CAE772C009D462F /* Print3DItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Print3DItemView.m; sourceTree = "<group>"; };
 		7D996A971C994A890046566F /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
@@ -412,8 +439,8 @@
 		7DA868871CA2445C00C3EA50 /* ClassListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassListCell.m; sourceTree = "<group>"; };
 		7DA868891CA244F800C3EA50 /* ContactUsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactUsController.h; sourceTree = "<group>"; };
 		7DA8688A1CA244F800C3EA50 /* ContactUsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactUsController.m; sourceTree = "<group>"; };
-		7DA8688C1CA24C9E00C3EA50 /* ClassDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassDetailController.h; sourceTree = "<group>"; };
-		7DA8688D1CA24C9E00C3EA50 /* ClassDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassDetailController.m; sourceTree = "<group>"; };
+		7DA8688C1CA24C9E00C3EA50 /* CourseDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseDetailController.h; sourceTree = "<group>"; };
+		7DA8688D1CA24C9E00C3EA50 /* CourseDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseDetailController.m; sourceTree = "<group>"; };
 		7DE467791CA2331F00101660 /* MessageCenterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCenterController.h; sourceTree = "<group>"; };
 		7DE4677A1CA2331F00101660 /* MessageCenterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCenterController.m; sourceTree = "<group>"; };
 		7DE4677C1CA2336E00101660 /* MessageCenterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCenterCell.h; sourceTree = "<group>"; };
@@ -752,6 +779,8 @@
 				7D55196D1C9FD75B0084A13A /* View */,
 				7D5783061CA14A0100493ADC /* HomeViewController.h */,
 				7D5783071CA14A0100493ADC /* HomeViewController.m */,
+				7D6C5DAD1CBC9435002E088E /* NewsDetailController.h */,
+				7D6C5DAE1CBC9435002E088E /* NewsDetailController.m */,
 				7D6C5D9F1CBB7324002E088E /* SearchNewsController.h */,
 				7D6C5DA01CBB7324002E088E /* SearchNewsController.m */,
 				7DE467791CA2331F00101660 /* MessageCenterController.h */,
@@ -773,6 +802,8 @@
 				7D6146691CA83573002872B1 /* HomeTopCatogeryItemView.m */,
 				7D4EEA821CA90BC30014E38D /* HomeNewsListCell.h */,
 				7D4EEA831CA90BC30014E38D /* HomeNewsListCell.m */,
+				7D6C5DB01CBCBFB0002E088E /* SearchAutoCompleteCell.h */,
+				7D6C5DB11CBCBFB0002E088E /* SearchAutoCompleteCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -793,6 +824,8 @@
 				7D222EEC1CA3EF08002092D2 /* AddressManagerController.m */,
 				7D6C46511CB53B0E003C6C10 /* AddressEditController.h */,
 				7D6C46521CB53B0E003C6C10 /* AddressEditController.m */,
+				7D6C5DB31CBE11D4002E088E /* UserHelpController.h */,
+				7D6C5DB41CBE11D4002E088E /* UserHelpController.m */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -996,8 +1029,12 @@
 				7DA868821CA23EBE00C3EA50 /* View */,
 				7DA868831CA23F8000C3EA50 /* MyClassListController.h */,
 				7DA868841CA23F8000C3EA50 /* MyClassListController.m */,
-				7DA8688C1CA24C9E00C3EA50 /* ClassDetailController.h */,
-				7DA8688D1CA24C9E00C3EA50 /* ClassDetailController.m */,
+				7DA8688C1CA24C9E00C3EA50 /* CourseDetailController.h */,
+				7DA8688D1CA24C9E00C3EA50 /* CourseDetailController.m */,
+				7D6C5DBC1CBF3D04002E088E /* CourseTopicController.h */,
+				7D6C5DBD1CBF3D04002E088E /* CourseTopicController.m */,
+				7D6C5DC51CBF4B85002E088E /* CourseListController.h */,
+				7D6C5DC61CBF4B85002E088E /* CourseListController.m */,
 				7D222EE21CA2A12B002092D2 /* TrainClassListController.h */,
 				7D222EE31CA2A12B002092D2 /* TrainClassListController.m */,
 			);
@@ -1013,6 +1050,10 @@
 				7D222EE61CA3E225002092D2 /* TrainClassCell.m */,
 				7D222EE81CA3E567002092D2 /* TraintClassNewsCell.h */,
 				7D222EE91CA3E567002092D2 /* TraintClassNewsCell.m */,
+				7D6C5DBF1CBF3D8F002E088E /* CourseTopicCell.h */,
+				7D6C5DC01CBF3D8F002E088E /* CourseTopicCell.m */,
+				7D6C5DC21CBF49F3002E088E /* CourseCell.h */,
+				7D6C5DC31CBF49F3002E088E /* CourseCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1092,6 +1133,10 @@
 				7D1549181CB0DE69006C247C /* NewsType.m */,
 				7D15491A1CB0E1F0006C247C /* News.h */,
 				7D15491B1CB0E1F0006C247C /* News.m */,
+				7D6C5DB61CBE1482002E088E /* CourseTopic.h */,
+				7D6C5DB71CBE1482002E088E /* CourseTopic.m */,
+				7D6C5DB91CBE1523002E088E /* Course.h */,
+				7D6C5DBA1CBE1523002E088E /* Course.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1299,7 +1344,9 @@
 				7D2CB3471C980EA40055C7F4 /* MKAnnotationView+WebCache.m in Sources */,
 				7D2CB2A11C980E5F0055C7F4 /* SecondViewController.m in Sources */,
 				7D2CB3591C980EA40055C7F4 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				7D6C5DB81CBE1482002E088E /* CourseTopic.m in Sources */,
 				7D2CB3361C980EA40055C7F4 /* BaseViewController.m in Sources */,
+				7D6C5DBB1CBE1523002E088E /* Course.m in Sources */,
 				7DEEE1621C9BAA9000AC3B88 /* UIImage+TPAdditions.m in Sources */,
 				7D4EEA841CA90BC30014E38D /* HomeNewsListCell.m in Sources */,
 				7DE4677E1CA2336E00101660 /* MessageCenterCell.m in Sources */,
@@ -1316,13 +1363,16 @@
 				7DEEE15F1C9BAA9000AC3B88 /* UIImage+Alpha.m in Sources */,
 				7DA868881CA2445C00C3EA50 /* ClassListCell.m in Sources */,
 				7DE467841CA2391700101660 /* FeedbackViewController.m in Sources */,
+				7D6C5DB21CBCBFB0002E088E /* SearchAutoCompleteCell.m in Sources */,
 				7D222EEA1CA3E567002092D2 /* TraintClassNewsCell.m in Sources */,
 				7D6146671CA8350D002872B1 /* HomeTopHeadView.m in Sources */,
+				7D6C5DAF1CBC9435002E088E /* NewsDetailController.m in Sources */,
 				7DA8688B1CA244F800C3EA50 /* ContactUsController.m in Sources */,
 				7D2CB3491C980EA40055C7F4 /* SDImageCache.m in Sources */,
 				7D2CB3521C980EA40055C7F4 /* UIImage+MultiFormat.m in Sources */,
 				7D222EF01CA3F29D002092D2 /* AddressManagerCell.m in Sources */,
 				7D2CB3511C980EA40055C7F4 /* UIImage+GIF.m in Sources */,
+				7D6C5DC71CBF4B85002E088E /* CourseListController.m in Sources */,
 				7D2CB34C1C980EA40055C7F4 /* SDWebImageDownloader.m in Sources */,
 				7D2CB35F1C980EA40055C7F4 /* UIWebView+AFNetworking.m in Sources */,
 				7D2CB3421C980EA40055C7F4 /* MASViewConstraint.m in Sources */,
@@ -1346,7 +1396,7 @@
 				7D57831F1CA1533300493ADC /* SDCycleScrollView.m in Sources */,
 				7D4EEA931CAA66C30014E38D /* YNBaseInfoTableViewCell.m in Sources */,
 				7D2CB35C1C980EA40055C7F4 /* UIImageView+AFNetworking.m in Sources */,
-				7DA8688E1CA24C9E00C3EA50 /* ClassDetailController.m in Sources */,
+				7DA8688E1CA24C9E00C3EA50 /* CourseDetailController.m in Sources */,
 				7D2CB35D1C980EA40055C7F4 /* UIProgressView+AFNetworking.m in Sources */,
 				7D6C5DAB1CBB7774002E088E /* NSString+Levenshtein.m in Sources */,
 				7DEEE1601C9BAA9000AC3B88 /* UIImage+Resize.m in Sources */,
@@ -1369,6 +1419,7 @@
 				7DEEE1531C9BA2EF00AC3B88 /* RegisterAndLoginController.m in Sources */,
 				7D5519671C9F82D70084A13A /* ShippingAddress.m in Sources */,
 				7DEEE1891C9BF37200AC3B88 /* FindPasswordController.m in Sources */,
+				7D6C5DBE1CBF3D04002E088E /* CourseTopicController.m in Sources */,
 				7D2CB35E1C980EA40055C7F4 /* UIRefreshControl+AFNetworking.m in Sources */,
 				7D93CB4D1CAE772C009D462F /* Print3DItemView.m in Sources */,
 				7D4EEAAC1CACBDD90014E38D /* MyMedicalCaseListController.m in Sources */,
@@ -1376,6 +1427,8 @@
 				7D5783251CA16D3900493ADC /* MyOrderListViewController.m in Sources */,
 				7D4EEAAF1CACBF530014E38D /* MedicalCaseReply.m in Sources */,
 				7D5782EB1CA146E100493ADC /* AboutViewController.m in Sources */,
+				7D6C5DC41CBF49F4002E088E /* CourseCell.m in Sources */,
+				7D6C5DB51CBE11D4002E088E /* UserHelpController.m in Sources */,
 				7D2CB34E1C980EA40055C7F4 /* SDWebImageManager.m in Sources */,
 				7D6C463F1CB34B9F003C6C10 /* MedicalCaseDetailController.m in Sources */,
 				7D2CB3581C980EA40055C7F4 /* AFImageDownloader.m in Sources */,
@@ -1385,6 +1438,7 @@
 				7D2CB3481C980EA40055C7F4 /* NSData+ImageContentType.m in Sources */,
 				7D2CB3371C980EA40055C7F4 /* AFHTTPSessionManager.m in Sources */,
 				7D6C5DA11CBB7324002E088E /* SearchNewsController.m in Sources */,
+				7D6C5DC11CBF3D8F002E088E /* CourseTopicCell.m in Sources */,
 				7D2CB29E1C980E5F0055C7F4 /* FirstViewController.m in Sources */,
 				7D55195C1C9F82B30084A13A /* AccountManager.m in Sources */,
 				7D61466A1CA83573002872B1 /* HomeTopCatogeryItemView.m in Sources */,

@@ -9,13 +9,16 @@
 #ifndef APIConfigure_h
 #define APIConfigure_h
 
-#define MPTestEnviroment    1
+//#define MPTestEnviroment    1
 #ifdef MPTestEnviroment
+#define kMPBaseHostUrl  @"115.159.75.148"
 //#define kMPBaseUrl  @"http://119.29.25.47/orthopedics"
 #define kMPBaseUrl  @"http://115.159.75.148:8081/orthopedics"
 #else
+#define kMPBaseHostUrl  @"115.159.75.148"
 //#define kMPBaseUrl  @"http://119.29.25.47/orthopedics"
-#define kMPBaseUrl  @"http://119.29.25.47/orthopedics"
+#define kMPBaseUrl  @"http://139.196.106.246:8081/orthopedics"
+//http://139.196.106.246:8081/orthopedics
 #endif
 
 //http://119.29.25.47/orthopedics /app/memeber/register.do
@@ -47,6 +50,11 @@
 #define kMPFetchMedicalCaseReplyUrl  @"/app/cases/listCaseReply.do"
 #define kMPDeleteMedicalCaseUrl  @"/app/cases/deleteCase.do"
 #define kMPSearchHomePageNewsUrl  @"/app/homepage/find.do"
+#define kMPUpdateAPNSStatusUrl  @"/app/memeber/apnsState.do"
+#define kMPFetchCourseTopicUrl  @"/app/course/listTopics.do"
+#define kMPFetchCourseForTopicUrl  @"/app/course/listCourse.do"
+#define kMPFetchMyCourseUrl  @"/app/course/listMyCourse.do"
+#define kMPMeToMemberOfCourseUrl  @"/app/course/addMemberCourse.do"
 
 
 #endif /* APIConfigure_h */

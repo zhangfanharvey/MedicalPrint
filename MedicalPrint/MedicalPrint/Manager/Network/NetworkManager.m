@@ -9,6 +9,8 @@
 #import "NetworkManager.h"
 #import "AFNetworking.h"
 #import "AccountManager.h"
+#import "AppDelegate.h"
+#import "MainTabController.h"
 
 @implementation NetworkManager
 
@@ -49,7 +51,12 @@
         NSDictionary *dic = (NSDictionary *)responseObject;
         NSNumber *state = dic[@"state"];
         if (state && [state isKindOfClass:[NSNumber class]]) {
-            status = [state integerValue] == 1;
+            if ([state integerValue] == 3) {
+                AppDelegate *delegagte = (AppDelegate *)[UIApplication sharedApplication].delegate;
+                [delegagte showRegisterView];
+            } else if ([state integerValue] == 1) {
+                status = YES;
+            }
         }
     }
     return status;
@@ -76,6 +83,17 @@
 
     }
     return [super POST:URLString parameters:parameters progress:uploadProgress success:success failure:failure];
+}
+
+- (void)showLoginStatusExpire {
+    AppDelegate *delegagte = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [delegagte showRegisterView];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"登录已过期" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        ;
+    }];
+    [alertController addAction:action];
+    [delegagte.window.rootViewController presentViewController:alertController animated:YES completion:nil];
 }
 
 @end

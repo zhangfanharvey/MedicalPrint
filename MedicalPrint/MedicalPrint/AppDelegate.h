@@ -16,6 +16,7 @@
 @property (nonatomic, strong) MainTabController *mainTabVC;
 
 - (void)showHomeView;
+- (void)showRegisterView;
 
 
 @end

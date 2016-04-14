@@ -60,6 +60,11 @@
     if (IsSafeValue(valueStr)) {
         self.newsTypeName = valueStr;
     }
+    valueStr = dic[@"description"];
+    if (IsSafeValue(valueStr)) {
+        self.newsDescription = valueStr;
+    }
+
 
 }
 
@@ -67,6 +72,14 @@
     NSString *url = nil;
     if (self.icon) {
         url = [NSString stringWithFormat:@"%@/%@", kMPBaseUrl, self.icon];
+    }
+    return url;
+}
+
+- (NSString *)newsDetailUrl {
+    NSString *url = nil;
+    if (self.p_ID) {
+        url = [NSString stringWithFormat:@"%@/app/homepage/look.do?newsId=%@", kMPBaseUrl, self.p_ID];
     }
     return url;
 }
