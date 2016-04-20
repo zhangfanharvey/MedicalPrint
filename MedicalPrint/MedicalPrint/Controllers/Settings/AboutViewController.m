@@ -32,6 +32,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     self.imageView = [[UIImageView alloc] init];
+    self.imageView.contentMode = UIViewContentModeScaleAspectFill;
     self.imageView.image = [UIImage imageNamed:@"广告大图"];
     [self.view addSubview:self.imageView];
     
@@ -64,8 +65,9 @@
 {
     UIView *superView = self.view;
     [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.top.equalTo(superView);
-        make.height.equalTo(@315);
+        make.top.equalTo(self.mas_topLayoutGuide);
+        make.left.and.right.equalTo(superView);
+        make.height.equalTo(@126);
     }];
     
     [self.aboutTextView mas_makeConstraints:^(MASConstraintMaker *make) {
