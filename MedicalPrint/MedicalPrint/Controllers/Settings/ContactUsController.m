@@ -10,20 +10,18 @@
 #import "BaseTableViewCell.h"
 #import "Masonry.h"
 #import "UserInfoRequest.h"
-#import "YNBaseSwitchTableViewCell.h"
-#import "TagLabelCell.h"
-#import "YNBaseInfoTableViewCell.h"
-#import "AboutViewController.h"
-#import "FeedbackViewController.h"
-#import "ContactUsController.h"
-#import "BarcodeView.h"
 #import "AboutUsInfo.h"
+#import "IconLabelTableViewCell.h"
+#import "AccountManager.h"
+#import "UIImageView+WebCache.h"
+#import "AboutUsInfo.h"
+#import "BarcodeView.h"
 
 @interface ContactUsController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) AboutUsInfo *aboutUsInfo;
-
+@property (nonatomic, strong) BarcodeView *barcodeView;
 
 @end
 
@@ -32,19 +30,27 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.tableView.separatorInset = UIEdgeInsetsZero;
     [self.view addSubview:self.tableView];
-    
-    
-    [self.tableView registerClass:[TagLabelCell class] forCellReuseIdentifier:[TagLabelCell cellIdentifier]];
-    [self.tableView registerClass:[YNBaseInfoTableViewCell class] forCellReuseIdentifier:[YNBaseInfoTableViewCell cellIdentifier]];
     
     [self setupViewConstraints];
     [self initNaviBarItem];
+    
+    [self createBarcodeView];
+    
+    [self configureData];
+    
     [self initDataSource];
     
+    [self.tableView registerClass:[IconLabelTableViewCell class] forCellReuseIdentifier:[IconLabelTableViewCell cellIdentifier]];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -60,13 +66,14 @@
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(superView);
     }];
+    
 }
 
 #pragma mark - private
 
 - (void)initNaviBarItem
 {
-    self.title = @"设置";
+    self.title = @"联系我们";
 }
 
 - (void)initDataSource {
@@ -78,9 +85,29 @@
     }];
 }
 
-
 - (void)configureData {
+    self.barcodeView.barcodeImageView.image = [UIImage imageNamed:@"二维码"];
     
+}
+
+- (void)createBarcodeView {
+    BarcodeView *barcodeView = [[BarcodeView alloc] init];
+    self.barcodeView = barcodeView;
+    [self.view addSubview:barcodeView];
+    
+    CGFloat bottomHeight = [self bottomViewHeight];
+    UIView *superView = self.view;
+    [self.barcodeView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.and.bottom.equalTo(superView);
+        make.height.equalTo(@(bottomHeight));
+    }];
+}
+
+- (CGFloat)bottomViewHeight {
+    CGFloat height = 180;
+    height = self.view.bounds.size.height - 5 * 45.0f - 84;
+    
+    return height;
 }
 
 #pragma mark - IBAction
@@ -91,41 +118,44 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    if (indexPath.section == 1 && indexPath.row == 1) {
+        return [self bottomViewHeight];
+    }
     return 45.0f;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    if (section > 0) {
-        return 20.0f;
-    } else {
-        return 0.0001f;
-    }
+    return 0.0001f;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    return 0.0001f;
+    return 20.0f;
+    //    return 0.0001f;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (indexPath.section == 0) {
-    } else if (indexPath.section == 1) {
-        if (indexPath.row == 0) {
-            ContactUsController *contactUsVC = [[ContactUsController alloc] init];
-            [self.navigationController pushViewController:contactUsVC animated:YES];
-        } else {
-            AboutViewController *abountUsVC = [[AboutViewController alloc] init];
-            [self.navigationController pushViewController:abountUsVC animated:YES];
-        }
-        
-    } else {
-        if (indexPath.row == 0) {
-        } else if (indexPath.row == 1) {
-        } else {
-        }
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Remove seperator inset
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
+    // Prevent the cell from inheriting the Table View's margin settings
+    if ([cell respondsToSelector:@selector(setPreservesSuperviewLayoutMargins:)]) {
+        [cell setPreservesSuperviewLayoutMargins:NO];
+    }
+    
+    // Explictly set your cell's layout margins
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
     }
 }
 
@@ -133,58 +163,48 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSInteger number = 0;
     if (section == 0) {
-        number = 1;
-    } else if (section == 1) {
-        number = 2;
-    } else if (section == 2) {
-        number = 2;
+        return 3;
     }
-    return number;
+    return 2;
 }
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 0;
+    return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    IconLabelTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[IconLabelTableViewCell cellIdentifier] forIndexPath:indexPath];
+    NSString *iconName = @"";
+    NSString *name = @"";
     if (indexPath.section == 0) {
-//        YNBaseSwitchTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[YNBaseSwitchTableViewCell cellIdentifier] forIndexPath:indexPath];
-//        cell.tagLabel.text = @"信息推送";
-//        return cell;
-    } else if (indexPath.section == 1) {
-        YNBaseInfoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[YNBaseInfoTableViewCell cellIdentifier] forIndexPath:indexPath];
         if (indexPath.row == 0) {
-            cell.infoLabel.text = @"联系我们";
-        } else {
-            cell.infoLabel.text = @"关于我们";
+            iconName = @"联系电话";
+            name = [NSString stringWithFormat:@"%@%@", @"联系电话:", self.aboutUsInfo.phoneNumber];
+        } else if (indexPath.row == 1) {
+            iconName = @"公司传真";
+            name = [NSString stringWithFormat:@"%@%@", @"公司传真:", self.aboutUsInfo.fax];
+            //            name = @"公司传真";
+        } else if (indexPath.row) {
+            iconName = @"邮箱地址";
+            name = self.aboutUsInfo.email;
         }
-        return cell;
-        
     } else {
         if (indexPath.row == 0) {
-            TagLabelCell *cell = [tableView dequeueReusableCellWithIdentifier:[TagLabelCell cellIdentifier] forIndexPath:indexPath];
-            cell.tagLabel.text = @"清理缓存";
-            cell.label.text = @"";
-            return cell;
-        } else if (indexPath.row == 1) {
-            TagLabelCell *cell = [tableView dequeueReusableCellWithIdentifier:[TagLabelCell cellIdentifier] forIndexPath:indexPath];
-            cell.tagLabel.text = @"使用帮助";
-            cell.label.text = @"";
-            return cell;
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            iconName = @"公司地址";
+            name = self.aboutUsInfo.address;
         } else {
-            TagLabelCell *cell = [tableView dequeueReusableCellWithIdentifier:[TagLabelCell cellIdentifier] forIndexPath:indexPath];
-            cell.tagLabel.text = @"";
-            return cell;
+            cell.accessoryType = UITableViewCellAccessoryNone;
         }
     }
-    
-    return nil;
+    cell.iconImageView.image = [UIImage imageNamed:iconName];
+    cell.label.text = name;
+    return cell;
 }
-
 
 
 @end

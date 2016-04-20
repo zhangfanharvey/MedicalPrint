@@ -18,7 +18,7 @@
 @property (nonatomic, strong) NSString *position;
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *content;
-@property (nonatomic, strong) NSString *createTimeLong;
+@property (nonatomic, assign) NSTimeInterval createTimeLong;
 
 - (void)configureWithDic:(NSDictionary *)dic;
 

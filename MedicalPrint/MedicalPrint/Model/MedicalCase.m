@@ -55,9 +55,9 @@
     if (IsSafeValue(valueStr)) {
         self.content = valueStr;
     }
-    valueStr = dic[@"createTimeLong"];
+    value = dic[@"createTimeLong"];
     if (IsSafeValue(valueStr)) {
-        self.createTimeLong = valueStr;
+        self.createTimeLong = [value doubleValue];
     }
 
 }

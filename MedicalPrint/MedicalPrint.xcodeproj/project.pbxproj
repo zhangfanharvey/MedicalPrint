@@ -128,6 +128,11 @@
 		7D6C5DC11CBF3D8F002E088E /* CourseTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D6C5DC01CBF3D8F002E088E /* CourseTopicCell.m */; };
 		7D6C5DC41CBF49F4002E088E /* CourseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D6C5DC31CBF49F3002E088E /* CourseCell.m */; };
 		7D6C5DC71CBF4B85002E088E /* CourseListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D6C5DC61CBF4B85002E088E /* CourseListController.m */; };
+		7D6C5DCA1CC502E8002E088E /* TimeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D6C5DC91CC502E8002E088E /* TimeManager.m */; };
+		7D6C5DCD1CC512A4002E088E /* OrganButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D6C5DCC1CC512A4002E088E /* OrganButton.m */; };
+		7D6C5DD01CC5BD67002E088E /* NewsCaseTypeListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D6C5DCF1CC5BD67002E088E /* NewsCaseTypeListController.m */; };
+		7D6C5DD31CC5BDCE002E088E /* NewsCaseTypeListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D6C5DD21CC5BDCE002E088E /* NewsCaseTypeListCell.m */; };
+		7D6C5DD61CC5BED3002E088E /* NewsListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D6C5DD51CC5BED3002E088E /* NewsListController.m */; };
 		7D93CB4D1CAE772C009D462F /* Print3DItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D93CB4C1CAE772C009D462F /* Print3DItemView.m */; };
 		7D996A991C994A890046566F /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D996A981C994A890046566F /* MBProgressHUD.m */; };
 		7DA868851CA23F8000C3EA50 /* MyClassListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DA868841CA23F8000C3EA50 /* MyClassListController.m */; };
@@ -152,6 +157,11 @@
 		7DEEE1831C9BDC5200AC3B88 /* RegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DEEE1821C9BDC5200AC3B88 /* RegisterController.m */; };
 		7DEEE1861C9BDEF200AC3B88 /* TagInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DEEE1851C9BDEF200AC3B88 /* TagInputView.m */; };
 		7DEEE1891C9BF37200AC3B88 /* FindPasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DEEE1881C9BF37200AC3B88 /* FindPasswordController.m */; };
+		7DF66C741CC5F937006114B0 /* Print3DOrganDrawView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF66C731CC5F937006114B0 /* Print3DOrganDrawView.m */; };
+		7DF66C771CC5FA94006114B0 /* MajorOrganPositionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF66C761CC5FA94006114B0 /* MajorOrganPositionManager.m */; };
+		7DF66C7A1CC5FAF5006114B0 /* Bones.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF66C791CC5FAF5006114B0 /* Bones.m */; };
+		7DF66C7D1CC72C12006114B0 /* UserProfileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF66C7C1CC72C12006114B0 /* UserProfileController.m */; };
+		7DF66C801CC72F75006114B0 /* UserProfileEditController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF66C7F1CC72F75006114B0 /* UserProfileEditController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -429,6 +439,16 @@
 		7D6C5DC31CBF49F3002E088E /* CourseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseCell.m; sourceTree = "<group>"; };
 		7D6C5DC51CBF4B85002E088E /* CourseListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseListController.h; sourceTree = "<group>"; };
 		7D6C5DC61CBF4B85002E088E /* CourseListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseListController.m; sourceTree = "<group>"; };
+		7D6C5DC81CC502E8002E088E /* TimeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeManager.h; sourceTree = "<group>"; };
+		7D6C5DC91CC502E8002E088E /* TimeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeManager.m; sourceTree = "<group>"; };
+		7D6C5DCB1CC512A4002E088E /* OrganButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrganButton.h; sourceTree = "<group>"; };
+		7D6C5DCC1CC512A4002E088E /* OrganButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrganButton.m; sourceTree = "<group>"; };
+		7D6C5DCE1CC5BD67002E088E /* NewsCaseTypeListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsCaseTypeListController.h; sourceTree = "<group>"; };
+		7D6C5DCF1CC5BD67002E088E /* NewsCaseTypeListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsCaseTypeListController.m; sourceTree = "<group>"; };
+		7D6C5DD11CC5BDCE002E088E /* NewsCaseTypeListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsCaseTypeListCell.h; sourceTree = "<group>"; };
+		7D6C5DD21CC5BDCE002E088E /* NewsCaseTypeListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsCaseTypeListCell.m; sourceTree = "<group>"; };
+		7D6C5DD41CC5BED3002E088E /* NewsListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsListController.h; sourceTree = "<group>"; };
+		7D6C5DD51CC5BED3002E088E /* NewsListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsListController.m; sourceTree = "<group>"; };
 		7D93CB4B1CAE772C009D462F /* Print3DItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Print3DItemView.h; sourceTree = "<group>"; };
 		7D93CB4C1CAE772C009D462F /* Print3DItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Print3DItemView.m; sourceTree = "<group>"; };
 		7D996A971C994A890046566F /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
@@ -479,6 +499,16 @@
 		7DEEE1851C9BDEF200AC3B88 /* TagInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagInputView.m; sourceTree = "<group>"; };
 		7DEEE1871C9BF37200AC3B88 /* FindPasswordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindPasswordController.h; sourceTree = "<group>"; };
 		7DEEE1881C9BF37200AC3B88 /* FindPasswordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindPasswordController.m; sourceTree = "<group>"; };
+		7DF66C721CC5F937006114B0 /* Print3DOrganDrawView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Print3DOrganDrawView.h; sourceTree = "<group>"; };
+		7DF66C731CC5F937006114B0 /* Print3DOrganDrawView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Print3DOrganDrawView.m; sourceTree = "<group>"; };
+		7DF66C751CC5FA94006114B0 /* MajorOrganPositionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MajorOrganPositionManager.h; sourceTree = "<group>"; };
+		7DF66C761CC5FA94006114B0 /* MajorOrganPositionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MajorOrganPositionManager.m; sourceTree = "<group>"; };
+		7DF66C781CC5FAF5006114B0 /* Bones.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bones.h; sourceTree = "<group>"; };
+		7DF66C791CC5FAF5006114B0 /* Bones.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bones.m; sourceTree = "<group>"; };
+		7DF66C7B1CC72C12006114B0 /* UserProfileController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileController.h; sourceTree = "<group>"; };
+		7DF66C7C1CC72C12006114B0 /* UserProfileController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileController.m; sourceTree = "<group>"; };
+		7DF66C7E1CC72F75006114B0 /* UserProfileEditController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileEditController.h; sourceTree = "<group>"; };
+		7DF66C7F1CC72F75006114B0 /* UserProfileEditController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileEditController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -785,6 +815,10 @@
 				7D6C5DA01CBB7324002E088E /* SearchNewsController.m */,
 				7DE467791CA2331F00101660 /* MessageCenterController.h */,
 				7DE4677A1CA2331F00101660 /* MessageCenterController.m */,
+				7D6C5DD41CC5BED3002E088E /* NewsListController.h */,
+				7D6C5DD51CC5BED3002E088E /* NewsListController.m */,
+				7D6C5DCE1CC5BD67002E088E /* NewsCaseTypeListController.h */,
+				7D6C5DCF1CC5BD67002E088E /* NewsCaseTypeListController.m */,
 				7D61464E1CA7ADB5002872B1 /* MainTabController.h */,
 				7D61464F1CA7ADB5002872B1 /* MainTabController.m */,
 			);
@@ -804,6 +838,8 @@
 				7D4EEA831CA90BC30014E38D /* HomeNewsListCell.m */,
 				7D6C5DB01CBCBFB0002E088E /* SearchAutoCompleteCell.h */,
 				7D6C5DB11CBCBFB0002E088E /* SearchAutoCompleteCell.m */,
+				7D6C5DD11CC5BDCE002E088E /* NewsCaseTypeListCell.h */,
+				7D6C5DD21CC5BDCE002E088E /* NewsCaseTypeListCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -849,6 +885,10 @@
 				7D5519711C9FD75B0084A13A /* View */,
 				7D5782D01CA119A500493ADC /* UserPersonalCenterController.h */,
 				7D5782D11CA119A500493ADC /* UserPersonalCenterController.m */,
+				7DF66C7B1CC72C12006114B0 /* UserProfileController.h */,
+				7DF66C7C1CC72C12006114B0 /* UserProfileController.m */,
+				7DF66C7E1CC72F75006114B0 /* UserProfileEditController.h */,
+				7DF66C7F1CC72F75006114B0 /* UserProfileEditController.m */,
 				7D5782DC1CA1365000493ADC /* MemberInfoController.h */,
 				7D5782DD1CA1365000493ADC /* MemberInfoController.m */,
 			);
@@ -942,6 +982,8 @@
 				7D93CB4A1CAE7720009D462F /* View */,
 				7D6146531CA7B05C002872B1 /* Print3DController.h */,
 				7D6146541CA7B05C002872B1 /* Print3DController.m */,
+				7DF66C751CC5FA94006114B0 /* MajorOrganPositionManager.h */,
+				7DF66C761CC5FA94006114B0 /* MajorOrganPositionManager.m */,
 			);
 			name = Print3D;
 			path = MedicalPrint/Controllers/Print3D;
@@ -1010,6 +1052,10 @@
 			children = (
 				7D93CB4B1CAE772C009D462F /* Print3DItemView.h */,
 				7D93CB4C1CAE772C009D462F /* Print3DItemView.m */,
+				7D6C5DCB1CC512A4002E088E /* OrganButton.h */,
+				7D6C5DCC1CC512A4002E088E /* OrganButton.m */,
+				7DF66C721CC5F937006114B0 /* Print3DOrganDrawView.h */,
+				7DF66C731CC5F937006114B0 /* Print3DOrganDrawView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1137,6 +1183,8 @@
 				7D6C5DB71CBE1482002E088E /* CourseTopic.m */,
 				7D6C5DB91CBE1523002E088E /* Course.h */,
 				7D6C5DBA1CBE1523002E088E /* Course.m */,
+				7DF66C781CC5FAF5006114B0 /* Bones.h */,
+				7DF66C791CC5FAF5006114B0 /* Bones.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1147,6 +1195,8 @@
 				7D4EEA9D1CACB48E0014E38D /* Network */,
 				7D55195A1C9F82B30084A13A /* AccountManager.h */,
 				7D55195B1C9F82B30084A13A /* AccountManager.m */,
+				7D6C5DC81CC502E8002E088E /* TimeManager.h */,
+				7D6C5DC91CC502E8002E088E /* TimeManager.m */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -1349,13 +1399,16 @@
 				7D6C5DBB1CBE1523002E088E /* Course.m in Sources */,
 				7DEEE1621C9BAA9000AC3B88 /* UIImage+TPAdditions.m in Sources */,
 				7D4EEA841CA90BC30014E38D /* HomeNewsListCell.m in Sources */,
+				7D6C5DCA1CC502E8002E088E /* TimeManager.m in Sources */,
 				7DE4677E1CA2336E00101660 /* MessageCenterCell.m in Sources */,
+				7D6C5DD01CC5BD67002E088E /* NewsCaseTypeListController.m in Sources */,
 				7D2CB29B1C980E5F0055C7F4 /* AppDelegate.m in Sources */,
 				7D2CB33D1C980EA40055C7F4 /* MASCompositeConstraint.m in Sources */,
 				7D4EEA961CAAAA570014E38D /* AboutUsInfo.m in Sources */,
 				7D2CB33C1C980EA40055C7F4 /* AFURLSessionManager.m in Sources */,
 				7DE467811CA236D700101660 /* Message.m in Sources */,
 				7DEEE1611C9BAA9000AC3B88 /* UIImage+RoundedCorner.m in Sources */,
+				7DF66C7D1CC72C12006114B0 /* UserProfileController.m in Sources */,
 				7D2CB34A1C980EA40055C7F4 /* SDWebImageCompat.m in Sources */,
 				7D2CB3571C980EA40055C7F4 /* AFAutoPurgingImageCache.m in Sources */,
 				7D4EEA8D1CA922540014E38D /* CaseType.m in Sources */,
@@ -1379,6 +1432,7 @@
 				7D6146621CA7ECB4002872B1 /* NSArray+JsonHelper.m in Sources */,
 				7D2CB3551C980EA40055C7F4 /* UIImageView+WebCache.m in Sources */,
 				7D6146551CA7B05C002872B1 /* Print3DController.m in Sources */,
+				7DF66C801CC72F75006114B0 /* UserProfileEditController.m in Sources */,
 				7D5782DB1CA12CEE00493ADC /* IconLabelTableViewCell.m in Sources */,
 				7D2CB3501C980EA40055C7F4 /* UIButton+WebCache.m in Sources */,
 				7D2CB33B1C980EA40055C7F4 /* AFURLResponseSerialization.m in Sources */,
@@ -1392,6 +1446,7 @@
 				7D2CB3401C980EA40055C7F4 /* MASLayoutConstraint.m in Sources */,
 				7DEEE14F1C9B95F900AC3B88 /* UIScrollView+SVPullToRefresh.m in Sources */,
 				7DEEE1801C9BDA9800AC3B88 /* Theme.m in Sources */,
+				7D6C5DCD1CC512A4002E088E /* OrganButton.m in Sources */,
 				7D57831A1CA1533300493ADC /* TAAbstractDotView.m in Sources */,
 				7D57831F1CA1533300493ADC /* SDCycleScrollView.m in Sources */,
 				7D4EEA931CAA66C30014E38D /* YNBaseInfoTableViewCell.m in Sources */,
@@ -1408,6 +1463,7 @@
 				7D5519661C9F82D70084A13A /* Order.m in Sources */,
 				7D4EEA901CA95E8A0014E38D /* UserPersonalCenterNavView.m in Sources */,
 				7D2CB3381C980EA40055C7F4 /* AFNetworkReachabilityManager.m in Sources */,
+				7DF66C741CC5F937006114B0 /* Print3DOrganDrawView.m in Sources */,
 				7D57831E1CA1533300493ADC /* SDCollectionViewCell.m in Sources */,
 				7D2CB3391C980EA40055C7F4 /* AFSecurityPolicy.m in Sources */,
 				7D996A991C994A890046566F /* MBProgressHUD.m in Sources */,
@@ -1451,12 +1507,16 @@
 				7D2CB35A1C980EA40055C7F4 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				7D5782E11CA1398A00493ADC /* TagLabelCell.m in Sources */,
 				7D5782D21CA119A500493ADC /* UserPersonalCenterController.m in Sources */,
+				7D6C5DD31CC5BDCE002E088E /* NewsCaseTypeListCell.m in Sources */,
+				7DF66C771CC5FA94006114B0 /* MajorOrganPositionManager.m in Sources */,
 				7D2CB3541C980EA40055C7F4 /* UIImageView+HighlightedWebCache.m in Sources */,
 				7D6146501CA7ADB5002872B1 /* MainTabController.m in Sources */,
 				7D2CB33E1C980EA40055C7F4 /* MASConstraint.m in Sources */,
 				7D57831C1CA1533300493ADC /* TADotView.m in Sources */,
 				7D5782D81CA11F5400493ADC /* UserPersonalHeadView.m in Sources */,
 				7D57831B1CA1533300493ADC /* TAAnimatedDotView.m in Sources */,
+				7DF66C7A1CC5FAF5006114B0 /* Bones.m in Sources */,
+				7D6C5DD61CC5BED3002E088E /* NewsListController.m in Sources */,
 				7D4EEA991CABEA690014E38D /* BarcodeView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

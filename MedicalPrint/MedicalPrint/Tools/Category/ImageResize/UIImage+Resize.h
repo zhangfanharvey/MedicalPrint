@@ -32,4 +32,8 @@
 
 + (UIImage *)yn_createBubbleImage:(UIImage *)image;
 
++ (UIImage *)imageFromColor:(UIColor *)color;
++ (UIImage *)imageFromColor:(UIColor *)color withSize:(CGSize)size;
+
+
 @end

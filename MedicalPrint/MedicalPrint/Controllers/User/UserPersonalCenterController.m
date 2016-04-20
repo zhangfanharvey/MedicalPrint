@@ -22,8 +22,9 @@
 #import "MyOrderListViewController.h"
 #import "MyClassListController.h"
 #import "CourseTopicController.h"
+#import "UserProfileController.h"
 
-@interface UserPersonalCenterController () <UITableViewDataSource, UITableViewDelegate>
+@interface UserPersonalCenterController () <UITableViewDataSource, UITableViewDelegate, UserPersonalHeadViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UserPersonalHeadView *userHeadView;
@@ -41,7 +42,7 @@
     if (self) {
         self.title = @"我的";
         UITabBarItem *tabBarItem = [[UITabBarItem alloc] initWithTitle:@"" image:[[UIImage imageNamed:@"我的_常态"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"我的_按下"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-        tabBarItem.imageInsets = UIEdgeInsetsMake(4.5, 0, -7, 0);
+        tabBarItem.imageInsets = UIEdgeInsetsMake(6, 0, -6, 0);
         tabBarItem.titlePositionAdjustment = UIOffsetMake(0, 50);
         self.tabBarItem = tabBarItem;
     }
@@ -61,17 +62,21 @@
     self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 44, 0);
     
     self.userHeadView = [[UserPersonalHeadView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 180)];
+    self.userHeadView.delegate = self;
     self.tableView.tableHeaderView = self.userHeadView;
     
     self.titleView = [[UserPersonalCenterNavView alloc] init];
+    [self.titleView.backButton addTarget:self action:@selector(backButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.titleView];
     
     [self setupViewConstraints];
     [self initNaviBarItem];
     
-    [self initDataSource];
     
     [self.tableView registerClass:[IconLabelTableViewCell class] forCellReuseIdentifier:[IconLabelTableViewCell cellIdentifier]];
+    
+    [self initDataSource];
+    [self configureData];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -94,7 +99,8 @@
     }];
     
     [self.titleView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.top.and.right.equalTo(superView);
+        make.left.and.right.equalTo(superView);
+        make.top.equalTo(superView.mas_top).offset(20);
         make.height.equalTo(@45);
     }];
 }
@@ -114,13 +120,21 @@
     AccountManager *accountManager = [AccountManager sharedManager];
     self.user = accountManager.user;
     self.titleView.titleLabel.text = @"个人信息";
+    self.titleView.backButton.hidden = YES;
 //    [self.userHeadView.avatarImageView sd_setImageWithURL:[NSURL URLWithString:nil]];
-    self.userHeadView.nameLabel.text = self.user.nickName;
+    self.userHeadView.nameLabel.text = [self.user showNickName];
 }
 
 #pragma mark - IBAction
 
 
+
+#pragma mark - UserPersonalHeadViewDelegate
+
+- (void)personalHeadView:(UserPersonalHeadView *)headView didClickedAvatarView:(UIImageView *)avatarView {
+    UserProfileController *userProfileVC = [[UserProfileController alloc] init];
+    [self.navigationController pushViewController:userProfileVC animated:YES];
+}
 
 #pragma mark - UITableViewDelegate
 

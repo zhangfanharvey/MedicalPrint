@@ -62,6 +62,55 @@
     if (IsSafeValue(valueStr)) {
         self.authState = valueStr;
     }
+    value = dic[@"closeApns"];
+    if (IsSafeValue(value)) {
+        self.closeApns = [value integerValue];
+    }
+
+}
+
+- (NSString *)showNickName {
+    NSString *name = nil;
+    if (self.nickName) {
+        name = self.nickName;
+    } else {
+        name = @"未命名";
+    }
+    return name;
+}
+
+- (NSMutableDictionary *)createServerDicFromLocalData {
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    if (self.uid) {
+        dic[@"id"] = self.uid;
+    }
+    if (self.nickName) {
+        dic[@"nickname"] = self.nickName;
+    }
+    if (self.account) {
+        dic[@"userName"] = self.account;
+    }
+    if (self.phone) {
+        dic[@"id"] = self.uid;
+    }
+    if (self.email) {
+        dic[@"email"] = self.email;
+    }
+    if (self.company) {
+        dic[@"company"] = self.company;
+    }
+    if (self.department) {
+        dic[@"department"] = self.department;
+    }
+    if (self.position) {
+        dic[@"position"] = self.position;
+    }
+    if (self.authState) {
+        dic[@"authState"] = self.authState;
+    }
+    dic[@"closeApns"] = @(self.closeApns);
+    self.serverDic = dic;
+    return dic;
 }
 
 @end

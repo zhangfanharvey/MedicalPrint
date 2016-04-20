@@ -14,5 +14,6 @@
 
 #import "Common.h"
 #import "CommonUI.h"
+#import "TimeManager.h"
 
 #endif /* MedicalPrintPrefixHeader_pch */

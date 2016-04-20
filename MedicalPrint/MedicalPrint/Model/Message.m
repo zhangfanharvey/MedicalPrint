@@ -10,4 +10,27 @@
 
 @implementation Message
 
+- (void)configureWithDic:(NSDictionary *)dic {
+    NSNumber *value = dic[@"id"];
+    if (IsSafeValue(value)) {
+        self.p_ID = [value stringValue];
+    }
+    NSString *valueStr = dic[@"contents"];
+    if (IsSafeValue(valueStr)) {
+        self.contents = valueStr;
+    }
+    value = dic[@"createTimeLong"];
+    if (IsSafeValue(valueStr)) {
+        self.createTimeLong = [valueStr longLongValue];
+    }
+}
+
+- (NSString *)crateTimeStr {
+    NSString *time = nil;
+    
+    NSDateFormatter *formater = [[NSDateFormatter alloc] init];
+    time = [formater stringFromDate:[NSDate dateWithTimeIntervalSince1970:self.createTimeLong]];
+    return time;
+}
+
 @end

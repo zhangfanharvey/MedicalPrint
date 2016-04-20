@@ -15,8 +15,10 @@
 #import "MessageCenterController.h"
 #import "SearchNewsController.h"
 #import "NewsDetailController.h"
+#import "NewsListController.h"
+#import "NewsCaseTypeListController.h"
 
-@interface HomeViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
+@interface HomeViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, HomeTopHeadViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 
@@ -33,10 +35,12 @@
 {
     self = [super init];
     if (self) {
-//        self.title = @"首页";
+        self.title = @"首页";
         UITabBarItem *tabBarItem = [[UITabBarItem alloc] initWithTitle:@"" image:[[UIImage imageNamed:@"首页_常态"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"首页_按下"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
         tabBarItem.imageInsets = UIEdgeInsetsMake(6, 0, -6, 0);
+        tabBarItem.titlePositionAdjustment = UIOffsetMake(0, 50);
         self.tabBarItem = tabBarItem;
+
     }
     return self;
 }
@@ -51,6 +55,9 @@
     
     self.topHeadView = [[HomeTopHeadView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), [HomeTopHeadView heightForTopHeadView] + 120)];
     self.tableView.tableHeaderView = self.topHeadView;
+    self.topHeadView.delegate = self;
+    
+    [self.topHeadView.rightButon addTarget:self action:@selector(moreButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.topHeadView configureDemoData];
     
@@ -120,11 +127,12 @@
 }
 
 - (void)initDataSource {
+    [self.topHeadView configureWithAidImageUrl:[UserInfoRequest homePageAidImageUrl]];
     [UserInfoRequest fetchNewsTypeSuccess:^(BOOL status, NSArray *newsTypeArray) {
         self.newsTypeArray = [newsTypeArray sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
             return [obj1 compare:obj2];
         }];
-//        [self.topHeadView configureNewsTypeWithList:self.newsTypeArray];
+        [self.topHeadView configureNewsTypeWithList:self.newsTypeArray];
     } failure:^(NSString *msg) {
         ;
     }];
@@ -182,6 +190,18 @@
     [self.navigationController pushViewController:searchNewsVC animated:YES];
 }
 
+- (IBAction)moreButtonClicked:(id)sender {
+    NewsCaseTypeListController *caseTypeListVC = [[NewsCaseTypeListController alloc] initWithCaseTypeArray:self.newsTypeArray];
+    [self.navigationController pushViewController:caseTypeListVC animated:YES];
+}
+
+#pragma mark - HomeTopHeadViewDelegate
+
+- (void)homeTopHeadView:(HomeTopHeadView *)topHeadView didSelectCaseTypeItemAtIndex:(NSInteger)index {
+    NewsType *newsType = [self.newsTypeArray objectAtIndex:index];
+    NewsListController *newsListVC = [[NewsListController alloc] initWithCaseType:newsType];
+    [self.navigationController pushViewController:newsListVC animated:YES];
+}
 
 #pragma mark - UITableViewDelegate
 

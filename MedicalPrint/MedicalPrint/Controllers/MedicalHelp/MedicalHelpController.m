@@ -29,7 +29,8 @@
     if (self) {
         self.title = @"病例求助";
         UITabBarItem *tabBarItem = [[UITabBarItem alloc] initWithTitle:@"" image:[[UIImage imageNamed:@"病理求助_常态"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"病理求助_按下"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-        tabBarItem.imageInsets = UIEdgeInsetsMake(4.5, 0, -7, 0);
+        tabBarItem.imageInsets = UIEdgeInsetsMake(6, 0, -6, 0);
+        tabBarItem.titlePositionAdjustment = UIOffsetMake(0, 50);
         self.tabBarItem = tabBarItem;
 
     }

@@ -14,7 +14,7 @@
 #import "UserPersonalCenterController.h"
 #import "YouniNavigationController.h"
 #import "UserInfoRequest.h"
-
+#import "UIImage+Resize.h"
 
 @interface MainTabController () <UITabBarControllerDelegate>
 
@@ -64,6 +64,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    
+    [[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageFromColor:[UIColor colorWithRed:0.000 green:0.769 blue:0.945 alpha:1.00] withSize:CGSizeMake(self.tabBar.frame.size.width/5, self.tabBar.frame.size.height)]];
+
 }
 
 - (void)didReceiveMemoryWarning {

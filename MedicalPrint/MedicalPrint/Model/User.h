@@ -31,9 +31,14 @@
 @property (nonatomic, strong) NSString *department;
 @property (nonatomic, strong) NSString *position;
 @property (nonatomic, strong) NSString *authState;
+@property (nonatomic, assign) NSInteger closeApns; // 推送消息状态（1 开启 2 关闭）
 
 @property (nonatomic, strong) NSDictionary *serverDic;
 
 - (void)configureWithDic:(NSDictionary *)dic;
+
+- (NSMutableDictionary *)createServerDicFromLocalData;
+
+- (NSString *)showNickName;
 
 @end

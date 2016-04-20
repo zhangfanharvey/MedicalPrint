@@ -82,4 +82,11 @@
 + (void)fetchCourseListForTopic:(CourseTopic *)courseTopic withStart:(NSInteger)start length:(NSInteger)length success:(void(^)(BOOL status, NSArray *courseArray))block failure:(NetworkFailureBlock)failure;
 + (void)addMeToMemberOfCourse:(Course *)course success:(void(^)(BOOL status))block failure:(NetworkFailureBlock)failure;
 
++ (void)fetchMessageWithStart:(NSInteger)start length:(NSInteger)length success:(void(^)(BOOL status, NSArray *messagesArray))block failure:(NetworkFailureBlock)failure;
+
+
++ (NSArray *)homePageAidImageUrl;
+
++ (NSString *)userHelpUrl;
+
 @end

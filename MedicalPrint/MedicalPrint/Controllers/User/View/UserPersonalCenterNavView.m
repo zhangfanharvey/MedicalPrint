@@ -16,6 +16,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backButton = [[UIButton alloc] init];
+        [self.backButton setImage:[UIImage imageNamed:@"顶部撤回键"] forState:UIControlStateNormal];
         [self addSubview:self.backButton];
         
         self.titleLabel = [[UILabel alloc] init];
@@ -32,7 +33,8 @@
     UIView *superView = self;
     [self.backButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(superView.mas_left).offset(10);
-        make.centerY.equalTo(superView);
+        make.centerY.equalTo(superView.mas_centerY);
+        make.width.equalTo(@45);
     }];
     
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {

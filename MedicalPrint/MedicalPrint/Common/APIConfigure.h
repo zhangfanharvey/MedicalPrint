@@ -46,6 +46,8 @@
 #define kMPAddMyMedicalCaseUrl  @"/app/cases/addCase.do"
 #define kMPUpdateMyMedicalCaseUrl  @"/app/cases/saveCase.do"
 #define kMPFetchListNewsTypeUrl  @"/app/homepage/listNewsType.do"
+#define kMPFetchNewsForTypeUrl  @"/app/homepage/listTypeNews.do"
+///app/homepage/listTypeNews.do
 #define kMPFetchMyNewsUrl  @"/app/homepage/listNews.do"
 #define kMPFetchMedicalCaseReplyUrl  @"/app/cases/listCaseReply.do"
 #define kMPDeleteMedicalCaseUrl  @"/app/cases/deleteCase.do"
@@ -55,6 +57,7 @@
 #define kMPFetchCourseForTopicUrl  @"/app/course/listCourse.do"
 #define kMPFetchMyCourseUrl  @"/app/course/listMyCourse.do"
 #define kMPMeToMemberOfCourseUrl  @"/app/course/addMemberCourse.do"
+#define kMPFetchMessageUrl  @"/app/memeber/message.do"
 
 
 #endif /* APIConfigure_h */

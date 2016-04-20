@@ -11,6 +11,7 @@
 #import "NSDictionary+JsonHelper.h"
 #import "NSString+JsonHelper.h"
 #import "APIConfigure.h"
+#import "AppDelegate.h"
 
 @implementation AccountManager
 
@@ -51,6 +52,11 @@
             [self.user configureWithDic:serverDic];
         }
     }
+}
+
+- (void)saveUserInfoData {
+    [self.user createServerDicFromLocalData];
+    [self saveData];
 }
 
 
@@ -126,6 +132,18 @@
         [userDetault setObject:result forKey:@"mySearchResult"];
         [userDetault synchronize];
     }
+
+}
+
+- (void)logoutAccount {
+    self.cookie = nil;
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    [userDefault removeObjectForKey:@"cookie"];
+    [userDefault synchronize];
+
+    AppDelegate *delegagte = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [delegagte showRegisterView];
+    
 
 }
 

@@ -29,4 +29,19 @@
     }
 }
 
+- (NSString *)iconImageName {
+    NSString *imageName = nil;
+    switch ([self.p_ID longLongValue]) {
+        case 0:
+        {
+            
+        }
+            break;
+            
+        default:
+            break;
+    }
+    return imageName;
+}
+
 @end

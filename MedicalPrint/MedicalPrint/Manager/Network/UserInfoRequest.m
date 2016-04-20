@@ -22,6 +22,7 @@
 #import "News.h"
 #import "Course.h"
 #import "CourseTopic.h"
+#import "Message.h"
 
 @implementation UserInfoRequest
 
@@ -114,22 +115,9 @@
                 NSString *cookieName = [cookie name];
                 if ([cookieName isEqualToString:@"JSESSIONID"]) {
                     accountManager.cookie = [cookie value];
+                    break;
                 }
-                QYLog(@"name: '%@'\n",   [cookie name]);
-                QYLog(@"value: '%@'\n",  [cookie value]);
-                QYLog(@"domain: '%@'\n", [cookie domain]);
-                QYLog(@"path: '%@'\n",   [cookie path]);
             }
-            NSArray *cookiesWrite = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies];
-            for (NSHTTPCookie *cookie in cookiesWrite) {
-                // Here I see the correct rails session cookie
-                NSLog(@"Block cookie: %@", cookie);
-            }
-            
-            NSData *cookiesData = [NSKeyedArchiver archivedDataWithRootObject: [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies]];
-            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-            [defaults setObject: cookiesData forKey: @"sessionCookies"];
-            [defaults synchronize];
 
             User *user = [[User alloc] init];
             [user configureWithDic:bodyDic];
@@ -276,8 +264,8 @@
     [[NetworkManager sharedManager] POST:url parameters:dic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         QYLog(@"changeUserInfoWithNickname success%@", responseObject);
         if ([NetworkManager isResponseSuccess:responseObject]) {
-            NSDictionary *responseDic = (NSDictionary *)responseObject;
-            NSDictionary *bodyDic = responseDic[@"body"];
+//            NSDictionary *responseDic = (NSDictionary *)responseObject;
+//            NSDictionary *bodyDic = responseDic[@"body"];
             if (block) {
                 block(YES);
             }
@@ -458,14 +446,14 @@
 
 + (void)addNewOrder:(Order *)newOrder success:(void(^)(BOOL status, Order *order))block failure:(NetworkFailureBlock)failure {
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-    [dic setObject:newOrder.p_ID forKey:@"id"];
+//    [dic setObject:newOrder.p_ID forKey:@"id"];
     [dic setObject:newOrder.name forKey:@"name"];
     [dic setObject:newOrder.receiver forKey:@"receiver"];
     [dic setObject:@(newOrder.sex) forKey:@"sex"];
     [dic setObject:newOrder.phone forKey:@"phone"];
     [dic setObject:newOrder.address forKey:@"address"];
     [dic setObject:newOrder.source forKey:@"source"];
-    [dic setObject:@(newOrder.state) forKey:@"state"];
+//    [dic setObject:@(newOrder.state) forKey:@"state"];
 
     NSString *url = [NSString stringWithFormat:@"%@%@", kMPBaseUrl, kMPAddOrderUrl];
     
@@ -750,7 +738,7 @@
 + (void)fetchMedicalCaseReplyForCase:(MedicalCase *)medicalCase withStart:(NSInteger)start length:(NSInteger)length success:(void(^)(BOOL status, NSArray *medicalCaseReplyArray))block failure:(NetworkFailureBlock)failure {
     NSString *url = [NSString stringWithFormat:@"%@%@", kMPBaseUrl, kMPFetchMedicalCaseReplyUrl];
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-    [dic setObject:medicalCase.p_ID forKey:@"id"];
+    [dic setObject:medicalCase.p_ID forKey:@"caseId"];
     [dic setObject:@(start) forKey:@"start"];
     [dic setObject:@(length) forKey:@"length"];
     
@@ -911,9 +899,9 @@
 }
 
 + (void)fetchNewsListForType:(NewsType *)newsType withStart:(NSInteger)start length:(NSInteger)length success:(void(^)(BOOL status, NSArray *newsArray))block failure:(NetworkFailureBlock)failure {
-    NSString *url = [NSString stringWithFormat:@"%@%@", kMPBaseUrl, kMPFetchMedicalCaseUrl];
+    NSString *url = [NSString stringWithFormat:@"%@%@", kMPBaseUrl, kMPFetchNewsForTypeUrl];
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-    [dic setObject:newsType.p_ID forKey:@"id"];
+    [dic setObject:newsType.p_ID forKey:@"newsTypeId"];
     [dic setObject:@(start) forKey:@"start"];
     [dic setObject:@(length) forKey:@"length"];
     
@@ -1177,4 +1165,49 @@
     }];
 }
 
++ (void)fetchMessageWithStart:(NSInteger)start length:(NSInteger)length success:(void(^)(BOOL status, NSArray *messagesArray))block failure:(NetworkFailureBlock)failure {
+    NSString *url = [NSString stringWithFormat:@"%@%@", kMPBaseUrl, kMPFetchMessageUrl];
+    
+    [[NetworkManager sharedManager] POST:url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        QYLog(@"fetchMessageWithStart success%@", responseObject);
+        if ([NetworkManager isResponseSuccess:responseObject]) {
+            NSDictionary *responseDic = (NSDictionary *)responseObject;
+            NSArray *bodyArray = responseDic[@"body"];
+            NSMutableArray *array = [[NSMutableArray alloc] init];
+            for (NSDictionary *dic in bodyArray) {
+                if (dic && [dic isKindOfClass:[NSDictionary class]]) {
+                    Message *message = [[Message alloc] init];
+                    [message configureWithDic:dic];
+                    [array addObject:message];
+                }
+            }
+            if (block) {
+                block(YES, array);
+            }
+        } else {
+            NSString *errorMsg = responseObject[@"msg"];
+            if (failure) {
+                failure(errorMsg);
+            }
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        QYLog(@"fetchMessageWithStart failure :%@", error.localizedDescription);
+        if (failure) {
+            failure(error.localizedDescription);
+        }
+    }];
+}
+
++ (NSArray *)homePageAidImageUrl {
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+    [array addObject:[NSString stringWithFormat:@"%@%@", kMPBaseUrl, @"/upload/banner/1.jpg"]];
+    [array addObject:[NSString stringWithFormat:@"%@%@", kMPBaseUrl, @"/upload/banner/2.jpg"]];
+    [array addObject:[NSString stringWithFormat:@"%@%@", kMPBaseUrl, @"/upload/banner/3.jpg"]];
+
+    return array;
+}
+
++ (NSString *)userHelpUrl {
+    return [NSString stringWithFormat:@"%@%@", kMPBaseUrl, @"/app/aboutus/help.do"];
+}
 @end

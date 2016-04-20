@@ -10,4 +10,12 @@
 
 @interface Message : NSObject
 
+@property (nonatomic, strong) NSString *p_ID;
+@property (nonatomic, strong) NSString *contents;
+@property (nonatomic, assign) NSTimeInterval createTimeLong;
+
+- (void)configureWithDic:(NSDictionary *)dic;
+
+- (NSString *)crateTimeStr;
+
 @end

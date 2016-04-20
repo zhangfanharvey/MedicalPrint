@@ -8,6 +8,7 @@
 
 #import "Theme.h"
 #import <UIKit/UIKit.h>
+#import "UIImage+Resize.h"
 
 @implementation Theme
 
@@ -22,7 +23,14 @@
     
     [[UITabBar appearance] setTintColor:[UIColor colorWithRed:0.031 green:0.765 blue:0.945 alpha:1.00]];
     
+//    [[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageFromColor:[UIColor colorWithRed:0.000 green:0.769 blue:0.945 alpha:1.00]]];
+//setSelectionIndicatorImage
+    [[UITabBar appearance] setBackgroundImage:[UIImage imageFromColor:[UIColor colorWithRed:1.000 green:1.000 blue:1.000 alpha:1.00]]];
+
     
 }
+
+
+
 
 @end

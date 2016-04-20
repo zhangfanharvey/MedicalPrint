@@ -39,7 +39,7 @@
     if (self) {
         self.title = @"更多";
         UITabBarItem *tabBarItem = [[UITabBarItem alloc] initWithTitle:@"更多" image:[[UIImage imageNamed:@"更多_常态"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"更多_按下"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-        tabBarItem.imageInsets = UIEdgeInsetsMake(7, 0, -7, 0);
+        tabBarItem.imageInsets = UIEdgeInsetsMake(6, 0, -6, 0);
         tabBarItem.titlePositionAdjustment = UIOffsetMake(0, 50);
         self.tabBarItem = tabBarItem;
     }
@@ -146,6 +146,8 @@
 //                [self.tableView reloadData];
             }];
         } else if (indexPath.row == 1) {
+            UserHelpController *userHelpVC = [[UserHelpController alloc] init];
+            [self.navigationController pushViewController:userHelpVC animated:YES];
         } else {
         }
     }

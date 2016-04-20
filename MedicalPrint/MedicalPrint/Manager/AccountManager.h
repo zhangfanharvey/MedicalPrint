@@ -32,5 +32,8 @@
 - (NSArray *)allSearchResult;
 - (void)addSearchResult:(NSString *)text;
 
+- (void)logoutAccount;
+
+- (void)saveUserInfoData;
 
 @end

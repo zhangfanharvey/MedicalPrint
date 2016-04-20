@@ -169,7 +169,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.medicalCaseArray.count + 10;
+    return self.medicalCaseArray.count;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -180,8 +180,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MedicalCaseCell *cell = [tableView dequeueReusableCellWithIdentifier:[MedicalCaseCell cellIdentifier] forIndexPath:indexPath];
-//    MedicalCase *medicalCase = [self.medicalCaseArray objectAtIndex:indexPath.row];
-    [cell configureWithMedicalCase:nil];
+    MedicalCase *medicalCase = [self.medicalCaseArray objectAtIndex:indexPath.row];
+    [cell configureWithMedicalCase:medicalCase];
     return cell;
 }
 

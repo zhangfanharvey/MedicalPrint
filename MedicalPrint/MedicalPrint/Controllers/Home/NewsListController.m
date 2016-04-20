@@ -1,32 +1,36 @@
 //
-//  MyClassListController.m
+//  NewsListController.m
 //  MedicalPrint
 //
-//  Created by zhangfan on 16/3/23.
+//  Created by zhangfan on 16/4/19.
 //  Copyright © 2016年 Medical. All rights reserved.
 //
 
-#import "MyClassListController.h"
-#import "BaseTableViewCell.h"
+#import "NewsListController.h"
 #import "Masonry.h"
 #import "UserInfoRequest.h"
-#import "ClassListCell.h"
+#import "BaseTableViewCell.h"
+#import "HomeNewsListCell.h"
+#import "NewsType.h"
+#import "NewsDetailController.h"
 #import "SVPullToRefresh.h"
 
-@interface MyClassListController () <UITableViewDelegate, UITableViewDataSource>
+@interface NewsListController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) NSMutableArray *classListArray;
+@property (nonatomic, strong) NewsType *newsType;
+@property (nonatomic, strong) NSMutableArray *newsListArray;
+
 
 @end
 
-@implementation MyClassListController
+@implementation NewsListController
 
-- (instancetype)init
-{
-    self = [super init];
+- (instancetype)initWithCaseType:(NewsType *)newsType; {
+    self = [self init];
     if (self) {
-        self.classListArray = [[NSMutableArray alloc] init];
+        self.newsType = newsType;
+        self.newsListArray = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -40,20 +44,15 @@
     [self.view addSubview:self.tableView];
     self.tableView.tableFooterView = [[UIView alloc] init];
     self.tableView.separatorColor = [UIColor colorWithRed:0.929 green:0.933 blue:0.937 alpha:1.00];
-    
+
     [self setupViewConstraints];
     [self initNaviBarItem];
     
-    [self.tableView registerClass:[ClassListCell class] forCellReuseIdentifier:[ClassListCell cellIdentifier]];
+    [self createRefreshView];
     
-    
+    [self.tableView registerClass:[HomeNewsListCell class] forCellReuseIdentifier:[HomeNewsListCell cellIdentifier]];
     
     [self initDataSource];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:NO animated:animated];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -75,33 +74,32 @@
 
 - (void)initNaviBarItem
 {
-    self.title = @"我的课程";
+    self.title = self.newsType.name ? self.newsType.name : @"资讯列表";
 }
 
 - (void)initDataSource {
-    [self showLoadingWithText:@""];
-    [UserInfoRequest fetchMyCourseListStart:0 length:20 success:^(BOOL status, NSArray *courseArray) {
-        [self.classListArray addObjectsFromArray:courseArray];
+    [self showLoadingWithText:@"加载中..."];
+    [UserInfoRequest fetchNewsListForType:self.newsType withStart:0 length:20 success:^(BOOL status, NSArray *newsArray) {
+        [self.newsListArray addObjectsFromArray:newsArray];
         [self hideLoadingView];
         [self.tableView reloadData];
     } failure:^(NSString *msg) {
         [self hideLoadingViewWithError:@"加载失败"];
     }];
-    
 }
 
 - (void)loadMoreData {
-    [UserInfoRequest fetchMyCourseListStart:self.classListArray.count length:20 success:^(BOOL status, NSArray *courseArray) {
-        [self.tableView.infiniteScrollingView stopAnimating];
-        [self.classListArray addObjectsFromArray:courseArray];
+    [UserInfoRequest fetchNewsListForType:self.newsType withStart:self.newsListArray.count length:20 success:^(BOOL status, NSArray *newsArray) {
+        [self.newsListArray addObjectsFromArray:newsArray];
         [self.tableView reloadData];
+        [self.tableView.infiniteScrollingView stopAnimating];
     } failure:^(NSString *msg) {
         [self.tableView.infiniteScrollingView stopAnimating];
     }];
 }
 
 - (void)createRefreshView {
-    __weak MyClassListController *weakSelf = self;
+    __weak NewsListController *weakSelf = self;
     [self.tableView addInfiniteScrollingWithActionHandler:^{
         [weakSelf loadMoreData];
     }];
@@ -115,20 +113,32 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 45.0f;
+    return 72.0f;
 }
 
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+//{
+//    return 0.0001f;
+//}
+//
+//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+//{
+//    return 0.0001f;
+//}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    News *news = [self.newsListArray objectAtIndex:indexPath.row];
+    NewsDetailController *newsDetailVC = [[NewsDetailController alloc] initWithNews:news];
+    [self.navigationController pushViewController:newsDetailVC animated:YES];
 }
 
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return self.newsListArray.count;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -138,10 +148,12 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ClassListCell *cell = [tableView dequeueReusableCellWithIdentifier:[ClassListCell cellIdentifier] forIndexPath:indexPath];
-    
+    HomeNewsListCell *cell = [tableView dequeueReusableCellWithIdentifier:[HomeNewsListCell cellIdentifier] forIndexPath:indexPath];
+    News *news = [self.newsListArray objectAtIndex:indexPath.row];
+    [cell configureWithNews:news];
     return cell;
 }
+
 
 
 @end

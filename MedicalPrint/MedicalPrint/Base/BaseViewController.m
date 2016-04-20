@@ -147,12 +147,15 @@
     [self.noResultLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.equalTo(superView);
     }];
+//    [self.view setNeedsUpdateConstraints];
     
 }
 
 - (void)hideNoResultPrompt {
-    [self.noResultLabel removeFromSuperview];
-    self.noResultLabel = nil;
+    if (self.noResultLabel) {
+        [self.noResultLabel removeFromSuperview];
+        self.noResultLabel = nil;
+    }
 }
 
 #pragma mark - IBAction

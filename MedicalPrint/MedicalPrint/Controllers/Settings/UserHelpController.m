@@ -10,6 +10,7 @@
 #import "Masonry.h"
 #import "News.h"
 #import "AccountManager.h"
+#import "UserInfoRequest.h"
 
 
 @interface UserHelpController ()
@@ -31,7 +32,7 @@
     [self.view addSubview:self.webView];
     self.webView.scalesPageToFit = YES;
     
-    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"www.baidu.com"]]];
+    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[UserInfoRequest userHelpUrl]]]];
     
     
     [self setupViewConstraints];

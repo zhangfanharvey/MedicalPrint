@@ -63,9 +63,9 @@
 
 - (void)configureWithMedicalCase:(MedicalCase *)medicalCase {
     self.titleLabel.text = medicalCase.title;
-    self.timeLabel.text = medicalCase.createTimeLong;
+    self.timeLabel.text = [TimeManager timeStringFromInterval:medicalCase.createTimeLong];
     self.detailLabel.text = medicalCase.content;
-    [self configureFakeData];
+//    [self configureFakeData];
 }
 
 - (void)configureFakeData {

@@ -8,7 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@class UserPersonalHeadView;
+
+@protocol UserPersonalHeadViewDelegate <NSObject>
+
+- (void)personalHeadView:(UserPersonalHeadView *)headView didClickedAvatarView:(UIImageView *)avatarView;
+
+@end
+
 @interface UserPersonalHeadView : UIView
+
+@property (nonatomic, weak) id <UserPersonalHeadViewDelegate> delegate;
 
 @property (nonatomic, strong) UIImageView *backGroundImageView;
 @property (nonatomic, strong) UILabel *nameLabel;

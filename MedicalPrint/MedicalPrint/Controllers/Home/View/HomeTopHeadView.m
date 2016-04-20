@@ -31,24 +31,33 @@
     if (self) {
         
         CGFloat height = [[self class] heightForTopHeadView];
-        SDCycleScrollView *cycleScrollView3 = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, CGRectGetWidth(frame), height) delegate:self placeholderImage:[UIImage imageNamed:@"广告大图"]];
+        SDCycleScrollView *cycleScrollView3 = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, CGRectGetWidth(frame), height) delegate:self placeholderImage:nil];
 //        cycleScrollView3.currentPageDotImage = [UIImage imageNamed:@"pageControlCurrentDot"];
 //        cycleScrollView3.pageDotImage = [UIImage imageNamed:@"pageControlDot"];
 //        cycleScrollView3.imageURLStringsGroup = imagesURLStrings;
 //        cycleScrollView3.bannerImageViewContentMode = UIViewContentModeScaleToFill;
-        cycleScrollView3.localizationImageNamesGroup = @[@"广告大图", @"广告大图", @"广告大图"];
-        cycleScrollView3.backgroundColor = [UIColor redColor];
+//        cycleScrollView3.localizationImageNamesGroup = @[@"广告大图", @"广告大图", @"广告大图"];
+        cycleScrollView3.backgroundColor = [UIColor whiteColor];
+        cycleScrollView3.bannerImageViewContentMode = UIViewContentModeScaleAspectFill;
         [self addSubview:cycleScrollView3];
         
         self.cycleScrollView = cycleScrollView3;
         
         self.itemView1 = [[HomeTopCatogeryItemView alloc] init];
+        self.itemView1.iconImageButton.tag = 0;
+        [self.itemView1.iconImageButton addTarget:self action:@selector(iconImageButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:self.itemView1];
         self.itemView2 = [[HomeTopCatogeryItemView alloc] init];
+        self.itemView2.iconImageButton.tag = 1;
+        [self.itemView2.iconImageButton addTarget:self action:@selector(iconImageButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:self.itemView2];
         self.itemView3 = [[HomeTopCatogeryItemView alloc] init];
+        self.itemView3.iconImageButton.tag = 2;
+        [self.itemView3.iconImageButton addTarget:self action:@selector(iconImageButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:self.itemView3];
         self.itemView4 = [[HomeTopCatogeryItemView alloc] init];
+        self.itemView4.iconImageButton.tag = 3;
+        [self.itemView4.iconImageButton addTarget:self action:@selector(iconImageButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:self.itemView4];
         
         self.leftLabel = [[UILabel alloc] init];
@@ -178,28 +187,41 @@
     NewsType *newsType = nil;
     if (newsTypeArray.count > 0) {
         newsType = [newsTypeArray objectAtIndex:0];
-        [self.itemView1.iconImageButton setBackgroundImage:[UIImage imageNamed:newsType.icon] forState:UIControlStateNormal];
+        [self.itemView1.iconImageButton setBackgroundImage:[UIImage imageNamed:[newsType iconImageName]] forState:UIControlStateNormal];
         self.itemView1.nameLabel.text = newsType.name;
     }
     
     if (newsTypeArray.count > 1) {
         newsType = [newsTypeArray objectAtIndex:1];
-        [self.itemView2.iconImageButton setBackgroundImage:[UIImage imageNamed:newsType.icon] forState:UIControlStateNormal];
+        [self.itemView2.iconImageButton setBackgroundImage:[UIImage imageNamed:[newsType iconImageName]] forState:UIControlStateNormal];
         self.itemView2.nameLabel.text = newsType.name;
     }
     if (newsTypeArray.count > 2) {
         newsType = [newsTypeArray objectAtIndex:2];
-        [self.itemView3.iconImageButton setBackgroundImage:[UIImage imageNamed:newsType.icon] forState:UIControlStateNormal];
+        [self.itemView3.iconImageButton setBackgroundImage:[UIImage imageNamed:[newsType iconImageName]] forState:UIControlStateNormal];
         self.itemView3.nameLabel.text = newsType.name;
     }
     if (newsTypeArray.count > 3) {
         newsType = [newsTypeArray objectAtIndex:3];
-        [self.itemView4.iconImageButton setBackgroundImage:[UIImage imageNamed:newsType.icon] forState:UIControlStateNormal];
+        [self.itemView4.iconImageButton setBackgroundImage:[UIImage imageNamed:[newsType iconImageName]] forState:UIControlStateNormal];
         self.itemView4.nameLabel.text = newsType.name;
     }
     
     self.leftLabel.text = @"DOF Info";
     self.rightLabel.text = @"更多…";
+}
+
+- (void)configureWithAidImageUrl:(NSArray *)urlArray {
+    self.cycleScrollView.imageURLStringsGroup = urlArray;
+}
+
+#pragma mark - IBAction
+
+- (IBAction)iconImageButtonClicked:(id)sender {
+    UIButton *button = (UIButton *)sender;
+    if (self.delegate && [self.delegate respondsToSelector:@selector(homeTopHeadView:didSelectCaseTypeItemAtIndex:)]) {
+        [self.delegate homeTopHeadView:self didSelectCaseTypeItemAtIndex:button.tag];
+    }
 }
 
 #pragma mark - SDCycleScrollViewDelegate

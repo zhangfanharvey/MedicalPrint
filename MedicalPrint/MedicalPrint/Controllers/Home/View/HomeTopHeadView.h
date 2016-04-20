@@ -10,10 +10,19 @@
 
 @class HomeTopCatogeryItemView;
 @class SDCycleScrollView;
+@class HomeTopHeadView;
+
+@protocol HomeTopHeadViewDelegate <NSObject>
+
+- (void)homeTopHeadView:(HomeTopHeadView *)topHeadView didSelectCaseTypeItemAtIndex:(NSInteger)index;
+
+@end
 
 @interface HomeTopHeadView : UIView
 
 + (CGFloat)heightForTopHeadView;
+
+@property (nonatomic, weak) id <HomeTopHeadViewDelegate> delegate;
 
 @property (nonatomic, strong) SDCycleScrollView *cycleScrollView;
 
@@ -32,5 +41,8 @@
 - (void)configureDemoData;
 
 - (void)configureNewsTypeWithList:(NSArray *)newsTypeArray;
+
+- (void)configureWithAidImageUrl:(NSArray *)urlArray;
+
 
 @end

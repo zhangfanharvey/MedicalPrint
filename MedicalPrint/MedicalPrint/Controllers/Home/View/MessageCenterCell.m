@@ -53,7 +53,10 @@
 }
 
 - (void)configureWithMessage:(Message *)message {
-    
+    if (message) {
+        self.titleLabel.text = message.contents;
+        self.createTimeLabel.text = [message crateTimeStr];
+    }
 }
 
 

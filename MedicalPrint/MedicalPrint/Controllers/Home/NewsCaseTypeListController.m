@@ -1,32 +1,32 @@
 //
-//  MessageCenterController.m
+//  NewsCaseTypeListController.m
 //  MedicalPrint
 //
-//  Created by zhangfan on 16/3/23.
+//  Created by zhangfan on 16/4/19.
 //  Copyright © 2016年 Medical. All rights reserved.
 //
 
-#import "MessageCenterController.h"
-#import "BaseTableViewCell.h"
+#import "NewsCaseTypeListController.h"
 #import "Masonry.h"
-#import "MessageCenterCell.h"
 #import "UserInfoRequest.h"
-#import "Message.h"
+#import "BaseTableViewCell.h"
+#import "NewsCaseTypeListCell.h"
+#import "NewsType.h"
+#import "NewsListController.h"
 
-@interface MessageCenterController () <UITableViewDelegate, UITableViewDataSource>
+@interface NewsCaseTypeListController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) NSMutableArray *messageArray;
+@property (nonatomic, strong) NSArray *newsTypeArray;
 
 @end
 
-@implementation MessageCenterController
+@implementation NewsCaseTypeListController
 
-- (instancetype)init
-{
-    self = [super init];
+- (instancetype)initWithCaseTypeArray:(NSArray *)newsTypeArray {
+    self = [self init];
     if (self) {
-        self.messageArray = [[NSMutableArray alloc] init];
+        self.newsTypeArray = newsTypeArray;
     }
     return self;
 }
@@ -44,14 +44,7 @@
     [self setupViewConstraints];
     [self initNaviBarItem];
     
-    [self.tableView registerClass:[MessageCenterCell class] forCellReuseIdentifier:[MessageCenterCell cellIdentifier]];
-    
-    [self initDataSource];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:NO animated:animated];
+    [self.tableView registerClass:[NewsCaseTypeListCell class] forCellReuseIdentifier:[NewsCaseTypeListCell cellIdentifier]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -73,21 +66,7 @@
 
 - (void)initNaviBarItem
 {
-    self.title = @"消息中心";
-}
-
-- (void)initDataSource {
-    [self showLoadingWithText:@"加载中..."];
-    [UserInfoRequest fetchMessageWithStart:0 length:20 success:^(BOOL status, NSArray *messagesArray) {
-        [self hideLoadingView];
-        [self.messageArray addObjectsFromArray:messagesArray];
-        [self.tableView reloadData];
-        if (self.messageArray.count == 0) {
-            [self showNoResultPrompt];
-        }
-    } failure:^(NSString *msg) {
-        [self hideLoadingViewWithError:@"加载失败"];
-    }];
+    self.title = @"资讯分类";
 }
 
 #pragma mark - IBAction
@@ -98,19 +77,23 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 45.0f;
+    return 65.0f;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NewsType *newsType = [self.newsTypeArray objectAtIndex:indexPath.row];
+    NewsListController *newsListVC = [[NewsListController alloc] initWithCaseType:newsType];
+    [self.navigationController pushViewController:newsListVC animated:YES];
+
 }
 
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.messageArray.count;
+    return self.newsTypeArray.count;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -120,9 +103,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    MessageCenterCell *cell = [tableView dequeueReusableCellWithIdentifier:[MessageCenterCell cellIdentifier] forIndexPath:indexPath];
-    Message *message = [self.messageArray objectAtIndex:indexPath.row];
-    [cell configureWithMessage:message];
+    NewsCaseTypeListCell *cell = [tableView dequeueReusableCellWithIdentifier:[NewsCaseTypeListCell cellIdentifier] forIndexPath:indexPath];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    NewsType *newsType = [self.newsTypeArray objectAtIndex:indexPath.row];
+    [cell configureWithCaseType:newsType];
     return cell;
 }
 
