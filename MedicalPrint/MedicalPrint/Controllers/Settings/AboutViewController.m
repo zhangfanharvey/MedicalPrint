@@ -36,10 +36,11 @@
     [self.view addSubview:self.imageView];
     
     self.aboutTextView = [[UITextView alloc] init];
-    self.aboutTextView.font = [UIFont systemFontOfSize:16];
+    self.aboutTextView.font = [UIFont systemFontOfSize:15];
 //    self.aboutTextView
     self.aboutTextView.userInteractionEnabled = NO;
     self.aboutTextView.selectable = NO;
+    self.aboutTextView.textColor = [UIColor colorWithRed:0.514 green:0.514 blue:0.514 alpha:1.00];
     [self.view addSubview:self.aboutTextView];
     
     [self setupViewConstraints];
@@ -69,8 +70,8 @@
     }];
     
     [self.aboutTextView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.and.bottom.equalTo(superView).insets(UIEdgeInsetsMake(25, 15, 15, 15));
-        make.top.equalTo(self.imageView.mas_bottom).offset(20);
+        make.left.right.and.bottom.equalTo(superView).insets(UIEdgeInsetsMake(15, 15, 15, 15));
+        make.top.equalTo(self.imageView.mas_bottom).offset(15);
     }];
 }
 
@@ -82,7 +83,7 @@
 }
 
 - (void)initDataSource {
-    self.aboutTextView.text = @"asdfsafdsfsfs";
+    self.aboutTextView.text = @"中国数字骨科基金（DOF）由华裔科学会（CSOS），人骨研究会中国数字骨科基金, 中国数字骨科基金（DOF）由华裔科学会（CSOS），人骨研究会中国数字骨科基金, 中国数字骨科基金（DOF）由华裔科学会（CSOS），人骨研究会中国数字骨科基金, 中国数字骨科基金（DOF）由华裔科学会（CSOS），人骨研究会中国数字骨科基金, 中国数字骨科基金（DOF）由华裔科学会（CSOS），人骨研究会中国数字骨科基金, 中国数字骨科基金（DOF）由华裔科学会（CSOS），人骨研究会中国数字骨科基金, 中国数字骨科基金（DOF）由华裔科学会（CSOS），人骨研究会中国数字骨科基金, 中国数字骨科基金（DOF）由华裔科学会（CSOS），人骨研究会中国数字骨科基金,";
 }
 
 @end

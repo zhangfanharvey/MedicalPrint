@@ -60,6 +60,10 @@
 
 @implementation UserProfileEditController
 
+- (void)dealloc {
+    [self unRegisterKeyboardNotification];
+}
+
 - (instancetype)init
 {
     self = [super init];
@@ -103,6 +107,10 @@
     [self initDataSource];
     [self configureData];
     [self configureTempData];
+    
+    [self registerKeyboardNotification];
+    [self addTapGesture];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -183,6 +191,76 @@
         can = YES;
     }
     return can;
+}
+
+
+#pragma mark
+- (void)registerKeyboardNotification
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void)unRegisterKeyboardNotification
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)addTapGesture {
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapView:)];
+    [self.view addGestureRecognizer:tapGesture];
+}
+
+- (void)didTapView:(UITapGestureRecognizer *)gesture {
+    [self.view endEditing:YES];
+}
+
+#pragma mark - keyboard notification
+
+- (void)keyboardWillShow:(NSNotification *)notification {
+    NSDictionary* userInfo = [notification userInfo];
+    CGSize keyboardSize = [[userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+    UIViewAnimationCurve animationCurve = [[userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] intValue];
+    float animationDuration = [[userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    
+    CGRect rect = [self.tableView convertRect:self.currentActivedTextField.frame fromView:self.currentActivedTextField];
+    
+    CGPoint offsetPoint = CGPointMake(0, CGRectGetMaxY(rect) + 10 - (CGRectGetHeight(self.tableView.frame) - keyboardSize.height));
+    if (CGRectGetMaxY(rect) + 30 < ([UIScreen mainScreen].bounds.size.height - keyboardSize.height)) {
+        offsetPoint.y = self.tableView.contentOffset.y;
+    }
+    if (offsetPoint.y < 0) {
+        offsetPoint.y = 0;
+    }
+    //    CGRect frame = self.tableView.frame;
+    UIEdgeInsets edges = self.tableView.contentInset;
+    
+    [UIView animateWithDuration:animationDuration delay:0 options:(UIViewAnimationOptions)animationCurve animations:^{
+        self.tableView.contentInset = UIEdgeInsetsMake(edges.top, edges.left, keyboardSize.height, edges.right);
+        [self.tableView setContentOffset:offsetPoint];
+        //        [self.view layoutIfNeeded];
+    } completion:^(BOOL finished) {
+        ;
+    }];
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification {
+    NSDictionary* userInfo = [notification userInfo];
+    //    CGSize keyboardSize = [[userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+    UIViewAnimationCurve animationCurve = [[userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] intValue];
+    float animationDuration = [[userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    
+    //    CGRect frame = self.tableView.frame;
+    
+    UIEdgeInsets edges = self.tableView.contentInset;
+    
+    [UIView animateWithDuration:animationDuration delay:0 options:(UIViewAnimationOptions)animationCurve animations:^{
+        [self.tableView setContentOffset:CGPointMake(0, 0)];
+        self.tableView.contentInset = UIEdgeInsetsMake(edges.top, edges.left, 0, edges.right);
+        //        [self.view layoutIfNeeded];
+    } completion:^(BOOL finished) {
+        ;
+    }];
 }
 
 #pragma mark - IBAction
@@ -302,7 +380,9 @@
         } else {
             TagSexSelectCell *cell = [tableView dequeueReusableCellWithIdentifier:[TagSexSelectCell cellIdentifier] forIndexPath:indexPath];
             cell.tagLabel.text = @"性别";
-            
+            [cell.firstButton addTarget:self action:@selector(maleButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+            [cell.secondButton addTarget:self action:@selector(femaleButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+
             return cell;
             
         }

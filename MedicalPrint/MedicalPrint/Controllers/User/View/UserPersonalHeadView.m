@@ -9,7 +9,7 @@
 #import "UserPersonalHeadView.h"
 #import "Masonry.h"
 
-#define kUserPersonalHeadViewWidth  65
+#define kUserPersonalHeadViewWidth  54
 
 @implementation UserPersonalHeadView
 
@@ -52,7 +52,8 @@
     [self.avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(superView.mas_centerX);
 //        make.centerY.equalTo(superView.mas_centerY);
-        make.bottom.equalTo(self.nameLabel.mas_top).offset(-10);
+        make.top.equalTo(superView.mas_top).offset(44+ (180 - 44 - kUserPersonalHeadViewWidth) / 2.0f);
+//        make.bottom.equalTo(self.nameLabel.mas_top).offset(-10);
         make.width.and.height.equalTo(@kUserPersonalHeadViewWidth);
     }];
     
