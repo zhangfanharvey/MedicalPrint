@@ -46,11 +46,13 @@
 - (void)setupViewConstraints {
     UIView *superView = self;
     [self.organCNNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.top.and.right.equalTo(superView);
+        make.left.and.top.equalTo(superView);
+        make.right.equalTo(superView.mas_right).offset(-6);
     }];
     
     [self.organENNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.and.bottom.equalTo(superView);
+        make.left.equalTo(superView.mas_left).offset(7);
+        make.right.and.bottom.equalTo(superView);
     }];
 }
 
