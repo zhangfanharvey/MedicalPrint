@@ -47,7 +47,7 @@
     
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.lessThanOrEqualTo(superView.mas_right).offset(-15);
-        make.top.equalTo(self.newsImageView.mas_top);
+        make.top.equalTo(self.newsImageView.mas_top).offset(4);
         make.left.equalTo(self.newsImageView.mas_right).offset(10);
     }];
     

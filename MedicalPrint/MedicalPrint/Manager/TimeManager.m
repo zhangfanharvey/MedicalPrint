@@ -13,8 +13,15 @@
 + (NSString *)timeStringFromInterval:(NSTimeInterval)timeInterval {
     NSString *time = nil;
     static NSDateFormatter *formater;
-    formater = [[NSDateFormatter alloc] init];
+    if(nil == formater){
+        formater = [[NSDateFormatter alloc] init];
+        formater.timeStyle = NSDateFormatterMediumStyle;
+        formater.dateStyle = NSDateFormatterMediumStyle;
+    }
+
+//    time = [formater stringFromDate:[NSDate dateWithTimeIntervalSince1970:timeInterval]];
     time = [formater stringFromDate:[NSDate dateWithTimeIntervalSince1970:timeInterval]];
+
     return time;
 
 }

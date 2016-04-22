@@ -24,7 +24,7 @@
 
 + (void)registerWithAccount:(NSString *)account password:(NSString *)password phone:(NSString *)phoneNumber code:(NSString *)code withSuccess:(void(^)(User *user, BOOL status))block failure:(NetworkFailureBlock)failure;
 
-+ (void)sendCodeWithBlock:(void(^)(NSString *code))block failure:(NetworkFailureBlock)failure;
++ (void)sendCodeForPhone:(NSString *)phoneNumber WithBlock:(void(^)(NSString *code))block failure:(NetworkFailureBlock)failure;
 
 
 + (void)loginWithAccount:(NSString *)account passwork:(NSString *)password withSuccess:(void(^)(User *user, BOOL loginStatus))block failure:(NetworkFailureBlock)failure;
@@ -71,7 +71,7 @@
 + (void)fetchNewsTypeSuccess:(void(^)(BOOL status, NSArray *newsTypeArray))block failure:(NetworkFailureBlock)failure;
 + (void)fetchMyNewsListStart:(NSInteger)start length:(NSInteger)length success:(void(^)(BOOL status, NSArray *newsArray))block failure:(NetworkFailureBlock)failure;
 + (void)fetchNewsListForType:(NewsType *)newsType withStart:(NSInteger)start length:(NSInteger)length success:(void(^)(BOOL status, NSArray *newsArray))block failure:(NetworkFailureBlock)failure;
-+ (void)fetchNewsDetail:(News *)news success:(void(^)(BOOL status, NSString *newsDetail))block failure:(NetworkFailureBlock)failure;
+//+ (void)fetchNewsDetail:(News *)news success:(void(^)(BOOL status, NSString *newsDetail))block failure:(NetworkFailureBlock)failure;
 
 + (void)searchHomePageNewsWithText:(NSString *)text success:(void(^)(BOOL status, NSArray *newsArray))block failure:(NetworkFailureBlock)failure;
 

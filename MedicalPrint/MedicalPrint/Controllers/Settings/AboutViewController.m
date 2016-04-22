@@ -35,12 +35,14 @@
     self.imageView.contentMode = UIViewContentModeScaleAspectFill;
     self.imageView.image = [UIImage imageNamed:@"广告大图"];
     [self.view addSubview:self.imageView];
+    self.imageView.layer.masksToBounds = YES;
     
     self.aboutTextView = [[UITextView alloc] init];
     self.aboutTextView.font = [UIFont systemFontOfSize:15];
 //    self.aboutTextView
-    self.aboutTextView.userInteractionEnabled = NO;
-    self.aboutTextView.selectable = NO;
+    self.aboutTextView.editable = NO;
+//    self.aboutTextView.userInteractionEnabled = NO;
+//    self.aboutTextView.selectable = NO;
     self.aboutTextView.textColor = [UIColor colorWithRed:0.514 green:0.514 blue:0.514 alpha:1.00];
     [self.view addSubview:self.aboutTextView];
     
@@ -68,11 +70,12 @@
     [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.mas_topLayoutGuide);
         make.left.and.right.equalTo(superView);
-        make.height.equalTo(@126);
+        make.height.equalTo(@164);
     }];
     
     [self.aboutTextView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.and.bottom.equalTo(superView).insets(UIEdgeInsetsMake(15, 15, 15, 15));
+        make.left.right.and.bottom.equalTo(superView).insets(UIEdgeInsetsMake(0, 15, 15, 15));
+        
         make.top.equalTo(self.imageView.mas_bottom).offset(15);
     }];
 }

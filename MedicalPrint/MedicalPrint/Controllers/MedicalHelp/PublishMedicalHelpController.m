@@ -19,7 +19,7 @@
 @property (nonatomic, strong) UITextView *contentTextView;
 @property (nonatomic, strong) UIButton *submitButton;
 @property (nonatomic, strong) CaseType *caseType;
-@property (nonatomic, strong) UIView *topView;
+@property (nonatomic, strong) UIImageView *topView;
 
 @end
 
@@ -39,8 +39,9 @@
     
     self.view.backgroundColor = [UIColor colorWithRed:0.933 green:0.933 blue:0.933 alpha:1.00];
     
-    self.topView = [[UIView alloc] init];
+    self.topView = [[UIImageView alloc] init];
     self.topView.backgroundColor = [UIColor whiteColor];
+    self.topView.image = [[UIImage imageNamed:@"主题输入框底"] generalResizableImageWithCenter];
     [self.view addSubview:self.topView];
     
     

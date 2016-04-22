@@ -22,4 +22,5 @@
 
 - (void)configureWithDic:(NSDictionary *)dic;
 
+
 @end

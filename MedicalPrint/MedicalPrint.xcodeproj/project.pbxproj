@@ -559,6 +559,7 @@
 		7D2CB2951C980E5F0055C7F4 /* MedicalPrint */ = {
 			isa = PBXGroup;
 			children = (
+				7DF66C891CC8B699006114B0 /* Frameworks */,
 				7DEEE1681C9BAD3400AC3B88 /* Manager */,
 				7DEEE1631C9BABB100AC3B88 /* Model */,
 				7D2CB2CC1C980EA40055C7F4 /* Base */,
@@ -1238,6 +1239,13 @@
 			path = Configure;
 			sourceTree = "<group>";
 		};
+		7DF66C891CC8B699006114B0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1305,6 +1313,7 @@
 				TargetAttributes = {
 					7D2CB2921C980E5F0055C7F4 = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = KWW3U3X2GT;
 					};
 					7D2CB2AE1C980E5F0055C7F4 = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -1608,7 +1617,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1645,7 +1654,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -1656,13 +1665,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = MedicalPrint/MedicalPrintPrefixHeader.pch;
 				INFOPLIST_FILE = MedicalPrint/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Medical.MedicalPrint;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhangfan.MedicalPrint;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -1670,13 +1682,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing iQIYI Science & Technology Co., Ltd";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing iQIYI Science & Technology Co., Ltd";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = MedicalPrint/MedicalPrintPrefixHeader.pch;
 				INFOPLIST_FILE = MedicalPrint/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Medical.MedicalPrint;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhangfan.MedicalPrint;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "3fc20a2b-6aa6-4cd3-a96a-6c609d6918c3";
 			};
 			name = Release;
 		};

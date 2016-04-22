@@ -9,6 +9,13 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSInteger, BonesAlignmentType) {
+    BonesAlignmentLeft,
+    BonesAlignmentTop,
+    BonesAlignmentRight,
+    BonesAlignmentBottom,
+};
+
 @interface Bones : NSObject
 
 @property (nonatomic, strong) NSString *p_ID;
@@ -20,6 +27,8 @@
 @property (nonatomic, assign) CGPoint lineStartPoint;
 @property (nonatomic, assign) CGPoint lineBreakPoint;
 @property (nonatomic, assign) CGPoint lineEndPoint;
+
+@property (nonatomic, assign) BonesAlignmentType alignment;
 
 
 @end

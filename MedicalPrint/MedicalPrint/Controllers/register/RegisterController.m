@@ -220,12 +220,14 @@
 }
 
 - (IBAction)resendCodeButtonClicked:(id)sender {
-    [self showLoadingWithText:@"发送中..."];
-    [UserInfoRequest sendCodeWithBlock:^(NSString *code) {
-        [self hideLoadingView];
-    } failure:^(NSString *msg) {
-        [self hideLoadingViewWithError:msg];
-    }];
+    if (self.self.phoneNumberView.inputTextField.text.length > 0) {
+        [self showLoadingWithText:@"发送中..."];
+        [UserInfoRequest sendCodeForPhone:self.phoneNumberView.inputTextField.text WithBlock:^(NSString *code) {
+            [self hideLoadingViewWithSuccess:@"发送成功"];
+        } failure:^(NSString *msg) {
+            [self hideLoadingViewWithError:msg];
+        }];
+    }
 }
 
 - (IBAction)cancelButtonClicked:(id)sender {
