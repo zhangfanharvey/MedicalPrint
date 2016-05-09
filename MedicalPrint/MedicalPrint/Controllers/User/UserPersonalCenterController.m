@@ -79,10 +79,12 @@
     [self configureData];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES animated:animated];
-}
+//- (void)viewWillAppear:(BOOL)animated {
+//    [super viewWillAppear:animated];
+//    [self.navigationController setNavigationBarHidden:YES animated:animated];
+//    
+//    [self initDataSource];
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

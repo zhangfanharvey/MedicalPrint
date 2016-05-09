@@ -85,6 +85,9 @@
 + (void)fetchMessageWithStart:(NSInteger)start length:(NSInteger)length success:(void(^)(BOOL status, NSArray *messagesArray))block failure:(NetworkFailureBlock)failure;
 
 
++ (void)fetchBannerListWithSuccess:(void(^)(BOOL status, NSArray *bannerListArray))block failure:(NetworkFailureBlock)failure;
+
+
 + (NSArray *)homePageAidImageUrl;
 
 + (NSString *)userHelpUrl;

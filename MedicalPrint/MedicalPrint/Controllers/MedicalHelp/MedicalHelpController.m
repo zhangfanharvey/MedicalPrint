@@ -60,8 +60,14 @@
     
     [self setupViewConstraints];
     
-    [self loadCaseTypeList];
+//    [self initDataSource];
     
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self initDataSource];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -76,8 +82,6 @@
 }
 
 
-
-
 - (void)setupViewConstraints {
     UIView *superView = self.view;
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -85,7 +89,7 @@
     }];
 }
 
-- (void)loadCaseTypeList {
+- (void)initDataSource {
     [self showLoadingWithText:@"加载中..."];
     [UserInfoRequest fetchListCaseTypeWithSuccess:^(BOOL status, NSArray *caseTypeArray) {
         [self hideLoadingView];

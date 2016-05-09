@@ -58,6 +58,7 @@
 #define kMPFetchMyCourseUrl  @"/app/course/listMyCourse.do"
 #define kMPMeToMemberOfCourseUrl  @"/app/course/addMemberCourse.do"
 #define kMPFetchMessageUrl  @"/app/memeber/message.do"
+#define kMPFetchBannerListUrl  @"/app/homepage/bannerList.do"
 
 
 #endif /* APIConfigure_h */

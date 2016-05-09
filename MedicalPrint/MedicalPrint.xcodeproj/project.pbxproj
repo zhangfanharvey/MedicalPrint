@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D0C95D61CE0979F00DEE464 /* Banner.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D0C95D51CE0979F00DEE464 /* Banner.m */; };
 		7D1549191CB0DE69006C247C /* NewsType.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1549181CB0DE69006C247C /* NewsType.m */; };
 		7D15491C1CB0E1F0006C247C /* News.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D15491B1CB0E1F0006C247C /* News.m */; };
 		7D1AD1671CB26FAD00845D53 /* MedicalCaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1AD1661CB26FAD00845D53 /* MedicalCaseCell.m */; };
@@ -182,6 +183,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7D0C95D41CE0979F00DEE464 /* Banner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Banner.h; sourceTree = "<group>"; };
+		7D0C95D51CE0979F00DEE464 /* Banner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Banner.m; sourceTree = "<group>"; };
 		7D1549161CB0C524006C247C /* CommonUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonUI.h; sourceTree = "<group>"; };
 		7D1549171CB0DE69006C247C /* NewsType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsType.h; sourceTree = "<group>"; };
 		7D1549181CB0DE69006C247C /* NewsType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsType.m; sourceTree = "<group>"; };
@@ -1186,6 +1189,8 @@
 				7D6C5DBA1CBE1523002E088E /* Course.m */,
 				7DF66C781CC5FAF5006114B0 /* Bones.h */,
 				7DF66C791CC5FAF5006114B0 /* Bones.m */,
+				7D0C95D41CE0979F00DEE464 /* Banner.h */,
+				7D0C95D51CE0979F00DEE464 /* Banner.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1405,6 +1410,7 @@
 				7D2CB3591C980EA40055C7F4 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				7D6C5DB81CBE1482002E088E /* CourseTopic.m in Sources */,
 				7D2CB3361C980EA40055C7F4 /* BaseViewController.m in Sources */,
+				7D0C95D61CE0979F00DEE464 /* Banner.m in Sources */,
 				7D6C5DBB1CBE1523002E088E /* Course.m in Sources */,
 				7DEEE1621C9BAA9000AC3B88 /* UIImage+TPAdditions.m in Sources */,
 				7D4EEA841CA90BC30014E38D /* HomeNewsListCell.m in Sources */,

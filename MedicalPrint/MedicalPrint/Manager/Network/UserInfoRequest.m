@@ -23,6 +23,7 @@
 #import "Course.h"
 #import "CourseTopic.h"
 #import "Message.h"
+#import "Banner.h"
 
 @implementation UserInfoRequest
 
@@ -1195,6 +1196,39 @@
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         QYLog(@"fetchMessageWithStart failure :%@", error.localizedDescription);
+        if (failure) {
+            failure(error.localizedDescription);
+        }
+    }];
+}
+
++ (void)fetchBannerListWithSuccess:(void(^)(BOOL status, NSArray *bannerListArray))block failure:(NetworkFailureBlock)failure {
+    NSString *url = [NSString stringWithFormat:@"%@%@", kMPBaseUrl, kMPFetchBannerListUrl];
+    
+    [[NetworkManager sharedManager] POST:url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        QYLog(@"fetchBannerListWithSuccess success%@", responseObject);
+        if ([NetworkManager isResponseSuccess:responseObject]) {
+            NSDictionary *responseDic = (NSDictionary *)responseObject;
+            NSArray *bodyArray = responseDic[@"body"];
+            NSMutableArray *bannerListArray = [[NSMutableArray alloc] init];
+            for (NSDictionary *dic in bodyArray) {
+                if (dic && [dic isKindOfClass:[NSDictionary class]]) {
+                    Banner *banner = [[Banner alloc] init];
+                    [banner configureWithDic:dic];
+                    [bannerListArray addObject:banner];
+                }
+            }
+            if (block) {
+                block(YES, bannerListArray);
+            }
+        } else {
+            NSString *errorMsg = responseObject[@"msg"];
+            if (failure) {
+                failure(errorMsg);
+            }
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        QYLog(@"fetchBannerListWithSuccess failure :%@", error.localizedDescription);
         if (failure) {
             failure(error.localizedDescription);
         }

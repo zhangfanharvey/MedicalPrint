@@ -24,6 +24,8 @@
         [self.contentView addSubview:self.label];
         
         [self setupViewConstraints];
+        
+        
     }
     return self;
 }

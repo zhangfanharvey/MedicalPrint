@@ -17,6 +17,7 @@
 #import "NewsDetailController.h"
 #import "NewsListController.h"
 #import "NewsCaseTypeListController.h"
+#import "Banner.h"
 
 @interface HomeViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, HomeTopHeadViewDelegate>
 
@@ -26,6 +27,7 @@
 
 @property (nonatomic, strong) NSArray *newsTypeArray;
 @property (nonatomic, strong) NSArray *newsListArray;
+@property (nonatomic, strong) NSArray *bannerListArray;
 
 @end
 
@@ -74,6 +76,8 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:animated];
+    
+    [self initDataSource];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -127,7 +131,19 @@
 }
 
 - (void)initDataSource {
-    [self.topHeadView configureWithAidImageUrl:[UserInfoRequest homePageAidImageUrl]];
+    [UserInfoRequest fetchBannerListWithSuccess:^(BOOL status, NSArray *bannerListArray) {
+        if (bannerListArray.count > 0) {
+            self.bannerListArray = bannerListArray;
+            NSMutableArray *imageUrlArray = [[NSMutableArray alloc] init];
+            for (Banner *banner in bannerListArray) {
+                [imageUrlArray addObject:banner.imgUrl];
+            }
+            [self.topHeadView configureWithAidImageUrl:imageUrlArray];
+        }
+    } failure:^(NSString *msg) {
+        ;
+    }];
+    
     [UserInfoRequest fetchNewsTypeSuccess:^(BOOL status, NSArray *newsTypeArray) {
         self.newsTypeArray = [newsTypeArray sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
             return [obj1 compare:obj2];
