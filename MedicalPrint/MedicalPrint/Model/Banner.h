@@ -16,4 +16,7 @@
 
 - (void)configureWithDic:(NSDictionary *)dic;
 
+- (NSString *)bannerDetailUrl;
+
+
 @end

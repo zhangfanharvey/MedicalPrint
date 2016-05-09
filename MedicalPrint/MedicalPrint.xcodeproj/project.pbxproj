@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7D0C95D61CE0979F00DEE464 /* Banner.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D0C95D51CE0979F00DEE464 /* Banner.m */; };
+		7D0C95D91CE09C7900DEE464 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D0C95D81CE09C7900DEE464 /* WebViewController.m */; };
 		7D1549191CB0DE69006C247C /* NewsType.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1549181CB0DE69006C247C /* NewsType.m */; };
 		7D15491C1CB0E1F0006C247C /* News.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D15491B1CB0E1F0006C247C /* News.m */; };
 		7D1AD1671CB26FAD00845D53 /* MedicalCaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1AD1661CB26FAD00845D53 /* MedicalCaseCell.m */; };
@@ -185,6 +186,8 @@
 /* Begin PBXFileReference section */
 		7D0C95D41CE0979F00DEE464 /* Banner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Banner.h; sourceTree = "<group>"; };
 		7D0C95D51CE0979F00DEE464 /* Banner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Banner.m; sourceTree = "<group>"; };
+		7D0C95D71CE09C7900DEE464 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		7D0C95D81CE09C7900DEE464 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		7D1549161CB0C524006C247C /* CommonUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonUI.h; sourceTree = "<group>"; };
 		7D1549171CB0DE69006C247C /* NewsType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsType.h; sourceTree = "<group>"; };
 		7D1549181CB0DE69006C247C /* NewsType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsType.m; sourceTree = "<group>"; };
@@ -624,6 +627,8 @@
 				7D5782DA1CA12CEE00493ADC /* IconLabelTableViewCell.m */,
 				7D5782DF1CA1398A00493ADC /* TagLabelCell.h */,
 				7D5782E01CA1398A00493ADC /* TagLabelCell.m */,
+				7D0C95D71CE09C7900DEE464 /* WebViewController.h */,
+				7D0C95D81CE09C7900DEE464 /* WebViewController.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -1441,6 +1446,7 @@
 				7D222EF01CA3F29D002092D2 /* AddressManagerCell.m in Sources */,
 				7D2CB3511C980EA40055C7F4 /* UIImage+GIF.m in Sources */,
 				7D6C5DC71CBF4B85002E088E /* CourseListController.m in Sources */,
+				7D0C95D91CE09C7900DEE464 /* WebViewController.m in Sources */,
 				7D2CB34C1C980EA40055C7F4 /* SDWebImageDownloader.m in Sources */,
 				7D2CB35F1C980EA40055C7F4 /* UIWebView+AFNetworking.m in Sources */,
 				7D2CB3421C980EA40055C7F4 /* MASViewConstraint.m in Sources */,

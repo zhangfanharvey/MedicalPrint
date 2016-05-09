@@ -7,6 +7,7 @@
 //
 
 #import "Banner.h"
+#import "APIConfigure.h"
 
 @implementation Banner
 
@@ -23,6 +24,14 @@
     if (IsSafeValue(valueStr)) {
         self.imgUrl = valueStr;
     }
+}
+
+- (NSString *)bannerDetailUrl {
+    NSString *url = nil;
+    if (self.p_ID) {
+        url = [NSString stringWithFormat:@"%@/app/homepage/bannerDetail.do?id=%@", kMPBaseUrl, self.p_ID];
+    }
+    return url;
 }
 
 @end

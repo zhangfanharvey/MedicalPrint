@@ -18,8 +18,10 @@
 #import "NewsListController.h"
 #import "NewsCaseTypeListController.h"
 #import "Banner.h"
+#import "SDCycleScrollView.h"
+#import "WebViewController.h"
 
-@interface HomeViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, HomeTopHeadViewDelegate>
+@interface HomeViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, HomeTopHeadViewDelegate, SDCycleScrollViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 
@@ -58,6 +60,7 @@
     self.topHeadView = [[HomeTopHeadView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), [HomeTopHeadView heightForTopHeadView] + 120)];
     self.tableView.tableHeaderView = self.topHeadView;
     self.topHeadView.delegate = self;
+    self.topHeadView.cycleScrollView.delegate = self;
     
     [self.topHeadView.rightButon addTarget:self action:@selector(moreButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -217,6 +220,14 @@
     NewsType *newsType = [self.newsTypeArray objectAtIndex:index];
     NewsListController *newsListVC = [[NewsListController alloc] initWithCaseType:newsType];
     [self.navigationController pushViewController:newsListVC animated:YES];
+}
+
+#pragma mark - SDCycleScrollViewDelegate
+
+- (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index {
+    Banner *banner = [self.bannerListArray objectAtIndex:index];
+    WebViewController *webVC = [[WebViewController alloc] initWithWebUrl:[banner bannerDetailUrl] title:banner.title];
+    [self.navigationController pushViewController:webVC animated:YES];
 }
 
 #pragma mark - UITableViewDelegate
